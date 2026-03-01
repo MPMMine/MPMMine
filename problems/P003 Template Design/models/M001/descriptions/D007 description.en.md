@@ -1,0 +1,22 @@
+# Template Planning Problem
+
+This problem originates in a printing company that manufactures various items from thin material, such as boxes for
+different products and promotional inserts. For instance, a company might produce packaging for food items, where each
+basic product line has several minor variations, like different flavors, all sharing the same overall dimensions but
+varying slightly in text or color. A typical request involves fulfilling orders for specific quantities of these
+variations. Since all variations have identical sizes, the maximum number of items per mother sheet is predetermined by
+the sheet dimensions, which are fixed due to machinery constraints.
+
+The core challenge is to design templates, which are specialized aluminum sheets that dictate how multiple variations
+are arranged on a single mother sheet. Each template has a fixed capacity for a certain number of slots. The goal is to
+determine how many variations to include on each template, and how many times to replicate each template, such that the
+total waste is minimized. Waste arises from unused slots on the mother sheets, and the solution must ensure that all
+order quantities are met.
+
+To address this, we consider scenarios with varying numbers of templates, from one to many. The demands for each
+variation must be satisfied, and the total production must be at least the sum of all demands, but not exceed a certain
+upper bound to limit waste. Additionally, symmetry-breaking constraints are incorporated to prevent redundant or
+equivalent solutions, based on the relative demands of the variations. The problem requires finding an optimal
+assignment that minimizes the excess capacity while adhering to these constraints.
+
+[//]: # (Generated using deepseek-r1:latest from D001 description.en.md and model.mzn; major manual amendments applied)

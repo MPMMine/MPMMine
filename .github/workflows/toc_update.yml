@@ -1,0 +1,39 @@
+name: Auto-update Problem TOC
+
+on:
+  push:
+    paths:
+      - 'problems/**'
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Script and README only
+        uses: actions/checkout@v6
+        with:
+          sparse-checkout: |
+            docs/
+            README.md
+          sparse-checkout-cone-mode: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run API Script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python docs/toc_script.py
+        
+      - name: Commit and Push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add README.md
+          git commit -m "docs: update problem index via API" || echo "No changes"
+          git push

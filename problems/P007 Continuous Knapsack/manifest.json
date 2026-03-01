@@ -1,0 +1,36 @@
+{
+  "id": "007",
+  "name": "Continuous Knapsack",
+  "tags": {
+    "Q864457": "knapsack problem",
+    "Q984063": "optimization problem",
+    "Q5165487": "continuous knapsack problem",
+    "Q5165499": "continuous optimization",
+    "Q70467272": "maximization",
+    "Q111031095": "determinism"
+  },
+  "features": {
+    "constraints": true,
+    "objective": true,
+    "optimization": true,
+    "satisfiability": false,
+    "variables": {
+      "binary": false,
+      "continuous": true,
+      "integer": false,
+      "string": false
+    }
+  },
+  "alternative_ids": {},
+  "references": [
+    {
+      "type": "book",
+      "key": "goodrich2001algorithm",
+      "title": "Algorithm design: foundations, analysis, and internet examples",
+      "author": "Goodrich, Michael T and Tamassia, Roberto",
+      "year": "2001",
+      "publisher": "John Wiley & Sons"
+    }
+  ],
+  "links": {}
+}

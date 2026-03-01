@@ -1,0 +1,6 @@
+% Hard Instance: High-precision density differences
+n = 10;
+capacity = 500;
+
+profit = [250, 442, 377, 407, 316, 125, 84, 269, 533, 417];
+size   = [300, 530, 453, 488, 380, 150, 100, 323, 643, 500];

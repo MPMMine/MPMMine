@@ -1,0 +1,1 @@
+A Golomb ruler may be defined as a set of 11 integers 0 = a_1 < a_2 < ... < a_11 such that the 55.0 differences a_j - a_i, 1 <= i < j <= 11 are distinct. Such a ruler is said to contain 11 marks and is of length a_11. The objective is to find optimal (minimum length) or near optimal rulers.

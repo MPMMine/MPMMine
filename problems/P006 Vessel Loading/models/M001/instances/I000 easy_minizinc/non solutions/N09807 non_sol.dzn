@@ -1,0 +1,5 @@
+Left = [0, 3, 2];
+Right = [5, 5, 3];
+Bottom = [0, 2, 1];
+Top = [1, 5, 5];
+orientation = [1, 1, 1];

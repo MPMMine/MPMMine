@@ -1,0 +1,30 @@
+## Template Design Problem – Reformulated Description
+
+The scenario originates with a colour‑printing company that manufactures an array of flat products on thin board, such
+as food cartons and magazine inserts. Each product variant shares the same outer dimensions; however its printed
+graphics or hue may differ slightly from one version to another (e.g., “Chicken” printed on a blue field versus “Rabbit”
+on a green background). A full order therefore consists of several variants accompanied by specific quantities.
+
+All variants fit onto identical master sheets, whose size is dictated by the printing equipment. Each sheet can
+accommodate a fixed number of distinct design slots – denoted symbolically as `{S}`. To satisfy an order we must decide
+both how many separate printing plates (templates) to prepare and which combinations of variant copies belong on each
+plate. The objective is to allocate the required quantities across the templates so that overall scrap – measured by
+surplus board after cutting out all portions – is minimized, first for a single‑plate solution, then with two plates,
+three plates, and so on.
+
+**Core symbols**
+
+- `{t}`: number of distinct printing templates to be created.
+- `{n}`: total count of variations that must be produced, each identified by an integer index `i` (1 … `{n}`).
+- `{d_i}`: required unit quantity for variation *i*.
+- `p[i,j]`: number of slots dedicated to variation *i* on template *j*, bounded between 0 and `{S}`.
+- `R[j]`: count of pressings assigned to template *j* (a positive integer).
+- `Production`: aggregate of all presses across the chosen templates.
+- `Surplus`: leftover board after cutting.
+
+The formulation enforces that every variation meets or exceeds its required demand when multiplied by its allocated
+pressings, that each template uses all of its `{S}` slots, and that symmetry among variations bearing identical demands
+is broken to aid search efficiency. By minimising `Production` we seek the least amount of wasted material across all
+conceivable template counts.
+
+[//]: # (Generated using nemotron-3-nano:latest from D001 description.en.md and model.mzn; major manual amendments applied)

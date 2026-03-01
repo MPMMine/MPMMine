@@ -1,0 +1,46 @@
+{
+  "id": "008",
+  "name": "Cutting Stock",
+  "tags": {
+    "Q984063": "optimization problem",
+    "Q1306230": "cutting stock problem",
+    "Q1333872": "combinatorial optimization",
+    "Q70467303": "minimization",
+    "Q111031095": "determinism"
+  },
+  "features": {
+    "constraints": true,
+    "objective": true,
+    "optimization": true,
+    "satisfiability": false,
+    "variables": {
+      "binary": true,
+      "continuous": false,
+      "integer": true,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+    "minizinc-benchmarks-1": "cutstock",
+    "minizinc-benchmarks-2": "carpet-cutting"
+  },
+  "references": [
+    {
+      "type": "article",
+      "key": "gilmore1961linear",
+      "title": "A linear programming approach to the cutting-stock problem",
+      "author": "Gilmore, Paul C and Gomory, Ralph ",
+      "journal": "Operations Research",
+      "volume": "9",
+      "number": "6",
+      "pages": "849-859",
+      "year": "1961",
+      "publisher": "INFORMS"
+    }
+  ],
+  "links": {
+    "minizinc-benchmarks-1": "https://github.com/MiniZinc/minizinc-benchmarks/tree/master/cutstock",
+    "minizinc-benchmarks-2": "https://github.com/MiniZinc/minizinc-benchmarks/tree/master/carpet-cutting",
+    "wikipedia": "https://en.wikipedia.org/wiki/Cutting_stock_problem"
+  }
+}

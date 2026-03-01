@@ -1,0 +1,62 @@
+{
+  "id": "001",
+  "name": "Progressive Party",
+  "tags": {
+    "Q35872": "boat",
+    "Q180684": "conflict",
+    "Q200538": "party",
+    "Q814581": "bin packing problem",
+    "Q984063": "optimization problem",
+    "Q1333872": "combinatorial optimization",
+    "Q7062516": "optimal job scheduling",
+    "Q7271585": "schedule",
+    "Q7497908": "ship's company",
+    "Q18089644": "guest",
+    "Q11869795": "capacity",
+    "Q70467303": "minimization",
+    "Q111031095": "determinism"
+  },
+  "features": {
+    "constraints": true,
+    "objective": true,
+    "optimization": true,
+    "satisfiability": false,
+    "variables": {
+      "binary": false,
+      "continuous": false,
+      "integer": true,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+    "athanor": "ppp",
+    "CSPLib": "prob013"
+  },
+  "references": [
+    {
+      "key": "ATHNANORLSOACS",
+      "type": "article",
+      "title": "Athanor: Local search over abstract constraint specifications",
+      "journal": "Artificial Intelligence",
+      "volume": 340,
+      "pages": 104277,
+      "year": 2025,
+      "issn": "0004-3702",
+      "doi": "10.1016/j.artint.2024.104277",
+      "author": "Saad Attieh and Nguyen Dang and Christopher Jefferson and Ian Miguel and Peter Nightingale"
+    },
+    {
+      "type": "misc",
+      "key": "csplib:prob013",
+      "title": "{CSPLib} Problem 013: Progressive Party Problem",
+      "author": "Toby Walsh",
+      "editor": "Jefferson, Christopher and Miguel, Ian and Hnich, Brahim and Walsh, Toby and Gent, Ian P.",
+      "booktitle": "{CSPLib}: A problem library for constraints",
+      "howpublished": "http://www.csplib.org/Problems/prob013"
+    }
+  ],
+  "links": {
+    "athanor": "https://github.com/athanor/athanor-experiments/blob/master/models/minizinc/ppp.mzn",
+    "CSPLib": "https://github.com/csplib/csplib/tree/master/Problems/prob013"
+  }
+}

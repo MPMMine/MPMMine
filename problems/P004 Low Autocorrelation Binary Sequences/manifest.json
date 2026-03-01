@@ -1,0 +1,41 @@
+{
+  "id": "004",
+  "name": "Low Autocorrelation Binary Sequences",
+  "tags": {
+    "Q786970": "autocorrelation",
+    "Q984063": "optimization problem",
+    "Q1061219": "telecommunications engineering",
+    "Q1333872": "combinatorial optimization",
+    "Q70467303": "minimization",
+    "Q111031095": "determinism"
+  },
+  "features": {
+    "constraints": false,
+    "objective": true,
+    "optimization": true,
+    "satisfiability": false,
+    "variables": {
+      "binary": false,
+      "continuous": false,
+      "integer": true,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+    "CSPLib": "prob005"
+  },
+  "references": [
+    {
+      "type": "misc",
+      "key": "csplib:prob005",
+      "title": "{CSPLib} Problem 005: Low Autocorrelation Binary Sequences",
+      "author": "Toby Walsh",
+      "editor": "Jefferson, Christopher and Miguel, Ian and Hnich, Brahim and Walsh, Toby and Gent, Ian P.",
+      "booktitle": "{CSPLib}: A problem library for constraints",
+      "howpublished": "\\url{http://www.csplib.org/Problems/prob005}"
+    }
+  ],
+  "links": {
+    "CSPLib": "https://github.com/csplib/csplib/tree/master/Problems/prob005"
+  }
+}

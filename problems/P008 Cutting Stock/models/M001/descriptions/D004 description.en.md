@@ -1,0 +1,12 @@
+# The cutting stock challenge
+
+The Cutting Stock Challenge involves optimizing material utilization in manufacturing processes, particularly when
+dealing with large stock pieces needing to be segmented into smaller quantities to fulfill customer needs.
+
+Imagine a paper manufacturer receiving substantial paper rolls of a standard breadth. They then receive orders for
+bespoke rolls of varied sizes and volumes. The core task is to devise cutting strategies for the initial large rolls,
+aiming to satisfy all orders while minimizing the resultant scrap. Since any wasted material represents an undesirable
+loss, the objective is to arrange cutting patterns that reduce the total amount of leftover stock or, equivalently,
+lessen the number of initial rolls required.
+
+[//]: # (Generated using gemma3:latest from D001 description.en.md and model.mzn; minor manual amendments applied)

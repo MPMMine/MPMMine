@@ -1,0 +1,31 @@
+# Template Optimization Problem
+
+A colour printing company produces various items from thin board, including cartons and magazine inserts. These products
+often have similar designs with minor differences in text or colour. The goal is to determine the optimal number of
+distinct templates to create and which product variations to include on each template.
+
+Each product design has a fixed size and shape, allowing multiple items to be printed on a single mother sheet. The
+company wants to minimize waste by using an optimal number of templates. If there are more slots on a template than
+product variations, a single template could fulfill the order, but this would result in excessive waste. Using multiple
+templates can reduce waste.
+
+The problem involves creating template plans that minimize waste for different numbers of templates. We need to consider
+entities such as **Σ** (the number of slots per template), **τ** (the number of templates), and **ν** (the number of
+product variations). Each variation requires a certain quantity, denoted by **δ**, to be printed.
+
+The objective is to find a solution that minimizes the total production while meeting the demand for each product
+variation. This involves allocating slots on each template to different variations and determining the number of times
+each template should be printed, represented by **ρ**. The total production, denoted by **Π**, should be within
+specified bounds.
+
+To achieve this, constraints are imposed to ensure that each template is fully utilized, with the total number of slots
+allocated to variations equaling **Σ**. Additionally, the total quantity of each variation printed must meet or exceed
+the required amount **δ**.
+
+Symmetry constraints are also applied to reduce redundant solutions and improve search efficiency. These constraints
+consider the demand for each variation and ensure that templates with identical demand patterns are treated similarly.
+
+Ultimately, the goal is to find a template plan that minimizes waste while fulfilling the production requirements for
+all product variations.
+
+[//]: # (Generated using llama3.3:latest from D001 description.en.md and model.mzn)

@@ -1,0 +1,44 @@
+{
+  "id": "009",
+  "name": "Sphere Packing in a Cube",
+  "tags": {
+    "Q12507": "sphere",
+    "Q18545": "ball",
+    "Q812880": "cube",
+    "Q984063": "optimization problem",
+    "Q1333872": "combinatorial optimization",
+    "Q5165499": "continuous optimization",
+    "Q60788325": "Sphere packing in a cube",
+    "Q70467272": "maximization",
+    "Q111031095": "determinism",
+    "Q123937489": "mixed-integer optimization"
+  },
+  "features": {
+    "constraints": true,
+    "objective": true,
+    "optimization": true,
+    "satisfiability": false,
+    "variables": {
+      "binary": true,
+      "continuous": true,
+      "integer": false,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+  },
+  "references": [
+    {
+      "type": "article",
+      "key": "gensane2004dense",
+      "title": "Dense packings of equal spheres in a cube",
+      "author": "Gensane, Th", 
+      "journal": "the electronic journal of combinatorics",
+      "pages": "R33--R33",
+      "year": "2004"
+    }
+  ],
+  "links": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Sphere_packing_in_a_cube"
+  }
+}

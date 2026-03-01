@@ -1,0 +1,24 @@
+# Template Configuration Problem
+
+This challenge originates from a colour printing company that manufactures various products from thin board, including
+cartons for human and animal food and magazine inserts. Product variations, such as different flavours, typically have
+the same overall design but differ in small aspects like text or colour. A standard order includes multiple quantities
+of several design variations. Since each variation has identical dimensions, it is known in advance exactly how many
+items can be printed on each mother sheet of board, whose size is largely determined by the printing machinery. Each
+mother sheet is printed from a template, consisting of a thin aluminium sheet etched with designs for several
+variations. The goal is to decide how many distinct templates to produce and which variations, along with their
+quantities, to include on each template.
+
+Each carton design is made from an identically sized piece of board. Multiple cartons can be printed on each mother
+sheet, and various designs can be printed simultaneously on the same mother sheet. If there are more slots in each
+template than there are variations, it would be possible to fulfill the order using just one template. However, this
+approach creates a significant amount of waste card. To minimize waste, the objective is to produce template plans that
+will reduce the amount of waste produced for 1 template, 2 templates, and so on.
+
+The number of slots per template is represented by **Σ**, and the number of templates is denoted as **τ**. The quantity
+of each variation to be printed is given by **δ**. The problem involves allocating slots to variations in each template,
+represented by **π**, and determining the number of pressings for each template, denoted as **ρ**. The waste is
+calculated based on the total production and the quantities of each variation printed. The goal is to minimize the waste
+while satisfying the constraints related to template configuration and production limits.
+
+[//]: # (Generated using llama3.3:latest from D001 description.en.md and model.mzn; major manual amendments applied)

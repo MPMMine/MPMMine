@@ -1,0 +1,43 @@
+{
+  "id": "006",
+  "name": "Vessel Loading",
+  "tags": {
+    "Q208123": "deck",
+    "Q987767": "container",
+    "Q1128326": "constraint satisfaction problem",
+    "Q3262192": "decision problem",
+    "Q3851477": "packing problem",
+    "Q66424847": "spatial arrangement",
+    "Q104855920": "rectangle packing",
+    "Q111031095": "determinism"
+  },
+  "features": {
+    "constraints": true,
+    "objective": false,
+    "optimization": false,
+    "satisfiability": true,
+    "variables": {
+      "binary": false,
+      "continuous": false,
+      "integer": true,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+    "CSPLib": "prob008"
+  },
+  "references": [
+    {
+      "type": "misc",
+      "key": "csplib:prob008",
+      "title": "{CSPLib} Problem 008: Vessel Loading",
+      "author": "Toby Walsh",
+      "editor": "Jefferson, Christopher and Miguel, Ian and Hnich, Brahim and Walsh, Toby and Gent, Ian P.",
+      "booktitle": "{CSPLib}: A problem library for constraints",
+      "howpublished": "\\url{http://www.csplib.org/Problems/prob008}"
+    }
+  ],
+  "links": {
+    "CSPLib": "https://github.com/csplib/csplib/tree/master/Problems/prob008"
+  }
+}

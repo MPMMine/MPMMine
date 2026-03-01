@@ -1,0 +1,56 @@
+{
+  "id": "005",
+  "name": "Golomb ruler",
+  "tags": {
+    "Q104555": "ruler",
+    "Q984063": "optimization problem",
+    "Q1333872": "combinatorial optimization",
+    "Q1426478": "Golomb ruler",
+    "Q70467303": "minimization",
+    "Q111031095": "determinism"
+  },
+  "features": {
+    "constraints": true,
+    "objective": true,
+    "optimization": true,
+    "satisfiability": false,
+    "variables": {
+      "binary": false,
+      "continuous": false,
+      "integer": true,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+    "CSPLib": "prob006",
+    "minizinc-benchmarks": "golomb"
+  },
+  "references": [
+    {
+      "type": "misc",
+      "key": "csplib:prob006",
+      "title": "{CSPLib} Problem 006: Golomb Rulers",
+      "author": "Peter van Beek",
+      "editor": "Jefferson, Christopher and Miguel, Ian and Hnich, Brahim and Walsh, Toby and Gent, Ian P.",
+      "booktitle": "{CSPLib}: A problem library for constraints",
+      "howpublished": "\\url{http://www.csplib.org/Problems/prob006}"
+    },
+    {
+      "type": "misc",
+      "key": "golombrulermzn",
+      "title": "{minizinc-benchmarks/golomb/golomb.mzn at master · {M}ini{Z}inc/minizinc-benchmarks --- github.com}",
+      "howpublished": "\\url{https://github.com/MiniZinc/minizinc-benchmarks/blob/master/golomb/golomb.mzn}",
+      "note": "Accessed 2026-01-15"
+    },
+    {
+      "type": "misc",
+      "key": "datagenetics",
+      "title": "An inefficient ruler",
+      "howpublished": "\\url{http://datagenetics.com/blog/february22013}",
+      "note": "Accessed 2026-01-15"
+    }
+  ],
+  "links": {
+    "CSPLib": "https://github.com/csplib/csplib/tree/master/Problems/prob006"
+  }
+}

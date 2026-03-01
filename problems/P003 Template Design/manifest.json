@@ -1,0 +1,43 @@
+{
+  "id": "003",
+  "name": "Template Design",
+  "tags": {
+    "Q45701": "waste",
+    "Q815410": "inventory",
+    "Q984063": "optimization problem",
+    "Q1333872": "combinatorial optimization",
+    "Q70467303": "minimization",
+    "Q110128166": "high-multiplicity bin packing",
+    "Q111031095": "determinism",
+    "Q112154728": "stock"
+  },
+  "features": {
+    "constraints": true,
+    "objective": true,
+    "optimization": true,
+    "satisfiability": false,
+    "variables": {
+      "binary": false,
+      "continuous": false,
+      "integer": true,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+    "CSPLib": "prob002"
+  },
+  "references": [
+    {
+      "type": "misc",
+      "key": "csplib:prob002",
+      "title": "{CSPLib} Problem 002: Template Design",
+      "author": "Barbara Smith",
+      "editor": "Jefferson, Christopher and Miguel, Ian and Hnich, Brahim and Walsh, Toby and Gent, Ian P.",
+      "booktitle": "{CSPLib}: A problem library for constraints",
+      "howpublished": "\\url{http://www.csplib.org/Problems/prob002}"
+    }
+  ],
+  "links": {
+    "CSPLib": "https://github.com/csplib/csplib/tree/master/Problems/prob002"
+  }
+}

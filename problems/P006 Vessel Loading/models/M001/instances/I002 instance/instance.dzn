@@ -1,0 +1,22 @@
+% Deck dimensions (Total area: 225)
+deck_width = 15;
+deck_length = 15;
+
+% Container counts
+n_containers = 8;
+n_classes = 3;
+
+% Container dimensions
+% Total raw area: 134. We have ~90 units of "slack" for gaps.
+width =  [6, 5, 4, 3, 7, 2, 4, 3];
+length = [3, 6, 8, 2, 4, 9, 3, 5];
+
+% Class assignment
+% 1: Standard, 2: Buffer, 3: High-Separation
+class = [1, 1, 2, 2, 3, 3, 1, 2];
+
+% Separation matrix
+% Class 3 needs 3 units from others of its kind and 2 from Class 2.
+separation = [| 0, 1, 1 |   % Class 1
+               1, 0, 2 |   % Class 2
+               1, 2, 3 |]; % Class 3

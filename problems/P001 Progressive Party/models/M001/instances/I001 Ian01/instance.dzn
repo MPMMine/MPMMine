@@ -1,0 +1,4 @@
+n_boats = 5;
+n_periods = 4;
+capacity = [6, 8, 12, 12, 12];
+crew = [2, 2, 2, 2, 4];

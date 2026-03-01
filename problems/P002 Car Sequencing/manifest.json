@@ -1,0 +1,48 @@
+{
+  "id": "002",
+  "name": "Car Sequencing",
+  "tags": {
+    "Q1420": "car",
+    "Q187939": "industrial manufacturing",
+    "Q455037": "assembly line",
+    "Q1128326": "constraint satisfaction problem",
+    "Q3262192": "decision problem",
+    "Q6206757": "job-shop scheduling",
+    "Q7062516": "optimal job scheduling",
+    "Q7271585": "schedule",
+    "Q111031095": "determinism"
+  },
+  "features": {
+    "constraints": true,
+    "objective": false,
+    "optimization": false,
+    "satisfiability": true,
+    "variables": {
+      "binary": true,
+      "continuous": false,
+      "integer": true,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+    "comet": "car",
+    "CSPLib": "prob001",
+    "OPL3": "car"
+  },
+  "references": [
+    {
+      "type": "misc",
+      "key": "csplib:prob001",
+      "title": "{CSPLib} Problem 001: Car Sequencing",
+      "author": "Barbara Smith",
+      "editor": "Jefferson, Christopher and Miguel, Ian and Hnich, Brahim and Walsh, Toby and Gent, Ian P.",
+      "booktitle": "{CSPLib}: A problem library for constraints",
+      "howpublished": "\\url{http://www.csplib.org/Problems/prob001}"
+    }
+  ],
+  "links": {
+    "comet": "https://www.hakank.org/comet/car.co",
+    "CSPLib": "https://github.com/csplib/csplib/tree/master/Problems/prob001",
+    "hakank": "https://www.hakank.org/minizinc/car.mzn"
+  }
+}

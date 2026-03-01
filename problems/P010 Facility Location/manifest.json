@@ -1,0 +1,45 @@
+{
+  "id": "010",
+  "name": "Facility Location",
+  "tags": {
+    "Q984063": "optimization problem",
+    "Q1305598": "facility location",
+    "Q1333872": "combinatorial optimization",
+    "Q4402708": "demand",
+    "Q5165499": "continuous optimization",
+    "Q13226383": "facility",
+    "Q70467303": "minimization",
+    "Q111031095": "determinism"
+  },
+  "features": {
+    "constraints": true,
+    "objective": true,
+    "optimization": true,
+    "satisfiability": false,
+    "variables": {
+      "binary": true,
+      "continuous": true,
+      "integer": false,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+  },
+  "references": [
+    {
+      "type": "article",
+      "key": "aardal1995capacitated",
+      "title": "Capacitated facility location: valid inequalities and facets",
+      "author": "Aardal, Karen and Pochet, Yves and Wolsey, Laurence A",
+      "journal": "Mathematics of Operations Research",
+      "volume": "20",
+      "number": "3",
+      "pages": "562--582",
+      "year": "1995",
+      "publisher": "INFORMS"
+    }
+  ],
+  "links": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Optimal_facility_location#Capacitated_facility_location"
+  }
+}

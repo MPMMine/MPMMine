@@ -1,0 +1,6 @@
+n_items = 5;
+roll_width = 100.0;
+max_rolls = 20;
+
+item_widths = [31.2, 42.8, 15.5, 22.1, 51.0];
+demand = [10, 8, 15, 12, 5];
