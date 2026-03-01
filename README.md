@@ -3,7 +3,7 @@
 ![Problems](https://img.shields.io/badge/Problems-10-blue)
 ![MZN Models](https://img.shields.io/badge/MZN%20Models-12-orange)
 ![Instances](https://img.shields.io/badge/Instances-212-purple)
-![Descriptions](https://img.shields.io/badge/Descriptions-169-brightgreen)
+![Descriptions](https://img.shields.io/badge/Descriptions-188-brightgreen)
 
 ---
 MPMMine is a standardized dataset of benchmark problems for Mathematical Programming model mining problems.
@@ -43,7 +43,7 @@ a systematic survey of works on MP model mining from 2000 to 2025 can be found i
 
 * [P001 Progressive Party](problems/P001%20Progressive%20Party) — `11 instances`, `19 descriptions`
 * [P002 Car Sequencing](problems/P002%20Car%20Sequencing) — `110 instances`, `19 descriptions`
-* [P003 Template Design](problems/P003%20Template%20Design) — `16 instances`, `19 descriptions`
+* [P003 Template Design](problems/P003%20Template%20Design) — `16 instances`, `38 descriptions`
 * [P004 Low Autocorrelation Binary Sequences](problems/P004%20Low%20Autocorrelation%20Binary%20Sequences) — `50 instances`, `20 descriptions`
 * [P005 Golomb Ruler](problems/P005%20Golomb%20Ruler) — `10 instances`, `19 descriptions`
 * [P006 Vessel Loading](problems/P006%20Vessel%20Loading) — `3 instances`, `19 descriptions`
