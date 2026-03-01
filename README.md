@@ -1,3 +1,5 @@
+![image](docs/assets/banner.png)
+
 # MPMMine: Mathematical Programming model mining benchmarks
 
 ![Problems](https://img.shields.io/badge/Problems-10-blue)
