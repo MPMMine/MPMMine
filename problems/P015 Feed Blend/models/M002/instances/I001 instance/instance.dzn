@@ -1,0 +1,33 @@
+% --- Dimensions ---
+num_ingredients = 3;  % e.g., 1: Corn (Grain), 2: Soy, 3: Minerals
+num_nutrients = 2;    % e.g., 1: Protein, 2: Energy
+num_periods = 3;      % 3-week or 3-month horizon
+
+% --- Sets ---
+Grains = {1};
+
+% --- Costs (Ingredient x Time) ---
+% Ingredient 1 price spikes: 10 -> 12 -> 25
+% Ingredient 2 price stable: 20 -> 21 -> 20
+% Ingredient 3 price stable: 50 -> 50 -> 50
+cost = [| 10.0, 12.0, 25.0
+        | 20.0, 21.0, 20.0
+        | 50.0, 50.0, 50.0 |];
+
+% --- Composition (Ingredient x Nutrient) ---
+% Row 1 (Corn): 8% Protein, 90% Energy
+% Row 2 (Soy): 40% Protein, 50% Energy
+% Row 3 (Min): 0% Protein, 10% Energy
+comp = [| 0.08, 0.90
+        | 0.40, 0.50
+        | 0.00, 0.10 |];
+
+% --- Requirements ---
+min_req = [15.0, 60.0]; % Min Protein and Energy units
+max_req = [25.0, 85.0]; % Max Protein and Energy units
+
+% --- Physical Constraints ---
+total_weight = 100.0;    % Total weight of blend per period
+storage_cap = 500.0;     % Max storage per ingredient
+holding_cost = 0.5;      % Cost to store 1 unit for 1 period
+initial_stock = [0.0, 0.0, 0.0];

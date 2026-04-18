@@ -1,0 +1,37 @@
+% --- Dimensions ---
+num_ingredients = 7;
+num_nutrients = 3;
+
+% --- Ingredient Data ---
+% 1: Corn (Grain)
+% 2: Barley (Grain)
+% 3: Soybean Meal (Protein)
+% 4: Canola Meal (Protein)
+% 5: Alfalfa Hay (Roughage)
+% 6: Corn Silage (Roughage)
+% 7: Animal Fat (Energy/Fat)
+
+cost = [0.22, 0.24, 0.50, 0.42, 0.15, 0.12, 0.85]; 
+
+% Composition Matrix [Ingredient, Nutrient]
+% Nutrients: 1 = Protein, 2 = Fat, 3 = Fiber
+comp = [| 0.09, 0.035, 0.022  % Corn
+        | 0.11, 0.019, 0.050  % Barley
+        | 0.44, 0.015, 0.070  % Soybean Meal
+        | 0.36, 0.030, 0.120  % Canola Meal
+        | 0.17, 0.015, 0.250  % Alfalfa Hay
+        | 0.08, 0.025, 0.230  % Corn Silage
+        | 0.00, 0.980, 0.000 |]; % Animal Fat (Pure Fat)
+
+% --- Requirements (on a 1000kg batch) ---
+% Protein: Min 14%, Max 18% (140.0 - 180.0)
+% Fat:     Min 3%,  Max 6%  (30.0 - 60.0)
+% Fiber:   Min 10%, Max 20% (100.0 - 200.0)
+
+min_req = [140.0, 30.0, 100.0];
+max_req = [180.0, 60.0, 200.0];
+
+total_weight = 1000.0;
+
+% Corn and Barley are the primary Grains
+Grains = {1, 2};

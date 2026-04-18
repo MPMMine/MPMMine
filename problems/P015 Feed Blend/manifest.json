@@ -1,0 +1,33 @@
+{
+  "id": "P015",
+  "name": "Feed Blend",
+  "tags": {
+    "Q103459": "livestock",
+    "Q169336": "mixture",
+    "Q829492": "procurement",
+    "Q984063": "optimization problem",
+    "Q1123036": "scheduling",
+    "Q2836947": "animal feed",
+    "Q5054109": "cattle feeding",
+    "Q17853087": "union",
+    "Q70467303": "minimization"
+  },
+  "features": {
+    "constraints": true,
+    "objective": true,
+    "optimization": true,
+    "satisfiability": false,
+    "variables": {
+      "binary": false,
+      "continuous": true,
+      "integer": false,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+  },
+  "references": [
+  ],
+  "links": {
+  }
+}
