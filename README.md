@@ -2,10 +2,10 @@
 
 # MPMMine: Mathematical Programming model mining benchmarks
 
-![Problems](https://img.shields.io/badge/Problems-12-blue)
-![MZN Models](https://img.shields.io/badge/MZN%20Models-15-orange)
-![Instances](https://img.shields.io/badge/Instances-272-purple)
-![Descriptions](https://img.shields.io/badge/Descriptions-222-brightgreen)
+![Problems](https://img.shields.io/badge/Problems-15-blue)
+![MZN Models](https://img.shields.io/badge/MZN%20Models-21-orange)
+![Instances](https://img.shields.io/badge/Instances-324-purple)
+![Descriptions](https://img.shields.io/badge/Descriptions-303-brightgreen)
 
 ---
 MPMMine is a standardized dataset of benchmark problems for Mathematical Programming model mining problems.
@@ -55,6 +55,9 @@ a systematic survey of works on MP model mining from 2000 to 2025 can be found i
 * [P010 Facility Location](problems/P010%20Facility%20Location) — `3 instances`, `11 descriptions`
 * [P011 Schurs Lemma](problems/P011%20Schurs%20Lemma) — `45 instances`, `15 descriptions`
 * [P012 Bus Driver Scheduling](problems/P012%20Bus%20Driver%20Scheduling) — `9 instances`, `19 descriptions`
+* [P013 Langfords Number](problems/P013%20Langfords%20Number) — `40 instances`, `37 descriptions`
+* [P014 Crude Mix](problems/P014%20Crude%20Mix) — `6 instances`, `12 descriptions`
+* [P015 Feed Blend](problems/P015%20Feed%20Blend) — `6 instances`, `32 descriptions`
 
 ## Guidelines for the development of MPMMine
 
