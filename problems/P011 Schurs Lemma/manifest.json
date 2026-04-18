@@ -1,0 +1,41 @@
+{
+  "id": "P011",
+  "name": "Schur's Lemma",
+  "tags": {
+    "Q1786292": "Schur's theorem",
+    "Q1065968": "partition problem",
+    "Q1333872": "combinatorial optimization",
+    "Q1350299": "satisfiability"
+  },
+  "features": {
+    "constraints": true,
+    "objective": false,
+    "optimization": true,
+    "satisfiability": true,
+    "variables": {
+      "binary": false,
+      "continuous": false,
+      "integer": true,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+    "CSPLib": "prob015",
+    "Erdős": "483"
+  },
+  "references": [
+    {
+      "type": "misc",
+      "key": "csplib:prob015",
+      "title": "{CSPLib} Problem 015: Schur's Lemma",
+      "author": "Toby Walsh",
+      "editor": "Jefferson, Christopher and Miguel, Ian and Hnich, Brahim and Walsh, Toby and Gent, Ian P.",
+      "booktitle": "{CSPLib}: A problem library for constraints",
+      "howpublished": "http://www.csplib.org/Problems/prob015"
+    }
+  ],
+  "links": {
+    "CSPLib": "https://github.com/csplib/csplib/tree/master/Problems/prob015",
+    "Erdős Problem": "https://www.erdosproblems.com/483"
+  }
+}
