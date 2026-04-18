@@ -2,10 +2,10 @@
 
 # MPMMine: Mathematical Programming model mining benchmarks
 
-![Problems](https://img.shields.io/badge/Problems-16-blue)
-![MZN Models](https://img.shields.io/badge/MZN%20Models-22-orange)
-![Instances](https://img.shields.io/badge/Instances-361-purple)
-![Descriptions](https://img.shields.io/badge/Descriptions-304-brightgreen)
+![Problems](https://img.shields.io/badge/Problems-10-blue)
+![MZN Models](https://img.shields.io/badge/MZN%20Models-12-orange)
+![Instances](https://img.shields.io/badge/Instances-212-purple)
+![Descriptions](https://img.shields.io/badge/Descriptions-188-brightgreen)
 
 ---
 MPMMine is a standardized dataset of benchmark problems for Mathematical Programming model mining problems.
@@ -48,17 +48,11 @@ a systematic survey of works on MP model mining from 2000 to 2025 can be found i
 * [P003 Template Design](problems/P003%20Template%20Design) — `16 instances`, `38 descriptions`
 * [P004 Low Autocorrelation Binary Sequences](problems/P004%20Low%20Autocorrelation%20Binary%20Sequences) — `50 instances`, `20 descriptions`
 * [P005 Golomb Ruler](problems/P005%20Golomb%20Ruler) — `10 instances`, `19 descriptions`
-* [P006 Vessel Loading](problems/P006%20Vessel%20Loading) — `5 instances`, `19 descriptions`
-* [P007 Continuous Knapsack](problems/P007%20Continuous%20Knapsack) — `5 instances`, `14 descriptions`
-* [P008 Cutting Stock](problems/P008%20Cutting%20Stock) — `5 instances`, `18 descriptions`
+* [P006 Vessel Loading](problems/P006%20Vessel%20Loading) — `3 instances`, `19 descriptions`
+* [P007 Continuous Knapsack](problems/P007%20Continuous%20Knapsack) — `3 instances`, `14 descriptions`
+* [P008 Cutting Stock](problems/P008%20Cutting%20Stock) — `3 instances`, `18 descriptions`
 * [P009 Sphere Packing in a Cube](problems/P009%20Sphere%20Packing%20in%20a%20Cube) — `3 instances`, `11 descriptions`
 * [P010 Facility Location](problems/P010%20Facility%20Location) — `3 instances`, `11 descriptions`
-* [P011 Schurs Lemma](problems/P011%20Schurs%20Lemma) — `45 instances`, `15 descriptions`
-* [P012 Bus Driver Scheduling](problems/P012%20Bus%20Driver%20Scheduling) — `9 instances`, `19 descriptions`
-* [P013 Langfords Number](problems/P013%20Langfords%20Number) — `40 instances`, `37 descriptions`
-* [P014 Crude Mix](problems/P014%20Crude%20Mix) — `6 instances`, `12 descriptions`
-* [P015 Feed Blend](problems/P015%20Feed%20Blend) — `6 instances`, `32 descriptions`
-* [P016 Power Management](problems/P016%20Power%20Management) — `37 instances`, `1 descriptions`
 
 ## Guidelines for the development of MPMMine
 
