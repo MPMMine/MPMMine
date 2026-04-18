@@ -1,0 +1,43 @@
+ {
+   "id": "P012",
+  "name": "Bus Driver Scheduling",
+  "tags": {
+    "Q5638": "bus",
+    "Q141495": "mathematical optimization",
+    "Q352388": "driver",
+    "Q1123036":"scheduling",
+    "Q1065968": "partition problem",
+    "Q1333872": "combinatorial optimization",
+    "Q1192100": "set cover problem",
+    "Q70467303": "minimization"
+  },
+  "features": {
+    "constraints": true,
+    "objective": true,
+    "optimization": true,
+    "satisfiability": false,
+    "variables": {
+      "binary": true,
+      "continuous": false,
+      "integer": false,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+    "CSPLib": "prob022"
+  },
+  "references": [
+    {
+      "type": "misc",
+      "key": "csplib:prob022",
+      "title": "{CSPLib} Problem 022: Bus Driver Scheduling",
+      "author": "Toby Walsh",
+      "editor": "Jefferson, Christopher and Miguel, Ian and Hnich, Brahim and Walsh, Toby and Gent, Ian P.",
+      "booktitle": "{CSPLib}: A problem library for constraints",
+      "howpublished": "http://www.csplib.org/Problems/prob022"
+    }
+  ],
+  "links": {
+    "CSPLib": "https://github.com/csplib/csplib/tree/master/Problems/prob022"
+  }
+}
