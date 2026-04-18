@@ -1,6 +1,20 @@
 # Template Design Problem
-This problem originates from a colour printing company that manufactures various products from thin board, including cartons for human and animal food and magazine inserts. Typically, food products are marketed as a basic brand with several variations, such as different flavours. The packaging for these variations usually has the same overall design, size, and shape, but differs in a small proportion of the text displayed and/or colour. For instance, two variations of a cat food carton may differ only in that one is printed with ‘Chicken Flavour’ on a blue background whereas the other has ‘Rabbit Flavour’ printed on a green background. A typical order is for a variety of quantities of several design variations. Because each variation is identical in dimension, we know in advance exactly how many items can be printed on each **mother sheet** of board, whose dimensions are largely determined by the dimensions of the printing machinery. Each **mother sheet** is printed from a **template**, consisting of a thin aluminium sheet on which the design for several of the variations is etched. The problem is to decide, firstly, how many distinct **templates** to produce, and secondly, which variations, and how many copies of each, to include on each **template**.
 
-Each design of carton is made from an identically sized and shaped piece of board. Many cartons can be printed on each **mother sheet**, and several different designs can be printed at once, on the same **mother sheet**. If there are more **slots** in each **template** than there are **variations**, it would be possible to fulfil the order using just one **template**. However, this creates an enormous amount of waste card. We can reduce the amount of waste by using more **templates**. The problem is therefore to produce **template plans** which will minimize the amount of waste produced, for 1 **template**, 2 **templates**,... and so on, considering the **number of pressings** and the **limits on production**. The goal is to find a solution that satisfies the **constraints on production** and **symmetry constraints**, while minimizing the total **production**.
+This problem originates from a colour printing company that manufactures various products from thin board, including
+cartons for human and animal food and magazine inserts. Typically, food products are marketed as a basic brand with
+several variations, such as different flavours. The packaging for these variations usually has the same overall design,
+size, and shape, but differs in a small proportion of the text displayed and/or colour. For instance, two variations of
+a cat food carton may differ only in that one is printed with ‘Chicken Flavour’ on a blue background whereas the other
+has ‘Rabbit Flavour’ printed on a green background. A typical order is for a variety of quantities of several design
+variations.
 
-[//]: # (Generated using llama3.3:latest from D001 description.en.md and model.mzn)
+Each design of carton is made from an identically sized and shaped piece of board. Many cartons can be printed on each *
+*mother sheet**, and several different designs can be printed at once, on the same **mother sheet**. If there are more *
+*slots** in each **template** than there are **variations**, it would be possible to fulfil the order using just one *
+*template**. However, this creates an enormous amount of waste card. We can reduce the amount of waste by using more *
+*templates**. The problem is therefore to produce **template plans** which will minimize the amount of waste produced,
+for 1 **template**, 2 **templates**,... and so on, considering the **number of pressings** and the **limits on
+production**. The goal is to find a solution that satisfies the **constraints on production**, while minimizing the
+total **waste**.
+
+[//]: # (Generated using llama3.3:latest from D001 description.en.md and model.mzn; major manual amendments applied)

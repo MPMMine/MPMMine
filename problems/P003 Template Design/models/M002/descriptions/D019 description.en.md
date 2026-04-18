@@ -1,9 +1,19 @@
 # Template Design Problem
 
-This problem is encountered in a color printing company that manufactures various products from thin board, such as cartons for human and animal food and magazine inserts. Food items, for example, are frequently sold as a primary brand with several variations (usually flavors). Packaging for these variations typically shares the same overall design, including size and shape, but differs in a small portion of the displayed text and/or color. For instance, two variations of a cat food carton might only differ in that one has 'Chicken Flavour' printed on a blue background, while the other has 'Rabbit Flavour' printed on a green background. A typical order includes various quantities of several design variations. Since each variation is identical in dimension, we know in advance exactly how many items can be printed on each mother sheet of board, whose dimensions are largely determined by the dimensions of the printing machinery. Each mother sheet is printed from a template, consisting of a thin aluminum sheet on which the design for several of the variations is etched. The challenge is to determine, firstly, how many distinct templates to produce, and secondly, which variations, and how many copies of each, to include on each template.
+This problem is encountered in a color printing company that manufactures various products from thin board, such as
+cartons for human and animal food and magazine inserts. Food items, for example, are frequently sold as a primary brand
+with several variations (usually flavors). Packaging for these variations typically shares the same overall design,
+including size and shape, but differs in a small portion of the displayed text and/or color. A typical order includes
+various quantities of several design variations. Since each variation is identical in dimension, we know in advance
+exactly how many items can be printed on each mother sheet of board, whose dimensions are largely determined by the
+dimensions of the printing machinery. Each mother sheet is printed from a template, consisting of a thin aluminum sheet
+on which the design for several of the variations is etched. The challenge is to determine, firstly, how many distinct
+templates to produce, and secondly, which variations, and how many copies of each, to include on each template.
 
-Each design of carton is made from an identically sized and shaped piece of board. Many cartons can be printed on each mother sheet, and several different designs can be printed simultaneously on the same mother sheet. If there are more slots in each template than there are variations, it would be possible to fulfill the order using just one template. However, this creates a significant amount of waste card. We can reduce the amount of waste by using more templates. The problem is therefore to produce template plans that will minimize the amount of waste produced, for one template, two templates, and so on.
+Many cartons can be printed on each mother sheet, and several different designs can be printed simultaneously on the
+same mother sheet. If there are more slots in each template than there are variations, it would be possible to fulfill
+the order using just one template. However, this creates a significant amount of waste card. We can reduce the amount of
+waste by using more templates. The problem is therefore to produce template plans that will minimize the amount of waste
+produced, for one template, two templates, and so on.
 
-The objective is to minimize the total production while ensuring that the demand for each variation is met and that the number of slots occupied in each template is consistent. Symmetry constraints are applied to variations with the same demand to ensure a unique solution. Additionally, pseudo-symmetry constraints are used to further break symmetries and improve the solution process.
-
-[//]: # (Generated using mistral-small3.2 from D001 description.en.md and model.mzn)
+[//]: # (Generated using mistral-small3.2 from D001 description.en.md and model.mzn; minor manual amendments applied)
