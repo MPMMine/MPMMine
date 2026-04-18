@@ -1,0 +1,39 @@
+ {
+   "id": "P013",
+  "name": "Langfords Number",
+  "tags": {
+    "Q161519": "permutation",
+    "Q388260": "exact cover",
+    "Q1350299": "satisfiability",
+    "Q3503249": "Langford pairing"
+  },
+  "features": {
+    "constraints": true,
+    "objective": false,
+    "optimization": false,
+    "satisfiability": true,
+    "variables": {
+      "binary": false,
+      "continuous": false,
+      "integer": true,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+    "CSPLib": "prob024"
+  },
+  "references": [
+    {
+      "type": "misc",
+      "key": "csplib:prob024",
+      "title": "{CSPLib} Problem 024: Langford's number problem",
+      "author": "Toby Walsh",
+      "editor": "Jefferson, Christopher and Miguel, Ian and Hnich, Brahim and Walsh, Toby and Gent, Ian P.",
+      "booktitle": "{CSPLib}: A problem library for constraints",
+      "howpublished": "http://www.csplib.org/Problems/prob024"
+    }
+  ],
+  "links": {
+    "CSPLib": "https://github.com/csplib/csplib/tree/master/Problems/prob024"
+  }
+}
