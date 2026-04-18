@@ -1,0 +1,13 @@
+% Instance: 10x10 Deck
+deck_width = 10;
+deck_length = 10;
+n_containers = 4;
+n_classes = 2;
+
+width = [4, 4, 2, 2];
+length = [6, 3, 2, 2];
+class = [1, 1, 2, 2];
+
+% Minimal separation: 1 unit between class 1 and 2, 0 between others
+separation = [| 0, 1 |
+                1, 0 |];
