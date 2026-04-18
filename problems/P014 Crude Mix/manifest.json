@@ -1,0 +1,43 @@
+{
+  "id": "P014",
+  "name": "Crude Mix",
+  "tags": {
+    "Q22656": "petroleum",
+    "Q141495": "mathematical optimization",
+    "Q169336": "mixture",
+    "Q2424752": "product",
+    "Q3412078": "crude oil",
+    "Q70467272": "maximization"
+  },
+  "features": {
+    "constraints": true,
+    "objective": true,
+    "optimization": true,
+    "satisfiability": false,
+    "variables": {
+      "binary": false,
+      "continuous": true,
+      "integer": false,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+  },
+  "references": [
+    {
+      "title": "An optimization based strategy for crude selection in a refinery with lube hydro-processing",
+      "journal": "Computers & Chemical Engineering",
+      "volume": 116,
+      "pages": "91-111",
+      "year": 2018,
+      "issn": "0098-1354",
+      "doi": "10.1016/j.compchemeng.2017.09.025",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0098135417303435",
+      "author": "Kyungseok Noh and Joohyun Shin and Jay H. Lee",
+      "keywords": "Lube base oil, Refinery, Crude selection, Viscosity index (VI), Hydro-processing, Hydro-isomerization, Lube hydro-cracking optimization, Group III and group II base oils"
+    }
+  ],
+  "links": {
+    "medium": "https://medium.com/data-decoded/blending-product-mix-optimization-for-refineries-525e2d9d453"
+  }
+}

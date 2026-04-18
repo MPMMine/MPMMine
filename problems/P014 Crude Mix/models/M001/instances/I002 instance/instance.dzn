@@ -1,0 +1,20 @@
+n = 3;
+
+cost = [45.0, 52.0, 65.0];
+max_supply = [5000.0, 4000.0, 3000.0];
+
+%     {Gasoline, Jet_Fuel, Heating_Oil}
+yields = [| 0.3, 0.4, 0.2 
+          | 0.4, 0.3, 0.2 
+          | 0.6, 0.2, 0.1 |];
+
+sulfur = [5.0, 3.0, 1.5];   % High sulfur in cheaper crudes
+labor = [2.0, 1.5, 1.0];    % More processing labor for heavier crudes
+
+total_cap = 8000.0;
+budget = 400000.0;
+max_labor = 12000.0;
+max_sulfur = 25000.0;
+
+price = [90.0, 110.0, 80.0];
+min_req = [1000.0, 800.0, 500.0];
