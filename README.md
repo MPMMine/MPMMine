@@ -4,7 +4,7 @@
 
 ![Problems](https://img.shields.io/badge/Problems-16-blue)
 ![MZN Models](https://img.shields.io/badge/MZN%20Models-22-orange)
-![Instances](https://img.shields.io/badge/Instances-333-purple)
+![Instances](https://img.shields.io/badge/Instances-343-purple)
 ![Descriptions](https://img.shields.io/badge/Descriptions-319-brightgreen)
 
 ---
@@ -58,7 +58,7 @@ a systematic survey of works on MP model mining from 2000 to 2025 can be found i
 * [P013 Langfords Number](problems/P013%20Langfords%20Number) — `40 instances`, `37 descriptions`
 * [P014 Crude Mix](problems/P014%20Crude%20Mix) — `6 instances`, `12 descriptions`
 * [P015 Feed Blend](problems/P015%20Feed%20Blend) — `6 instances`, `32 descriptions`
-* [P016 Power Management](problems/P016%20Power%20Management) — `9 instances`, `16 descriptions`
+* [P016 Power Management](problems/P016%20Power%20Management) — `19 instances`, `16 descriptions`
 
 ## Guidelines for the development of MPMMine
 
