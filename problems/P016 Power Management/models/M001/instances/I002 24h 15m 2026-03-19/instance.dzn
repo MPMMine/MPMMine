@@ -14,9 +14,9 @@ buy_price = array1d(periods, [0.6109,0.6109,0.6109,0.6109,0.6109,0.6109,0.6109,0
 sell_price = array1d(periods, [0.5996,0.5881,0.5872,0.5840,0.5932,0.5913,0.5941,0.5956,0.5924,0.5911,0.5943,0.5990,0.5904,0.5975,0.6113,0.6204,0.6312,0.6358,0.6414,0.6491,0.6712,0.6857,0.6943,0.7304,0.8093,0.8592,0.8866,0.9009,0.9146,0.8803,0.8177,0.7280,0.8017,0.7229,0.6172,0.5407,0.5744,0.5160,0.4644,0.3850,0.3395,0.2630,0.2068,0.1561,0.0704,0.0411,0.0169,0.0126,0.0085,0.0134,0.0150,0.0156,0.0493,0.0525,0.1132,0.1370,0.2995,0.3498,0.3926,0.4357,0.5090,0.5096,0.5374,0.5862,0.6177,0.6461,0.6761,0.7422,0.7568,0.8239,0.8836,0.9724,1.0640,1.1100,1.1410,1.1600,1.1550,1.1210,1.0920,1.0650,0.9410,0.9021,0.8760,0.8521,0.7828,0.7711,0.7537,0.7237,0.7408,0.7323,0.7087,0.6959,0.7006,0.6851,0.6727,0.6553]);
 
 % the safety margin for the excess consumption in the planning horizon
-excess_consumption = 1.08/card(periods); % kWh
+excess_consumption = 0.011273; % kWh
 % the safety margin for the undersupply production in the planning horizon
-undersupply_production = 4.55/card(periods); % kWh
+undersupply_production = 0.047396; % kWh
 
 % minimum/maximum/initial battery state of charge [kWh]
 soc_min = 2.65;
@@ -27,7 +27,7 @@ soc_final = 8.31; % at least
 charge_efficiency = 0.9;
 discharge_efficiency = 0.9;
 store_efficiency = 0.9998; % between periods
-charge_cost = 10000.0/6000/soc_max; % per kWh
+charge_cost = 0.10636034886194427; % per kWh
 
 % per period
 shave_sell = 4.0;
