@@ -1,0 +1,36 @@
+{
+  "id": "P016",
+  "name": "Power Management",
+  "tags": {
+    "Q27137": "electric power",
+    "Q29954": "electric energy consumption",
+    "Q40015": "solar energy",
+    "Q58803": "solar cell",
+    "Q267298": "battery",
+    "Q324963": "inverter",
+    "Q383973": "electricity generation",
+    "Q984063": "optimization problem",
+    "Q1145220": "prosumer",
+    "Q1123036": "scheduling",
+    "Q4437810": "power management",
+    "Q70467303": "minimization"
+  },
+  "features": {
+    "constraints": true,
+    "objective": true,
+    "optimization": true,
+    "satisfiability": false,
+    "variables": {
+      "binary": false,
+      "continuous": true,
+      "integer": false,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+  },
+  "references": [
+  ],
+  "links": {
+  }
+}

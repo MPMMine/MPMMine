@@ -1,3 +1,6 @@
+% Household power management
+% Submitted by Tomasz P. Pawlak
+
 % time periods for the planning horizon
 set of int: periods;
 
