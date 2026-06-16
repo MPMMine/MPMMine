@@ -214,8 +214,12 @@ that needs to be supplemented with concrete numbers to instantiate.
 
 ### Checkers
 
-Every model has a corresponding `checker.mzn` model in order to verify feasibility of solutions and infeasibility of non-solutions. 
-The model checkers inform the user why a non-solution is infeasible by printing all broken constraints in the output stream.
+Every model has a corresponding `checker.mzn` model to verify the feasibility of solutions and the infeasibility of non-solutions. 
+The model checkers inform the user why a non-solution is infeasible by printing all broken constraints to the output stream. 
+Every model checker should return the control string `CORRECT: all constraints hold.\n` if all constraints pass the check. 
+If a valid solution is found to be infeasible, or a non-solution is unexpectedly marked as feasible, the checker should return the control string `INCORRECT: See error log above for specific violations.` 
+Problems that contain float expressions in their constraints or operate on float variables must be checked with the appropriate tolerance defined by the `eps` parameter. 
+To distinguish between a solution and a non-solution, the model checker should accept an `is_solution` flag passed via the MiniZinc `-D "is_solution=true" or "is_solution=false"` option.
 
 ### Descriptions
 
