@@ -83,6 +83,9 @@ constraint symmetry_breaking_constraint(
 % performance for this model, but I think bounds consistency on the
 % sum(R[i]) constraint would produce the same amount of propagation
 
+% [Rafał Stachowiak] The constraints below make instances P003M001I003, P003M001I005-8 infeasible,
+% hence despite being implied they are included in the model checker.
+
 % Set up surplus, which is bounded as production is bounded.
 constraint implied_constraint(
     Surplus = Production*S - sum(i in 1..n)(d[i]));
