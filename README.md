@@ -86,6 +86,7 @@ problems
      |- models
         |- M000
            |- model.mzn                   [R]
+           |- checker.mzn                 [R]
            |- descriptions
               |- D000 description.en.md
               |- ...
@@ -110,6 +111,7 @@ All items within this hierarchy are uniquely identified by concatenating ids of 
 
 * `P000` - Prefix 'P' plus three-digit problem id,
 * `M000` - Prefix 'M' plus three-digit MP model id within the problem,
+* `C000` - Prefix 'C' plus three-digit MP model checker id within the problem,
 * `I000` - Prefix 'I' plus three-digit instance id within the MP model,
 * `D000` - Prefix 'D' plus three-digit description id within the MP model or instance,
 * `S000000` - Prefix 'S' plus six-digit solution id within the instance,
@@ -209,6 +211,11 @@ The `models` directory consists of at least one subdirectory of a reference MP m
 `model.mzn` consists of the [MiniZinc](https://www.minizinc.org/) MP model. The MP models at this level are
 instance-independent, in the sense that they do not use specific values of parameters. Instead, they define a backbone
 that needs to be supplemented with concrete numbers to instantiate.
+
+### Checkers
+
+Every model has a corresponding `checker.mzn` model in order to verify feasibility of solutions and infeasibility of non-solutions. 
+The model checkers inform the user why a non-solution is infeasible by printing all broken constraints in the output stream.
 
 ### Descriptions
 
