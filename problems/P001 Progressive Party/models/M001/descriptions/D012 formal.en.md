@@ -38,16 +38,16 @@ The organizer’s goal is to reduce the number of host boats as much as possible
    $\forall b \in \text{Boat}, t \in \text{Time}: (b \in \text{hosts}) \Leftrightarrow \text{visit}[b,t] = b$
 
 3. **Capacity limits**  
-   $\forall h \in \text{hosts}, t \in \text{Time}:\
+   $\forall h \in \text{hosts}, t \in \text{Time}:\\
    \sum_{b \in \text{Boat}}\bigl[\text{visit}[b,t] = h\bigr] \cdot \text{crew}[b] \le \text{capacity}[h]$
 
 4. **No repeat meetings**  
-   $\forall k,l \in \text{Boat}, k < l:\
+   $\forall k,l \in \text{Boat}, k < l:\\
    \sum_{t \in \text{Time}}\bigl[\text{visit}[k,t] = \text{visit}[l,t]\bigr] \le 1$
 
 5. **Lexicographic symmetry breaking**  
-   $\forall i \in \{1,\dots,n_{\text{periods}}-1\}:\
-   \text{lex\_lesseq}(\text{visit}[\;\cdot\;,i],\text{visit}[\;\cdot\;,i+1])$
+   $\forall i \in \{1,\dots,n_{\text{periods}}-1\}:\\
+   \text{lex\\_lesseq}(\text{visit}[\\;\cdot\\;,i],\text{visit}[\\;\cdot\\;,i+1])$
 
 ### Objective
 
