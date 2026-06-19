@@ -3,7 +3,7 @@
 The challenge is to schedule a series of progressive gatherings at a boating club.
 
 Certain vessels are designated as hosts, and the crews of the other boats must visit these host boats during successive
-time slots. The crew of a host boat remains present to host guests, while the crew of a guest boat visits multiple hosts
+time slots in lexicographical order. The crew of a host boat remains present to host guests, while the crew of a guest boat visits multiple hosts
 sequentially. Each boat has a maximum capacity, limiting the total number of people on board during any visit. The
 number of crew members assigned to each boat varies.
 

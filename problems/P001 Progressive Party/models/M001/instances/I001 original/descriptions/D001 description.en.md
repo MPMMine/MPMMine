@@ -2,7 +2,7 @@
 
 The problem is to timetable a party at a yacht club for `42` boats over `6` successive half-hour periods.
 
-Certain boats are to be designated hosts, and the crews of the remaining boats in turn visit the host boats for several successive half-hour periods. The crew of a host boat remains on board to act as hosts while the crew of a guest boat together visits several hosts.
+Certain boats are to be designated hosts, and the crews of the remaining boats in turn visit the host boats in lexicographical order for several successive half-hour periods. The crew of a host boat remains on board to act as hosts while the crew of a guest boat together visits several hosts.
 
 The capacities of the boats are as follows: `[6,8,12,12,12,12,12,10,10,10,10,10,8,8,8,12,8,8,8,8,8,8,7,7,7,7,7,7,6,6,6,6,6,6,6,6,6,6,9,0,0,0]`.
 
