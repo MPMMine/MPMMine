@@ -13,6 +13,7 @@ minimize the number of reception vessels, denoted as $\gamma$.
 The event involves multiple time periods, represented as $\tau$, during which these interactions take place. The visits
 are scheduled such that all guest vessels' crews, along with the host crew, do not exceed the capacity of the host
 vessel at any given time period. Furthermore, to ensure a diverse and engaging experience, no two crews, whether hosts
-or guests, can attend the same social gathering more than once.
+or guests, can attend the same social gathering more than once. In the schedule the visiting vessels should be sorted to 
+remove symmetry.
 
-[//]: # (Generated using llama3.3:latest from D001 description.en.md and model.mzn)
+[//]: # (Generated using llama3.3:latest from D001 description.en.md and model.mzn with added symmetry breaking information)
