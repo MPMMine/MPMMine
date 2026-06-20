@@ -2,8 +2,7 @@
 
 An investor with limited capital wants to construct a portfolio that achieves the highest possible return. The universe
 comprises N distinct securities, denoted by an index set **K** = {1, 2, …, N}. For each security *k* we know its profit
-coefficient **pₖ** and the amount of the scarce resource (budget) it consumes when a unit is acquired, represented by *
-*rₖ**.
+coefficient **pₖ** and the amount of the scarce resource (budget) it consumes when a unit is acquired, represented by **rₖ**.
 
 The decision variable **x_k** indicates how much of security *k* will be taken; it may range continuously from 0 up to
 1. No integer or binary restriction is imposed---any fractional amount is permissible as long as the overall consumption
