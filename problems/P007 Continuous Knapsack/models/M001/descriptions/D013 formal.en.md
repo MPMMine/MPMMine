@@ -10,12 +10,15 @@ parameter $c_i$ indicating how much cash is consumed by one unit. Decision varia
 fraction that signals whether any portion of option $i$ is selected.
 
 The selection must satisfy  
+
 $$
-\sum_{i\in\mathcal{I}} c_i x_i \le B,
+\sum\_{i \in \mathcal{I}} c\_i x\_i \le B,
 $$
+
 and the objective seeks to maximize  
+
 $$
-\sum_{i\in\mathcal{I}} r_i x_i.
+\sum\_{i\in\mathcal{I}} r\_i x\_i.
 $$
 
 [//]: # (Generated using nemotron-3-nano:latest from D008 description.en.md and model.mzn; minor manual amendments applied)
