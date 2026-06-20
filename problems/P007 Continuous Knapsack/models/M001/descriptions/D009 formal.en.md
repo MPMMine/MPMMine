@@ -17,14 +17,18 @@ In a compact optimization formulation we introduce symbolic elements:
 - Decision variables $x_i\in[0,1]$ indicate the fraction of option $i$ that is selected.
 
 The feasible region is described by the inequality  
+
 $$
-\sum_{i\in\text{OBJ}} \text{size}[i] x_i \le \text{capacity},
+\sum\_{i\in\text{OBJ}} \text{size}[i] x\_i \le \text{capacity},
 $$
+
 ensuring that the total expenditure does not exceed the available budget.  
 The objective function to be maximized is  
+
 $$
-\sum_{i\in\text{OBJ}} \text{profit}[i] x_i,
+\sum\_{i\in\text{OBJ}} \text{profit}[i] x\_i,
 $$
+
 which captures the aggregate value of the chosen shares.
 
 [//]: # (Generated using gpt-oss:latest from D008 description.en.md and model.mzn; minor manual amendments applied)
