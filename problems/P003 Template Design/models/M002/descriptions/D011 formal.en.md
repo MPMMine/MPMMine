@@ -13,8 +13,7 @@ is twofold:
 2. Decide, for each template, which variations are allocated to its slots and how many times that template is pressed.
 
 Because all variations have the same size, we know in advance how many slots, denoted by the symbol **S**, fit on a
-mother sheet. Let **t** be the number of templates we will produce, **n** the number of distinct variations, and **d[i]
-** the required quantity of variation *i* (with *i* ∈ 1 … *n*).
+mother sheet. Let **t** be the number of templates we will produce, **n** the number of distinct variations, and **d[i]** the required quantity of variation *i* (with *i* ∈ 1 … *n*).
 
 We introduce:
 
