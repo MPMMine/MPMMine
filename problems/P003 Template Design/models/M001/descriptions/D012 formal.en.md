@@ -32,7 +32,7 @@ waste as small as possible.
 | $n$          | Number of variations.                                                               |
 | $d[i]$       | Demand for variation *i*.                                                           |
 | $p[i,j]$     | Integer variable 0 ≤ p[i,j] ≤ S – number of slots of variation *i* on template *j*. |
-| $R[j]$       | Integer variable 1 ≤ R[j] ≤  $lupper $ – times template *j* is pressed.             |
+| $R[j]$       | Integer variable 1 ≤ R[j] ≤  $lupper$ – times template *j* is pressed.             |
 | $Production$ | Sum of all  $R[j] $ – total number of template presses.                             |
 | $Surplus$    | Production × S − ∑ d[i] – extra slots that go unused.                               |
 | $llower$     | Lower bound on production: ⌈∑ d[i]/S⌉.                                              |
@@ -52,16 +52,14 @@ waste as small as possible.
    $llower \le Production \le lupper$.
 
 4. **Surplus definition** – excess capacity is tracked  
-   $Surplus = Production \times S - \sum_{i=1}^{n} d[i]$.
+   $Surplus = Production \times S - \sum\_{i=1}^{n} d[i]$.
 
 5. **Surplus limits per variation** – the surplus cannot exceed the total surplus  
-   $\forall k\in[1..n] \sum_{j=1}^{t}\!\bigl(p[k,j]\,R[j] - d[k]\bigr)  \le  Surplus$.
+   $\forall k \in [1..n] \sum\_{j=1}^{t}\\!\bigl(p[k,j]\\,R[j] - d[k]\bigr)  \le  Surplus$.
 
 6. **Cumulative surplus constraint** – the summed surplus of the first *k* variations
    is also bounded  
-   $\forall k\in[2..n-1]  
-   \sum_{m=1}^{k} \sum_{j=1}^{t}\!\bigl(p[m,j]\,R[j] - d[m]\bigr)
-   \le  Surplus$.
+   $\forall k \in [2..n-1] \sum\_{m=1}^{k} \sum\_{j=1}^{t}\\!\bigl(p[m,j]\\,R[j] - d[m]\bigr) \le  Surplus$.
 
 7. **Run‑length symmetry breaking** – for small numbers of templates
 
