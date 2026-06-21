@@ -34,49 +34,57 @@ $x_i (i\in C)$ – amount of crude *i* that will be processed (in barrels).
 
 ### Constraints
 
-1. **Individual supply limits**  
-   $$
-   x_i \le  u_i \forall\, i\in C
-   $$
+1. **Individual supply limits**
 
-2. **Total capacity**  
-   $$
-   \sum_{i\in C} x_i \le  C_{\text{max}}
-   $$
+$$
+x\_i \le  u\_i \forall\\, i\in C
+$$
 
-3. **Sulfur cap**  
-   $$
-   \sum_{i\in C} x_i\,\bar{s}_i \le  S_{\text{max}}
-   $$
+3. **Total capacity**
 
-4. **Labor limit**  
-   $$
-   \sum_{i\in C} x_i\,\bar{l}_i \le  L_{\text{max}}
-   $$
+$$
+\sum\_{i\in C} x\_i \le  C\_{\text{max}}
+$$
 
-5. **Budget**  
-   $$
-   \sum_{i\in C} x_i\,c_i \le  B_{\text{max}}
-   $$
+5. **Sulfur cap**
 
-6. **Contractual minimums**  
-   $$
-   \sum_{i\in C} x_i\,y_{i,p} \ge  r_p \forall\, p\in P
-   $$
+$$
+\sum_\{i\in C} x\_i\\,\bar{s}\_i \le  S\_{\text{max}}
+$$
 
-7. **Chemical stability rule** – crude #1 must form at least a fraction $\alpha$ of the overall slate  
-   $$
-   x_{1} \ge \alpha\,\sum_{i\in C} x_i
-   $$
+7. **Labor limit**
+
+$$
+\sum\_{i\in C} x\_i\\,\bar{l}\_i \le  L\_{\text{max}}
+$$
+
+9. **Budget**
+
+$$
+\sum\_{i\in C} x\_i\\,c\_i \le  B\_{\text{max}}
+$$
+
+11. **Contractual minimums**
+
+$$
+\sum\_{i\in C} x_i\\,y\_{i,p} \ge  r\_p \forall\, p\in P
+$$
+
+13. **Chemical stability rule** – crude #1 must form at least a fraction $\alpha$ of the overall slate
+
+$$
+x\_{1} \ge \alpha\\,\sum\_{i\in C} x\_i
+$$
 
 ---
 
 ### Objective
 
 Maximise the **net daily profit**:
+
 $$
 \max
-\underbrace{\sum_{p\in P} p_p\!\!\sum_{i\in C}x_i\,y_{i,p}}_{\text{Revenue from fuels}} - \underbrace{\sum_{i\in C}x_i\,c_i}_{\text{Cost of crude}}
+\underbrace{\sum\_{p\in P} p\_p\\!\\!\sum\_{i\in C}x\_i\\,y\_{i,p}}\_{\text{Revenue from fuels}} - \underbrace{\sum\_{i\in C}x\_i\,c\_i}\_{\text{Cost of crude}}
 $$
 
 The optimal values of $x_i$ yield the *Optimal Crude Slate* – a blend that satisfies all operational, financial,
