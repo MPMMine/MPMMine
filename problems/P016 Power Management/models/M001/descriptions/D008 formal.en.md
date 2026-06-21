@@ -45,7 +45,7 @@ For every period $p \in P$ the scheduler chooses:
 | $S_{p}$   | kWh            | $0 \le S_{p} \le \text{shave}_{\text{sell}}$          | Sold energy period $p$                   |
 | $Ch_{p}$  | kWh            | $0 \le Ch_{p} \le \text{shave}_{\text{charge}}$       | Charged energy in period $p$             |
 | $D_{p}$   | kWh            | $0 \le D_{p} \le \text{shave}_{\text{discharge}}$     | Discharged energy in period $p$          |
-| $SoC_{p}$ | kWh            | $\text{soc}_{\min} \le SoC_{p} \le \text{soc}_{\max}$ | State of charge at the end of period $p$ |
+| $SoC_{p}$ | kWh            | $\text{soc}\_{\min} \le SoC_{p} \le \text{soc}\_{\max}$ | State of charge at the end of period $p$ |
 | $C_{p}$   | monetary units | $0 \le C_{p} \le 10$                                  | Cost incurred in period $p$              |
 | $E_{p}$   | monetary units | $0 \le E_{p} \le 10$                                  | Earnings in period $p$                   |
 
@@ -60,43 +60,50 @@ $$
 
 ### Model Constraints
 
-1. **Production limit**  
-   $$
-   P_{p} \le \text{prod_est}_{p}\quad \forall p
-   $$
+1. **Production limit**
 
-2. **Energy balance**  
-   $$
-   U_{p} + \text{excess} + Ch_{p} + S_{p}
-   = P_{p} - \text{undersupply} + \eta_{\text{d}} D_{p} + B_{p}
-   $$
+$$
+P\_{p} \le \text{prod\\_est}\_{p}\quad \forall p
+$$
 
-3. **Exclusive choices**  
-   $$
-   \text{not}\bigl(S_{p} > 0 \land B_{p} > 0\bigr),
-   \text{not}\bigl(Ch_{p} > 0 \land D_{p} > 0\bigr)\quad \forall p
-   $$
+3. **Energy balance**
 
-4. **State‑of‑charge evolution**  
-   $$
-   SoC_{p} =
-   \begin{cases}
-   \eta_{\text{s}} \text{soc}_{0} + \eta_{\text{c}} Ch_{p} - D_{p} & p = 1 \\
-   \eta_{\text{s}} SoC_{p-1} + \eta_{\text{c}} Ch_{p} - D_{p} & \text{otherwise}
-   \end{cases}
-   $$
-   and the final SoC satisfies  
-   $$
-   SoC_{\max} \ge \text{soc}_{f}
-   $$
+$$
+U_{p} + \text{excess} + Ch_{p} + S_{p}
+= P_{p} - \text{undersupply} + \eta_{\text{d}} D_{p} + B_{p}
+$$
 
-5. **Cost and earnings**  
-   $$
-   \begin{align}
-   C_{p} &= \text{price}_{\text{buy},p} B_{p} + \frac{c_{\text{charge}}}{\eta_{\text{c}}} Ch_{p},\\
-   E_{p} &= \text{price}_{\text{sell},p} S_{p}
-   \end{align}
-   $$
+5. **Exclusive choices**
+
+$$
+\text{not}\bigl(S_{p} > 0 \land B_{p} > 0\bigr),
+\text{not}\bigl(Ch_{p} > 0 \land D_{p} > 0\bigr)\quad \forall p
+$$
+
+7. **State‑of‑charge evolution**
+
+$$
+SoC_{p} =
+\begin{cases}
+\eta_{\text{s}} \text{soc}_{0} + \eta_{\text{c}} Ch_{p} - D_{p} & p = 1 \\
+\eta_{\text{s}} SoC_{p-1} + \eta_{\text{c}} Ch_{p} - D_{p} & \text{otherwise}
+\end{cases}
+$$
+
+and the final SoC satisfies
+
+$$
+SoC_{\max} \ge \text{soc}_{f}
+$$
+
+9. **Cost and earnings**
+
+$$
+\begin{align}
+C_{p} &= \text{price}_{\text{buy},p} B_{p} + \frac{c_{\text{charge}}}{\eta_{\text{c}}} Ch_{p},\\
+E_{p} &= \text{price}_{\text{sell},p} S_{p}
+\end{align}
+$$
 
 ### Objective
 
