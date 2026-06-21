@@ -39,46 +39,54 @@ constraints.
 
 ### Constraints
 
-1. **Supply limits**  
-   $$
-   \forall i: x_i \le S_i
-   $$
+1. **Supply limits**
 
-2. **Total capacity**  
-   $$
-   \sum_i x_i \le C_{cap}
-   $$
+$$
+\forall i: x\_i \le S\_i
+$$
 
-3. **Sulfur cap**  
-   $$
-   \sum_i x_i s_i \le S_{max}
-   $$
+3. **Total capacity**
 
-4. **Labor limit**  
-   $$
-   \sum_i x_i l_i \le L_{max}
-   $$
+$$
+\sum\_i x\_i \le C\_{cap}
+$$
 
-5. **Budget constraint**  
-   $$
-   \sum_i x_i c_i \le B_{max}
-   $$
+5. **Sulfur cap**
 
-6. **Contractual production minima**  
-   $$
-   \forall p: \sum_i x_i y_{i,p} \ge R_{min,p}
-   $$
+$$
+\sum\_i x\_i s\_i \le S\_{max}
+$$
 
-7. **Chemical stability rule (crude 1 proportion)**  
-   $$
-   x_1 \ge ρ \sum_i x_i
-   $$
+7. **Labor limit**
+
+$$
+\sum\_i x\_i l\_i \le L\_{max}
+$$
+
+9. **Budget constraint**
+
+$$
+\sum\_i x\_i c\_i \le B\_{max}
+$$
+
+11. **Contractual production minima**
+
+$$
+\forall p: \sum\_i x\_i y\_{i,p} \ge R\_{min,p}
+$$
+
+13. **Chemical stability rule (crude 1 proportion)**
+
+$$
+x\_1 \ge ρ \sum\_i x\_i
+$$
 
 ### Objective
 
 Maximize the net profit:
+
 $$
-\max \Bigg( \sum_{i,p} x_i y_{i,p} p_p - \sum_i x_i c_i \Bigg)
+\max \Bigg( \sum\_{i,p} x\_i y\_{i,p} p\_p - \sum\_i x\_i c\_i \Bigg)
 $$
 
 [//]: # (Generated using gpt-oss:latest from D001 description.en.md and model.mzn; minor manual amendments applied)
