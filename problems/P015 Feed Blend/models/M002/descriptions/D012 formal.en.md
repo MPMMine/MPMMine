@@ -4,8 +4,7 @@ Plan the operation of a cattle‑feed plant over a chosen planning horizon that 
 In each period a single blended product must be created that satisfies both mass and nutritional specifications while
 coping with fluctuating prices.
 
-1. **Mass Requirement** – For every period *T ∈ TimeSet* the blended output has to reach a predetermined total mass, *
-   *TargetWeight**.
+1. **Mass Requirement** – For every period *T ∈ TimeSet* the blended output has to reach a predetermined total mass, **TargetWeight**.
 
 2. **Nutrition Requirement** - The combined amount of all constituent nutrients must stay inside a lower and an upper
    bound that are defined for each nutrient *N ∈ NutrientSet* (**MinReq[N]** ≤ nutrient‑sum ≤ **MaxReq[N]**).
@@ -28,7 +27,7 @@ coping with fluctuating prices.
 - For every material *I* and period *T* a non‑negative purchase quantity **Buy[I,T]**.
 - For every material *I* and period *T* an amount **Use[I,T]** that is taken from the stock to be incorporated into the
   blend.
-- For every material *I* and intermediate time index *T ∈ TimeSet \cup \{0\}* a non‑negative stock level **Stock[I,T]**
+- For every material *I* and intermediate time index $T ∈ TimeSet \cup \\{0\\}$ a non‑negative stock level **Stock[I,T]**
   maintained at the end of that period.
 
 ## Constraints
