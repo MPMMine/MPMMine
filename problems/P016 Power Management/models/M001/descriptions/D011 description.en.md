@@ -22,8 +22,7 @@ The storage device is characterized by:
   next.
 - A per‑kWh charging expense **CHARGE_COST**, derived from the battery’s sell price, nominal cycle count and capacity.
 
-Operational limits on each period are expressed by the parameters **SHAVE_SELL**, **SHAVE_CHARGE** and **SHAVE_DISCHARGE
-**, which bound the amounts that can be sold, charged and discharged, respectively.
+Operational limits on each period are expressed by the parameters **SHAVE_SELL**, **SHAVE_CHARGE** and **SHAVE_DISCHARGE**, which bound the amounts that can be sold, charged and discharged, respectively.
 
 Decision variables associated with every period **p** include:
 
