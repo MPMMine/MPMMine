@@ -31,15 +31,19 @@ For each sphere $i \in S$:
 
 If a sphere is packed, it must lie entirely inside the cube.
 For each sphere $i \in S$, this is enforced by requiring:
+
 $$
-r_i u_i \le x_i \le L - r_i u_i,
+r\_i u\_i \le x\_i \le L - r\_i u\_i,
 $$
+
 $$
-r_i u_i \le y_i \le L - r_i u_i,
+r\_i u\_i \le y\_i \le L - r\_i u\_i,
 $$
+
 $$
-r_i u_i \le z_i \le L - r_i u_i.
+r\_i u\_i \le z\_i \le L - r\_i u\_i.
 $$
+
 When $u_i = 0$, these constraints are relaxed and do not restrict the position variables.
 
 ### 2. Non-Overlap Constraints
@@ -47,19 +51,22 @@ When $u_i = 0$, these constraints are relaxed and do not restrict the position v
 No two packed spheres may overlap.
 For every pair of distinct spheres $i, j \in S$ with $i < j$, the squared Euclidean distance between their centers must
 be at least the square of the sum of their radii whenever both spheres are packed:
+
 $$
-(x_i - x_j)^2 + (y_i - y_j)^2 + (z_i - z_j)^2
+(x\_i - x\_j)^2 + (y\_i - y\_j)^2 + (z\_i - z\_j)^2
 \ge
-(r_i + r_j)^2 - M \bigl(2 - u_i - u_j\bigr),
+(r\_i + r\_j)^2 - M \bigl(2 - u\_i - u\_j\bigr),
 $$
+
 where $M > 0$ is a sufficiently large constant.
 This big-$M$ term relaxes the constraint whenever at least one of the two spheres is not packed.
 
 ## Objective Function
 
 The objective is to maximize the number of spheres packed into the cube:
+
 $$
-\max \sum_{i \in S} u_i.
+\max \sum\_{i \in S} u\_i.
 $$
 
 [//]: # (Manually created)
