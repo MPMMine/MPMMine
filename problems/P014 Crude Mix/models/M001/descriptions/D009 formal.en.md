@@ -3,20 +3,22 @@
 The goal of this problem is to determine the best blend of available crude oils – the *Crude Slate* – that maximises net
 profit for a refinery.
 The refinery receives a set of crude types
+
 $$
 \text{Crudes} = \{1,\dots ,n\},
 $$
+
 and must decide how many barrels of each type to process.
 
 Each crude $i\in\text{Crudes}$ is characterised by:
 
 | Symbol                                     | Meaning                                                                   |
 |--------------------------------------------|---------------------------------------------------------------------------|
-| $c_i$                                      | purchase cost per barrel                                                  |
-| $s_i^{\max}$                               | maximum supply (barrels available)                                        |
-| $\mathbf{y}_i = (y_{i,g},y_{i,j},y_{i,h})$ | yields of the three products (gasoline, jet fuel, heating oil) per barrel |
-| $\sigma_i$                                 | sulfur content per barrel                                                 |
-| $\ell_i$                                   | labor hours needed per barrel                                             |
+| $c\_i$                                      | purchase cost per barrel                                                  |
+| $s\_i^{\max}$                               | maximum supply (barrels available)                                        |
+| $\mathbf{y}\_i = (y\_{i,g},y\_{i,j},y\_{i,h})$ | yields of the three products (gasoline, jet fuel, heating oil) per barrel |
+| $\sigma\_i$                                 | sulfur content per barrel                                                 |
+| $\ell\_i$                                   | labor hours needed per barrel                                             |
 
 The refinery has global operational limits:
 
@@ -32,32 +34,37 @@ The refinery has global operational limits:
 ### Decision Variables
 
 For each crude $i$ we choose a non‑negative processing quantity
+
 $$
-x_i \in [0, 100 000].
+x\_i \in [0, 100 000].
 $$
 
 ### Constraints
 
-1. **Individual Supply** – $x_i \le s_i^{\max}$ for all $i$.
-2. **Capacity** – $\sum_{i} x_i \le C_{\text{cap}}$.
-3. **Sulfur Cap** – $\sum_{i} x_i \sigma_i \le \Sigma_{\text{max}}$.
-4. **Labor** – $\sum_{i} x_i \ell_i \le L_{\text{max}}$.
-5. **Budget** – $\sum_{i} x_i c_i \le B_{\text{bud}}$.
+1. **Individual Supply** – $x\_i \le s\_i^{\max}$ for all $i$.
+2. **Capacity** – $\sum\_{i} x\_i \le C\_{\text{cap}}$.
+3. **Sulfur Cap** – $\sum\_{i} x\_i \sigma\_i \le \Sigma\_{\text{max}}$.
+4. **Labor** – $\sum\_{i} x\_i \ell\_i \le L\_{\text{max}}$.
+5. **Budget** – $\sum\_{i} x\_i c\_i \le B\_{\text{bud}}$.
 6. **Contractual Minimums** – For each product $p$,
-   $$
-   \sum_{i} x_i y_{i,p} \ge q_p^{\min}.
-   $$
-7. **Chemical Stability** – a fixed fraction $ \alpha $ of the total blend must be crude 1:
-   $$
-   x_{1} \ge \alpha \sum_{i} x_i.
-   $$
+
+$$
+\sum\_{i} x\_i y\_{i,p} \ge q\_p^{\min}.
+$$
+
+8. **Chemical Stability** – a fixed fraction $ \alpha $ of the total blend must be crude 1:
+
+$$
+x\_{1} \ge \alpha \sum\_{i} x\_i.
+$$
 
 ### Objective
 
 The refinery earns revenue by selling the three products, and pays for the raw crudes.
 The net profit to maximise is
+
 $$
-\sum_{i}\sum_{p} x_i y_{i,p} p_p - \sum_{i} x_i c_i.
+\sum\_{i}\sum\_{p} x\_i y\_{i,p} p\_p - \sum\_{i} x\_i c\_i.
 $$
 
 By satisfying all of the above constraints while pushing this objective to its highest possible value, the refinery
