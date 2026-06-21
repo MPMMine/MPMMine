@@ -24,27 +24,32 @@ minimising the total cost.
 
 **Constraints**
 
-1. **Mass balance**  
-   $$
-   \sum_{i \in I} a_i = W
-   $$
+1. **Mass balance**
 
-2. **Nutrient limits**  
+$$
+\sum\_{i \in I} a\_i = W
+$$
+
+3. **Nutrient limits**
+
    For every nutrient *j* ∈ **N**,
-   $$
-   L_j \le \sum_{i \in I} a_i \cdot \text{comp}_{i,j} \le U_j
-   $$
 
-3. **Grain minimum**  
-   $$
-   \sum_{i \in G} a_i \ge 0.2 \times W
-   $$
+$$
+L\_j \le \sum\_{i \in I} a\_i \cdot \text{comp}\_{i,j} \le U\_j
+$$
+
+5. **Grain minimum**
+
+$$
+\sum\_{i \in G} a\_i \ge 0.2 \times W
+$$
 
 **Objective**
 
 Minimise the total cost
+
 $$
-\min \sum_{i \in I} a_i \cdot c_i .
+\min \sum\_{i \in I} a\_i \cdot c\_i .
 $$
 
 [//]: # (Generated using gpt-oss:latest from D001 description.en.md and model.mzn; minor manual amendments applied)
