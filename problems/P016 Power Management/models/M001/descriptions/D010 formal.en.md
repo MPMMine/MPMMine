@@ -51,43 +51,47 @@ Total monetary terms:
 1. **Production limit**  
    $0 \leq p_p \leq \hat{P}[p]$ for all $p\in P$.
 
-2. **Energy balance**  
-   $$
-   C[p] + E_{\text{excess}} + c_p + s_p = p_p - E_{\text{deficit}} + \eta_d d_p + b_p .
-   $$
+2. **Energy balance**
 
-3. **Mutual exclusivity of buying and selling**  
+$$
+C[p] + E_{\text{excess}} + c_p + s_p = p_p - E_{\text{deficit}} + \eta_d d_p + b_p .
+$$
+
+4. **Mutual exclusivity of buying and selling**  
    For every $p$, not both $s_p > 0$ and $b_p > 0$.
 
-4. **Mutual exclusivity of charging and discharging**  
-   For every $p$, not both $c_p > 0$ and $d_p > 0$.
+5. **Mutual exclusivity of charging and discharging**  
+   For every $p$, not both $c\_p > 0$ and $d\_p > 0$ .
 
-5. **Battery dynamics**  
-   $$
-   S_p = \bigl(S_{p-1} \cdot \eta_s + \eta_c c_p - d_p \bigr) ,
-   $$
-   with $S_{\text{init}}$ as the value for the first period.
+6. **Battery dynamics**
 
-6. **State‑of‑charge bounds**  
+$$
+S\_p = \bigl(S\_{p-1} \cdot \eta\_s + \eta\_c c\_p - d\_p \bigr) ,
+$$
+
+with $S_{\text{init}}$ as the value for the first period.
+
+8. **State‑of‑charge bounds**  
    $\underline{S} \leq S_p \leq \overline{S}$ for all $p$.  
    $\displaystyle S_{\text{final}} \leq S_{|P|}$.
 
-7. **Peak‑shaving limits**  
+9. **Peak‑shaving limits**  
    $0 \leq s_p \leq \theta_{\text{sell}}$,  
    $0 \leq c_p \leq \theta_{\text{charge}}$,  
    $0 \leq d_p \leq \theta_{\text{discharge}}$ for all $p$.
 
-8. **Cost calculation**  
+10. **Cost calculation**  
    $C_{\text{cost}}[p] = B_p b_p + \frac{C_{\text{cost}}}{\eta_c} c_p$.
 
-9. **Earnings calculation**  
+11. **Earnings calculation**  
    $E_{\text{earn}}[p] = S_p s_p$.
 
 ## Objective
 
 Minimise  
+
 $$
-\sum_{p \in P} C_{\text{cost}}[p] - \sum_{p \in P} E_{\text{earn}}[p].
+\sum\_{p \in P} C_{\text{cost}}[p] - \sum\_{p \in P} E\_{\text{earn}}[p].
 $$
 
 [//]: # (Generated using gpt-oss:latest from D001 description.en.md and model.mzn; major manual amendments applied)
