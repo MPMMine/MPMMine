@@ -33,26 +33,30 @@ $a_i \in [0, 𝑊]$ – the weight of ingredient *i* to include in the blend.
 
 ## Constraints
 
-1. **Mass balance**  
-   $$
-   \sum_{i \in 𝑰} a_i = 𝑊
-   $$
+1. **Mass balance**
 
-2. **Nutrient bounds** – for every nutrient *j*∈𝑁  
-   $$
-   min_j \le \sum_{i \in 𝑰} a_i p_{i,j} \le max_j
-   $$
+$$
+\sum\_{i \in 𝑰} a\_i = 𝑊
+$$
 
-3. **Grain fraction**  
-   $$
-   \sum_{i \in 𝑮} a_i \ge 0.20 \times 𝑊
-   $$
+3. **Nutrient bounds** – for every nutrient *j*∈𝑁
+
+$$
+min\_j \le \sum\_{i \in 𝑰} a\_i p\_{i,j} \le max_j
+$$
+
+5. **Grain fraction**
+
+$$
+\sum\_{i \in 𝑮} a\_i \ge 0.20 \times 𝑊
+$$
 
 ## Objective
 
 Minimise the total cost of the blend:
+
 $$
-\min \sum_{i \in 𝑰} a_i c_i
+\min \sum\_{i \in 𝑰} a\_i c\_i
 $$
 
 [//]: # (Generated using gpt-oss:latest from D001 description.en.md and model.mzn; major manual amendments applied)
