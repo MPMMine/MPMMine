@@ -36,11 +36,7 @@ facility can satisfy.
 
 Minimise the total cost, consisting of facility‑opening costs and variable service costs:
 
-$$
-\min \sum_{i \in F} f_i open_i
-+ \sum_{i \in F}\sum_{j \in C}
-d_j c_{ij} satisfied_{ij}
-$$
+$$\min\\;\sum\_{i \in F} f\_i open\_i + \sum\_{i \in F}\sum\_{j \in C} d\_j c\_{ij} satisfied\_{ij}$$
 
 ### Constraints
 
