@@ -18,7 +18,7 @@ array[Crudes] of float: amount_to_process;
 
 % Unification flag passed via -D "is_solution=true" or "is_solution=false"
 bool: is_solution;
-float: eps = 1e-4;
+float: eps = if is_solution then 1e-4 else -1e-4 endif;
 
 test check(bool: b, string: s) = 
     if b then true else trace_stdout("ERROR: " ++ s ++ "\n", false) endif;
@@ -26,7 +26,7 @@ test check(bool: b, string: s) =
 array[int] of bool: checks = 
     % Check 1. Individual Supply Limits
     [ check(
-        amount_to_process[i] <= max_supply[i] + if is_solution then eps else -eps endif,
+        amount_to_process[i] <= max_supply[i] + eps,
         "Crude " ++ show(i) ++ " processed amount (" ++ show(amount_to_process[i]) ++ 
         ") exceeds max supply (" ++ show(max_supply[i]) ++ ")."
       )
@@ -35,7 +35,7 @@ array[int] of bool: checks =
     ++
     % Check 2. Total Distillation Capacity
     [ check(
-        sum(i in Crudes)(amount_to_process[i]) <= total_cap + if is_solution then eps else -eps endif,
+        sum(i in Crudes)(amount_to_process[i]) <= total_cap + eps,
         "Total processed amount (" ++ show(sum(i in Crudes)(amount_to_process[i])) ++ 
         ") exceeds total capacity (" ++ show(total_cap) ++ ")."
       ) ]
@@ -43,7 +43,7 @@ array[int] of bool: checks =
     ++
     % Check 3. Environmental Sulfur Cap
     [ check(
-        sum(i in Crudes)(amount_to_process[i] * sulfur[i]) <= max_sulfur + if is_solution then eps else -eps endif,
+        sum(i in Crudes)(amount_to_process[i] * sulfur[i]) <= max_sulfur + eps,
         "Total sulfur (" ++ show(sum(i in Crudes)(amount_to_process[i] * sulfur[i])) ++ 
         ") exceeds maximum environmental cap (" ++ show(max_sulfur) ++ ")."
       ) ]
@@ -51,7 +51,7 @@ array[int] of bool: checks =
     ++
     % Check 4. Labor/Staffing Limit
     [ check(
-        sum(i in Crudes)(amount_to_process[i] * labor[i]) <= max_labor + if is_solution then eps else -eps endif,
+        sum(i in Crudes)(amount_to_process[i] * labor[i]) <= max_labor + eps,
         "Total labor hours (" ++ show(sum(i in Crudes)(amount_to_process[i] * labor[i])) ++ 
         ") exceed available labor limit (" ++ show(max_labor) ++ ")."
       ) ]
@@ -59,7 +59,7 @@ array[int] of bool: checks =
     ++
     % Check 5. Procurement Budget
     [ check(
-        sum(i in Crudes)(amount_to_process[i] * cost[i]) <= budget + if is_solution then eps else -eps endif,
+        sum(i in Crudes)(amount_to_process[i] * cost[i]) <= budget + eps,
         "Total cost (" ++ show(sum(i in Crudes)(amount_to_process[i] * cost[i])) ++ 
         ") exceeds available procurement budget (" ++ show(budget) ++ ")."
       ) ]
@@ -67,7 +67,7 @@ array[int] of bool: checks =
     ++
     % Check 6. Contractual Obligations
     [ check(
-        sum(i in Crudes)(amount_to_process[i] * yields[i, p]) >= min_req[p] - if is_solution then eps else -eps endif,
+        sum(i in Crudes)(amount_to_process[i] * yields[i, p]) >= min_req[p] - eps,
         "Yield for product " ++ show(p) ++ " (" ++ show(sum(i in Crudes)(amount_to_process[i] * yields[i, p])) ++ 
         ") falls short of contractual minimum (" ++ show(min_req[p]) ++ ")."
       )
@@ -76,7 +76,7 @@ array[int] of bool: checks =
     ++
     % Check 7. Chemical Stability Rule
     [ check(
-        amount_to_process[1] >= (sum(i in Crudes)(amount_to_process[i]) * 0.15) - if is_solution then eps else -eps endif,
+        amount_to_process[1] >= (sum(i in Crudes)(amount_to_process[i]) * 0.15) - eps,
         "Chemical stability rule violated: Crude 1 must be at least 15% of the total mix. Current Crude 1: " ++ 
         show(amount_to_process[1]) ++ " out of total " ++ show(sum(i in Crudes)(amount_to_process[i])) ++ "."
       ) ];

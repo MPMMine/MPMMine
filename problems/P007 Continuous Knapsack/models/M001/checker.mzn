@@ -7,7 +7,7 @@ array[OBJ] of float: x;
 
 % Unification flag passed via -D "is_solution=true" or "is_solution=false"
 bool: is_solution;
-float: eps = 1e-7;
+float: eps = if is_solution then 1e-7 else -1e-7 endif;
 
 test check(bool: b, string: s) = 
     if b then true else trace_stdout("ERROR: " ++ s ++ "\n", false) endif;
@@ -24,7 +24,7 @@ array[int] of bool: checks =
     [ check(
         
             % Solutions must stay within capacity bounds
-            sum(i in OBJ)(size[i] * x[i]) <= capacity + if is_solution then eps else -eps endif,
+            sum(i in OBJ)(size[i] * x[i]) <= capacity + eps,
             "Total size " ++ show(sum(i in OBJ)(size[i] * x[i])) ++ 
             " exceeds knapsack capacity of " ++ show(capacity)
     )];

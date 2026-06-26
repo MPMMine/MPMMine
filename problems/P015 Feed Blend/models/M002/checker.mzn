@@ -22,7 +22,7 @@ array[Ingredient, Time0] of float: stock;
 
 % Unification flag passed via -D "is_solution=true" or "is_solution=false"
 bool: is_solution;
-float: eps = 1e-4; 
+float: eps = if is_solution then 1e-4 else -1e-4 endif; 
 
 test check(bool: b, string: s) = 
     if b then true else trace_stdout("ERROR: " ++ s ++ "\n", false) endif;
@@ -30,8 +30,8 @@ test check(bool: b, string: s) =
 array[int] of bool: checks = 
     % Check 1. Initial Inventory (at t=0)
     [ check(
-        stock[i, 0] >= initial_stock[i] - (if is_solution then eps else -eps endif) /\
-        stock[i, 0] <= initial_stock[i] + (if is_solution then eps else -eps endif),
+        stock[i, 0] >= initial_stock[i] - eps /\
+        stock[i, 0] <= initial_stock[i] + eps,
         "Initial stock mismatch for Ingredient " ++ show(i) ++ ". Expected: " ++ 
         show(initial_stock[i]) ++ ", Found: " ++ show(stock[i, 0]) ++ "."
       )
@@ -40,8 +40,8 @@ array[int] of bool: checks =
     ++
     % Check 2. Inventory Continuity (Mass Balance over Time)
     [ check(
-        stock[i, t] >= (stock[i, t-1] + buy[i, t] - amount[i, t]) - (if is_solution then eps else -eps endif) /\
-        stock[i, t] <= (stock[i, t-1] + buy[i, t] - amount[i, t]) + (if is_solution then eps else -eps endif),
+        stock[i, t] >= (stock[i, t-1] + buy[i, t] - amount[i, t]) - eps /\
+        stock[i, t] <= (stock[i, t-1] + buy[i, t] - amount[i, t]) + eps,
         "Inventory flow broken for Ingredient " ++ show(i) ++ " at Period " ++ show(t) ++ 
         ". Stock[" ++ show(t) ++ "] is " ++ show(stock[i, t]) ++ ", but (Stock[" ++ show(t-1) ++ 
         "] + Buy - Amount) equals " ++ show(stock[i, t-1] + buy[i, t] - amount[i, t]) ++ "."
@@ -51,8 +51,8 @@ array[int] of bool: checks =
     ++
     % Check 3. Production Mass Balance (Per Period Target Weight)
     [ check(
-        sum(i in Ingredient)(amount[i, t]) >= total_weight - (if is_solution then eps else -eps endif) /\
-        sum(i in Ingredient)(amount[i, t]) <= total_weight + (if is_solution then eps else -eps endif),
+        sum(i in Ingredient)(amount[i, t]) >= total_weight - eps /\
+        sum(i in Ingredient)(amount[i, t]) <= total_weight + eps,
         "Production Mass Balance violated in Period " ++ show(t) ++ ". Total batch weight is " ++ 
         show(sum(i in Ingredient)(amount[i, t])) ++ ", but target total_weight is " ++ show(total_weight) ++ "."
       )
@@ -61,7 +61,7 @@ array[int] of bool: checks =
     ++
     % Check 4a. Nutritional Minimum Bounds (Per Period)
     [ check(
-        sum(i in Ingredient)(amount[i, t] * comp[i, j]) >= min_req[j] - if is_solution then eps else -eps endif,
+        sum(i in Ingredient)(amount[i, t] * comp[i, j]) >= min_req[j] - eps,
         "Period " ++ show(t) ++ ": Nutrient " ++ show(j) ++ " falls below minimum requirement. Total: " ++ 
         show(sum(i in Ingredient)(amount[i, t] * comp[i, j])) ++ ", Minimum required: " ++ show(min_req[j]) ++ "."
       )
@@ -70,7 +70,7 @@ array[int] of bool: checks =
     ++
     % Check 4b. Nutritional Maximum Bounds (Per Period)
     [ check(
-        sum(i in Ingredient)(amount[i, t] * comp[i, j]) <= max_req[j] + if is_solution then eps else -eps endif,
+        sum(i in Ingredient)(amount[i, t] * comp[i, j]) <= max_req[j] + eps,
         "Period " ++ show(t) ++ ": Nutrient " ++ show(j) ++ " exceeds maximum requirement. Total: " ++ 
         show(sum(i in Ingredient)(amount[i, t] * comp[i, j])) ++ ", Maximum allowed: " ++ show(max_req[j]) ++ "."
       )
@@ -79,7 +79,7 @@ array[int] of bool: checks =
     ++
     % Check 5. Group Totals (Grain base per period)
     [ check(
-        sum(i in Grains)(amount[i, t]) >= (0.2 * total_weight) - if is_solution then eps else -eps endif,
+        sum(i in Grains)(amount[i, t]) >= (0.2 * total_weight) - eps,
         "Period " ++ show(t) ++ ": Grain base minimum requirement violated. Total grains used: " ++ 
         show(sum(i in Grains)(amount[i, t])) ++ ", requires at least 20% of batch weight (" ++ show(0.2 * total_weight) ++ ")."
       )
