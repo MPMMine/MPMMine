@@ -39,9 +39,19 @@ array[int] of bool: checks =
         Right[c] + separation[class[c], class[k]] <= Left[k] \/
         Bottom[c] >= Top[k] + separation[class[c], class[k]] \/
         Top[c] + separation[class[c], class[k]] <= Bottom[k],
+        let {
+            % Calculate actual separation distance across all 4 directions
+            int: actual_sep = max([
+                Left[c] - Right[k],
+                Left[k] - Right[c],
+                Bottom[c] - Top[k],
+                Bottom[k] - Top[c]
+            ])
+        } in
         "Separation violation between Container " ++ show(c) ++ " (Class " ++ show(class[c]) ++ 
-        " ) and Container " ++ show(k) ++ " (Class " ++ show(class[k]) ++ 
-        " ). Required separation distance: " ++ show(separation[class[c], class[k]]) ++ "."
+        ") and Container " ++ show(k) ++ " (Class " ++ show(class[k]) ++ 
+        "). Required separation: " ++ show(separation[class[c], class[k]]) ++ 
+        ", Actual separation: " ++ show(actual_sep) ++ "."
     )
     | c, k in Containers where c < k ];
 

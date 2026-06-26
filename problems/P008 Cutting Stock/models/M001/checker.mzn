@@ -13,7 +13,7 @@ array[1..n_items, 1..max_rolls] of 0..max(max_cuts_per_item): cut;
 
 % Unification flag passed via -D "is_solution=true" or "is_solution=false"
 bool: is_solution;
-float: eps = 1e-7;
+float: eps = if is_solution then 1e-7 else -1e-7 endif;
 
 test check(bool: b, string: s) = 
     if b then true else trace_stdout("ERROR: " ++ s ++ "\n", false) endif;
@@ -27,7 +27,7 @@ array[int] of bool: checks =
     ++
     % Check 2: Width Constraint: The sum of widths must fit in the master roll width (with eps tolerance due to cast to float)
     [ check(
-        sum(i in 1..n_items) (int2float(cut[i, j]) * item_widths[i]) <= roll_width * use[j] + if is_solution then eps else -eps endif,
+        sum(i in 1..n_items) (int2float(cut[i, j]) * item_widths[i]) <= roll_width * use[j] + eps,
         "Items on roll " ++ show(j) ++ "")
     | j in 1..max_rolls ]
     ++
