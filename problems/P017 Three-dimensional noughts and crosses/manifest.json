@@ -1,0 +1,36 @@
+{
+  "id": "P016",
+  "name": "Three-dimensional noughts and crosses",
+  "tags": {
+    "Q210339": "tic-tac-toe",
+    "Q984063": "optimization problem",
+    "Q70467303": "minimization"
+  },
+  "features": {
+    "constraints": true,
+    "objective": true,
+    "optimization": true,
+    "satisfiability": false,
+    "variables": {
+      "binary": true,
+      "continuous": false,
+      "integer": false,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+    "Model Building in Mathematical Programming": "13.17"
+  },
+  "references": [
+    {
+        "type": "book",
+        "key": "model_building_in_mp",
+        "title": "Model building in mathematical programming",
+        "author": "Williams, H Paul",
+        "year": "2013",
+        "publisher": "John Wiley & Sons"
+    }
+  ],
+  "links": {
+  }
+}
