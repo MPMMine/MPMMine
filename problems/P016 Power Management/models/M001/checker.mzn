@@ -87,7 +87,7 @@ array[int] of bool: checks =
         soc[p] >= expected_soc - eps /\
         soc[p] <= expected_soc + eps,
         "Period " ++ show(p) ++ ": Battery SoC tracking mismatch. Found soc[" ++ show(p) ++ "] = " ++ 
-        show(soc[p]) ++ ", but equations show it should be " ++ 
+        show(soc[p]) ++ ", expected " ++ 
         show((if p == min(periods) then soc_initial else soc[p-1] endif) * store_efficiency + charge_efficiency * charge[p] - discharge[p]) ++ "."
       )
     | p in periods ]

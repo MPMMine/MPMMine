@@ -111,7 +111,7 @@ All items within this hierarchy are uniquely identified by concatenating ids of 
 
 * `P000` - Prefix 'P' plus three-digit problem id,
 * `M000` - Prefix 'M' plus three-digit MP model id within the problem,
-* `C000` - Prefix 'C' plus three-digit MP model checker id within the problem,
+* `C000` - Prefix 'C' plus three-digit MP model checker id within the problem; the id shall be equal to the id of the corresponding MP model,
 * `I000` - Prefix 'I' plus three-digit instance id within the MP model,
 * `D000` - Prefix 'D' plus three-digit description id within the MP model or instance,
 * `S000000` - Prefix 'S' plus six-digit solution id within the instance,

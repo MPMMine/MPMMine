@@ -20,11 +20,10 @@ array[int] of bool: checks =
     ++
     % Check 2: All positions should be different
     [ check(
-        forall(i, j in index_set(position) where i < j) (
-            position[i] != position[j]
-        ),
-        "The positions are not unique"
-    )]
+        
+        position[i] != position[j],
+        "The position[" ++ show(i) ++ "] = " ++ show(position[i]) ++ " equals position[" ++ show(j) ++ "] = " ++ show(position[j]) ++ "; unique values expected.")
+    | i, j in index_set(position) where i < j ]
     ++
     % Check 3: Symmetry breaking
     [ check(
