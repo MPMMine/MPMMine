@@ -26,15 +26,19 @@ For each sphere $k$ in the set $T$:
 
 If a sphere is placed inside the cube, its center must be located within the cube’s boundaries.
 For each sphere $k \in T$, the following must hold:
+
 $$
-pos_k.x \ge used_k * r_k \land pos_k.x \le L - used_k * r_k \land
+pos\_k.x \ge used\_k * r\_k \land pos\_k.x \le L - used\_k * r\_k \land
 $$
+
 $$
-pos_k.y \ge used_k * r_k \land pos_k.y \le L - used_k * r_k \land
+pos\_k.y \ge used\_k * r\_k \land pos\_k.y \le L - used\_k * r\_k \land
 $$
+
 $$
-pos_k.z \ge used_k * r_k \land pos_k.z \le L - used_k * r_k.
+pos\_k.z \ge used\_k * r\_k \land pos\_k.z \le L - used\_k * r\_k.
 $$
+
 When $used_k = 0$, these constraints do not impose any restriction on the position variables.
 
 ### 2. Non-Overlapping Restrictions
@@ -42,18 +46,21 @@ When $used_k = 0$, these constraints do not impose any restriction on the positi
 No two placed spheres can intersect.
 For every pair of distinct spheres $k, l \in T$ such that $k < l$, the Euclidean distance between their centers must be
 greater than or equal to the sum of their radii, unless both spheres are placed inside the cube:
+
 $$
-(pos_k.x - pos_l.x)^2 + (pos_k.y - pos_l.y)^2 + (pos_k.z - pos_l.z)^2
+(pos\_k.x - pos\_l.x)^2 + (pos\_k.y - pos\_l.y)^2 + (pos\_k.z - pos\_l.z)^2
 \ge
-(r_k + r_l)^2 - M \bigl(2 - used_k - used_l\bigr),
+(r\_k + r\_l)^2 - M \bigl(2 - used\_k - used\_l\bigr),
 $$
+
 where $M > 0$ is a sufficiently large constant.
 
 ## Objective Function
 
 The objective is to maximize the number of spheres placed within the cube:
+
 $$
-maximize \sum_{k \in T} used_k.
+maximize \sum\_{k \in T} used\_k.
 $$
 
 

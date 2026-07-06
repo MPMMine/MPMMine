@@ -28,15 +28,19 @@ For each object $\sigma_i \in \Gamma$:
 
 If an object is selected, it must be fully contained within the cubic container.
 For each object $\sigma_i \in \Gamma$, this requirement is enforced by ensuring:
+
 $$
-\rho_i \upsilon_i \le \xi_i \le \lambda - \rho_i \upsilon_i,
+\rho\_i \upsilon\_i \le \xi\_i \le \lambda - \rho\_i \upsilon\_i,
 $$
+
 $$
-\rho_i \upsilon_i \le \eta_i \le \lambda - \rho_i \upsilon_i,
+\rho\_i \upsilon\_i \le \eta\_i \le \lambda - \rho\_i \upsilon\_i,
 $$
+
 $$
-\rho_i \upsilon_i \le \zeta_i \le \lambda - \rho_i \upsilon_i.
+\rho\_i \upsilon\_i \le \zeta\_i \le \lambda - \rho\_i \upsilon\_i.
 $$
+
 When $\upsilon_i = 0$, these constraints are relaxed, allowing the position parameters to vary without restriction.
 
 ### Non-Intersection Requirements
@@ -44,18 +48,21 @@ When $\upsilon_i = 0$, these constraints are relaxed, allowing the position para
 No two selected objects can intersect or overlap.
 For every pair of distinct objects $\sigma_i, \sigma_j \in \Gamma$ with $i < j$, the squared distance between their
 central points must exceed the square of the sum of their radii whenever both objects are selected:
+
 $$
-(\xi_i - \xi_j)^2 + (\eta_i - \eta_j)^2 + (\zeta_i - \zeta_j)^2
+(\xi\_i - \xi\_j)^2 + (\eta\_i - \eta\_j)^2 + (\zeta\_i - \zeta\_j)^2
 \ge
-(\rho_i + \rho_j)^2 - \Psi \bigl(2 - \upsilon_i - \upsilon_j\bigr),
+(\rho\_i + \rho\_j)^2 - \Psi \bigl(2 - \upsilon\_i - \upsilon\_j\bigr),
 $$
+
 where $\Psi > 0$ is a sufficiently large constant that relaxes the constraint if either object is not selected.
 
 ## Objective
 
 The objective is to maximize the count of objects placed within the cubic container:
+
 $$
-\max \sum_{i \in \Gamma} \upsilon_i.
+\max \sum_\{i \in \Gamma} \upsilon\_i.
 $$
 
 [//]: # (Generated using llama3.3:latest from D001 formal.en.md and model.mzn)

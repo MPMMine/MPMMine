@@ -27,35 +27,45 @@ Define integer variables
 
 The model is constrained by:
 
-1. **Physical Capacity**  
-   $$
-   \forall i\in I, \forall j\in J:\quad c_{ij} \le m_i\,u_j
-   $$
-   (a roll cannot contain more items than physically possible).
+1. **Physical Capacity**
 
-2. **Width Limit**  
-   $$
-   \forall j\in J:\quad \sum_{i\in I} c_{ij}\,w_i \le  W\,u_j
-   $$
-   (total width of items on a roll cannot exceed the roll’s width).
+$$
+\forall i\in I, \forall j\in J:\quad c\_{ij} \le m\_i\\,u\_j
+$$
 
-3. **Demand Satisfaction**  
-   $$
-   \forall i\in I:\quad \sum_{j\in J} c_{ij} \ge  d_i
-   $$
-   (every customer request is met).
+(a roll cannot contain more items than physically possible).
 
-4. **Symmetry Breaking**  
-   $$
-   \forall j\in J\setminus\{max\_rolls\}:\quad u_j \ge  u_{j+1}
-   $$
-   (orders rolls in decreasing usage to reduce equivalent solutions).
+3. **Width Limit**
 
-5. **Redundant Lower Bound on Total Number of Rolls**  
-   $$
-   \sum_{j\in J} u_j \ge \Bigl\lceil \frac{\sum_{i\in I} d_i\,w_i}{W} \Bigr\rceil
-   $$
-   (ensures the number of rolls is at least enough to cover the total required width).
+$$
+\forall j\in J:\quad \sum\_{i\in I} c\_{ij}\\,w\_i \le  W\\,u\_j
+$$
+
+(total width of items on a roll cannot exceed the roll’s width).
+
+5. **Demand Satisfaction**
+
+$$
+\forall i\in I:\quad \sum\_{j\in J} c\_{ij} \ge  d\_i
+$$
+
+(every customer request is met).
+
+7. **Symmetry Breaking**
+
+$$
+\forall j\in J\setminus\{max\\_rolls\}:\quad u\_j \ge  u\_{j+1}
+$$
+
+(orders rolls in decreasing usage to reduce equivalent solutions).
+
+9. **Redundant Lower Bound on Total Number of Rolls**
+
+$$
+\sum_{j\in J} u\_j \ge \Bigl\lceil \frac{\sum\_{i\in I} d_i\\,w\_i}{W} \Bigr\rceil
+$$
+
+(ensures the number of rolls is at least enough to cover the total required width).
 
 The **objective** is to minimize the total number of master rolls used:
 

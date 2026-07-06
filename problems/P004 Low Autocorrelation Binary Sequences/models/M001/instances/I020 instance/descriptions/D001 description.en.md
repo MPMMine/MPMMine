@@ -1,3 +1,3 @@
 # Low Autocorrelation Binary Sequences Problem
 
-The objective is to construct a binary sequence $S_i$ of length 29 that minimizes the autocorrelations between bits. Each bit in the sequence takes the value +1 or -1. With non-periodic (or open) boundary conditions, the k-th autocorrelation,  $C_k$ is defined to be $\sum\limits_{i=1}^{n-k} S_i * S_{i+k}$. The aim is to minimize the sum of the squares of these autocorrelations. That is, to minimize $E=\sum\limits_{k=1}^{n-1} C_k^2$.
+The objective is to construct a binary sequence $S_i$ of length 29 that minimizes the autocorrelations between bits. Each bit in the sequence takes the value +1 or -1. With non-periodic (or open) boundary conditions, the k-th autocorrelation,  $C_k$ is defined to be $\sum_{i=1}^{n-k} S_i * S_{i+k}$. The aim is to minimize the sum of the squares of these autocorrelations. That is, to minimize $E=\sum_{k=1}^{n-1} C_k^2$.

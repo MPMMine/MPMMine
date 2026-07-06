@@ -2,7 +2,7 @@
 
 The problem is to timetable a party at a yacht club. This specific instance involves **12 boats** and is scheduled over **5 time periods**.
 
-Certain boats are to be designated hosts, and the crews of the remaining boats in turn visit the host boats for several successive half-hour periods. The crew of a host boat remains on board to act as hosts while the crew of a guest boat together visits several hosts.
+Certain boats are to be designated hosts, and the crews of the remaining boats in turn visit the host boats in lexicographical order for several successive half-hour periods. The crew of a host boat remains on board to act as hosts while the crew of a guest boat together visits several hosts.
 
 Every boat can only hold a limited number of people at a time (its capacity) and crew sizes are different. For this problem, the specific boat data is:
 

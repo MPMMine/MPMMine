@@ -16,19 +16,19 @@ The organizer seeks to minimise the number of host vessels.
 * $\text{cap}_{b}$ – capacity of boat $b \in B$
 * $\text{crew}_{b}$ – crew size of boat $b \in B$
 * $H \subseteq B$ – the set of selected host boats
-* $\text{visit}_{b,t} \in H$ for every $b \in B,\, t \in T$ – the host that boat $b$ visits at slot $t$
+* $\text{visit}_{b,t} \in H$ for every $b \in B,\\, t \in T$ – the host that boat $b$ visits at slot $t$
 
 ### Decision‑variable constraints
 
-1. **Host consistency** – if $b \in H$ then $\text{visit}_{b,t}=b$ for all $t$, otherwise $\text{visit}_{b,t}$ is one of
+1. **Host consistency** – if $b \in H$ then $\text{visit}\_{b,t}=b$ for all $t$, otherwise $\text{visit}\_{b,t}$ is one of
    the hosts.
 2. **Capacity constraint** – for each host $h \in H$ and slot $t$,
-   $\sum_{b \in B}\bigl[\text{visit}_{b,t}=h\bigr]\;\cdot\;\text{crew}_{b}\;\le\;\text{cap}_{h},$
+   $\sum\_{b \in B}\bigl[\text{visit}\_{b,t}=h\bigr]\\;\cdot\\;\text{crew}\_{b}\\;\le\\;\text{cap}\_{h},$
    where $[\cdot]$ evaluates to 1 when the condition holds, 0 otherwise.
 3. **Unique encounters** – for any two distinct boats $k$ and $l$,
-   $\sum_{t \in T}\bigl[\text{visit}_{k,t}=\text{visit}_{l,t}\bigr]\;\le\;1.$
+   $\sum_{t \in T}\bigl[\text{visit}\_{k,t}=\text{visit}\_{l,t}\bigr]\\;\le\\;1.$
 4. **Symmetry breaking** – the rows of the visit matrix are lexicographically non‑increasing:
-   $\text{visit}_{\,\cdot,1}\;\le_{\text{lex}}\;\text{visit}_{\,\cdot,2}\;\le_{\text{lex}}\;\dots$
+   $\text{visit}\_{\\,\cdot,1}\\;\le_{\text{lex}}\\;\text{visit}\_{\\,\cdot,2}\\;\le\_{\text{lex}}\\;\dots$
 
 ### Objective
 

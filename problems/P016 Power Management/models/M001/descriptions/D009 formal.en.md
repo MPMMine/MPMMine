@@ -2,33 +2,33 @@
 
 ## 1. Problem Overview
 
-A residential system combines photovoltaic panels, a storage battery, and a hybrid inverter that can operate on‑grid
+a residential system combines photovoltaic panels, a storage battery, and a hybrid inverter that can operate on‑grid
 under a net‑billing tariff. Prices for buying and selling electricity vary over time; when the selling price is negative
 the grid must not be fed. For each planning period (typically a few minutes) the system is supplied with:
 
-| Symbol | Meaning                                 |
+| Symbol | meaning                                 |
 |--------|-----------------------------------------|
-| *t*    | A time period                           |
-| *Cₜ*   | Forecasted household consumption in kWh |
-| *P̂ₜ*  | Forecasted PV generation in kWh         |
-| *bₜ*   | Electricity buying price per kWh        |
-| *sₜ*   | Electricity selling price per kWh       |
+| *t*    | a time period                           |
+| *Ct*   | Forecasted household consumption in kWh |
+| $\hat{P}_t$  | Forecasted PV generation in kWh         |
+| *bt*   | Electricity buying price per kWh        |
+| *st*   | Electricity selling price per kWh       |
 
-Additionally the model contains two safety‑margin parameters that allow the plan to be conservative:
+additionally the model contains two safety‑margin parameters that allow the plan to be conservative:
 
 * *Eₑ* - extra kWh to cover unforeseen consumption
 * *Eᵤ* - extra kWh to cover unexpected shortfall in generation
 
-The battery has a prescribed operating window:
+the battery has a prescribed operating window:
 
-* *SoCₘᵢₙ* ≤ *SoCₜ* ≤ *SoCₘₐₓ*
+* *SoCmin* ≤ *SoCt* ≤ *SoCmax*
 * initial charge *SoC₀*
 * required final charge *SoC_F* (the battery must end the horizon with at least this value)
 
 Conversion efficiencies are known:
 
-* *η_c* - charging efficiency (DC → AC)
-* *η_d* - discharging efficiency (AC → DC)
+* *η_c* - charging efficiency (DC → aC)
+* *η_d* - discharging efficiency (aC → DC)
 * *η_s* - storage efficiency (SoC decay between periods)
 
 Charging also incurs a wear cost, expressed as a per‑kWh expense *cₑ* that depends on the battery’s nominal cycle life
@@ -36,64 +36,67 @@ and capacity.
 
 Peak‑shaving limits bound the actions that can be taken in any period:
 
-* *Sₘₐₓ* - maximum kWh that may be sold
-* *Cₘₐₓ* - maximum kWh that may be charged
-* *Dₘₐₓ* - maximum kWh that may be discharged
+* *Smax* - maximum kWh that may be sold
+* *Cmax* - maximum kWh that may be charged
+* *Dmax* - maximum kWh that may be discharged
 
-The plan must decide, for every period *t*:
+the plan must decide, for every period *t*:
 
-| Symbol  | Action                                      | Domain              |
+| Symbol  | action                                      | Domain              |
 |---------|---------------------------------------------|---------------------|
-| *pₜ*    | Actual energy produced (kWh)                | 0 … *P̂ₜ*           |
-| *bₜ*    | Energy bought from the grid (kWh)           | 0 … ∞ (unbounded)   |
-| *sₜ*    | Energy sold to the grid (kWh)               | 0 … *Sₘₐₓ*          |
-| *cₜ*    | Energy used to charge the battery (kWh)     | 0 … *Cₘₐₓ*          |
-| *dₜ*    | Energy extracted from the battery (kWh)     | 0 … *Dₘₐₓ*          |
-| *SoCₜ*  | Battery state of charge at period end (kWh) | *SoCₘᵢₙ* … *SoCₘₐₓ* |
-| *costₜ* | Monetary cost incurred in the period        | 0 … ∞ (unbounded)   |
-| *earnₜ* | Monetary earnings in the period             | 0 … ∞ (unbounded)   |
+| *pt*    | actual energy produced (kWh)                | 0 … $\hat{P}_t$          |
+| *bt*    | Energy bought from the grid (kWh)           | 0 … ∞ (unbounded)   |
+| *st*    | Energy sold to the grid (kWh)               | 0 … *Smax*          |
+| *ct*    | Energy used to charge the battery (kWh)     | 0 … *Cmax*          |
+| *dt*    | Energy extracted from the battery (kWh)     | 0 … *Dmax*          |
+| *SoCt*  | Battery state of charge at period end (kWh) | *SoCmin* … *SoCmax* |
+| *costt* | monetary cost incurred in the period        | 0 … ∞ (unbounded)   |
+| *earnt* | monetary earnings in the period             | 0 … ∞ (unbounded)   |
 
-The overall cost of the horizon is the sum of all *costₜ* minus the sum of all *earnₜ*.
+the overall cost of the horizon is the sum of all *costt* minus the sum of all *earnt*.
 
 ## 2. Constraints
 
 1. **Production limit**  
-   $ pₜ \le P̂ₜ $ for every *t*.
+$pt \le \hat{P}\_t$ for every *t*.
 
 2. **Energy balance**  
-   For each period  
-   $$
-   Cₜ + Eₑ + cₜ + sₜ = pₜ - Eᵤ + η_d\,dₜ + bₜ
-   $$
-   (consumption, safety margins, charging and selling must equal generation, undersupply, discharging, and buying).
+For each period
 
-3. **Exclusive actions**  
-   • *sₜ* and *bₜ* cannot both be positive in the same period.  
-   • *cₜ* and *dₜ* cannot both be positive in the same period.
+$$
+Ct + Eₑ + ct + st = pt - Eᵤ + η_d\,dt + bt
+$$
 
-4. **Battery dynamics**  
-   For the first period,  
-   $ SoC₁ = SoC₀·η_s + η_c·c₁ - d₁ $.  
-   For subsequent periods,  
-   $ SoCₜ = SoC_{t-1}·η_s + η_c·cₜ - dₜ $.
+(consumption, safety margins, charging and selling must equal generation, undersupply, discharging, and buying).
 
-5. **Final state of charge**  
-   $ SoC_{last} \ge SoC_F $.
+4. **Exclusive actions**  
+• *st* and *bt* cannot both be positive in the same period.  
+• *ct* and *dt* cannot both be positive in the same period.
 
-6. **Cost and earnings**  
-   *costₜ* = *bₜ*·*bₜ*price + *cₜ*·(*cₑ*/*η_c*)  
-   *earnₜ* = *sₜ*·*sₜ*price
+5. **Battery dynamics**  
+For the first period,  
+$SoC₁ = SoC₀·η_s + η_c·c₁ - d₁$.  
+For subsequent periods,  
+$SoCt = SoC_{t-1}·η_s + η_c·ct - dt$.
 
-The total cost of the horizon is  
-$ \text{TotalCost} = \sum_t \text{cost}_t $  
+6. **Final state of charge**  
+$SoC\_{last} \ge SoC\_F$.
+
+7. **Cost and earnings**  
+*costt* = *bt*·*bt*price + *ct*·(*cₑ*/*η_c*)  
+*earnt* = *st*·*st*price
+
+the total cost of the horizon is  
+$\text{totalCost} = \sum_t \text{cost}_t$  
 and the total earnings are  
-$ \text{TotalEarn} = \sum_t \text{earn}_t $.
+$\text{totalEarn} = \sum_t \text{earn}_t$.
 
 ## 3. Objective
 
-Minimise the net operating cost:
+minimise the net operating cost:
+
 $$
-\min \text{TotalCost} - \text{TotalEarn}
+\min \text{totalCost} - \text{totalEarn}
 $$
 
 [//]: # (Generated using gpt-oss:latest from D001 description.en.md and model.mzn; minor manual amendments)

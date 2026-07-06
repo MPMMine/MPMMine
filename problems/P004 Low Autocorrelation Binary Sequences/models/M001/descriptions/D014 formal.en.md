@@ -1,7 +1,6 @@
 # Low autocorrelation sequence generation
 
-**Problem statement** - Create an ordered collection `X` of `N` elements. Each element is labeled either **pos** or *
-*neg**. For every separation distance ranging between the smallest positive lag and one before the full length, compute
+**Problem statement** - Create an ordered collection `X` of `N` elements. Each element is labeled either **pos** or **neg**. For every separation distance ranging between the smallest positive lag and one before the full length, compute
 
 $C(K)=\sum_i X_i X_{i+K}$
 

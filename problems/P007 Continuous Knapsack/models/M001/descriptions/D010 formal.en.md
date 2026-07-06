@@ -17,13 +17,15 @@ Decision variables **x[i]** ∈ [0, 1] indicate the fraction of firm *i* that th
 The optimisation problem is formulated as follows:
 
 **Constraint**  
+
 $$
-\sum_{i\in\text{OBJ}} \text{size}[i] \cdot x[i] \le \text{capacity}
+\sum\_{i\in\text{OBJ}} \text{size}[i] \cdot x[i] \le \text{capacity}
 $$
 
 **Objective**  
+
 $$
-\text{maximise} \sum_{i\in\text{OBJ}} \text{profit}[i] \cdot x[i]
+\text{maximise} \sum\_{i\in\text{OBJ}} \text{profit}[i] \cdot x[i]
 $$
 
 The task is to determine the vector **x** that satisfies the budget constraint while maximizing the overall portfolio

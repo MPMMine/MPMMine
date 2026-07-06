@@ -10,33 +10,35 @@ such that:
 
 * **Orientation**  
   Each container can be placed in its original orientation ($o_c$ = 1) or rotated 90° ($o_c$ = 2). Consequently
-  $
-  R_c = L_c + \begin{cases}
-  W_c & \text{if } o_c=1,\\
-  L_c & \text{if } o_c=2,
-  \end{cases}
-  $
 
-  $
-  T_c = B_c + \begin{cases}
-  L_c & \text{if } o_c=1,\\
-  W_c & \text{if } o_c=2,
-  \end{cases}
-  $
+$$
+R_c = L_c + 
+\begin{cases} 
+W_c & \text{if } o_c=1, \\ 
+L_c & \text{if } o_c=2 
+\end{cases}
+$$
+
+$$
+T_c = B_c + \begin{cases}
+L_c & \text{if } o_c=1,\\
+W_c & \text{if } o_c=2,
+\end{cases}
+$$
 
   where $L_c$, $R_c$, $B_c$, $T_c$ denote the left, right, bottom, and top coordinates of container *c*.
 
 * **Non‑overlap with separation**  
   For any two distinct containers *c* and *k*,
 
-  $
-  \begin{aligned}
-  &L_c \ge R_k + S_{Cls(c),Cls(k)} \lor \\
-  &R_c + S_{Cls(c),Cls(k)} \le  L_k \lor \\
-  &B_c \ge T_k + S_{Cls(c),Cls(k)} \lor \\
-  &T_c + S_{Cls(c),Cls(k)} \le  B_k .
-  \end{aligned}
-  $
+$$
+\begin{aligned}
+&L_c \ge R_k + S_{Cls(c),Cls(k)} \lor \\
+&R_c + S_{Cls(c),Cls(k)} \le  L_k \lor \\
+&B_c \ge T_k + S_{Cls(c),Cls(k)} \lor \\
+&T_c + S_{Cls(c),Cls(k)} \le  B_k .
+\end{aligned}
+$$
 
 * **Loading sequence constraint**  
   Containers are driven onto the deck from the southeast corner. Each successive container must touch an existing

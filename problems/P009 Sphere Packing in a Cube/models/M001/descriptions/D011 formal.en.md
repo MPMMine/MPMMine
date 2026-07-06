@@ -29,14 +29,17 @@ For each sphere $\sigma_i \in \Sigma$:
 
 If a sphere is positioned, it must be fully contained within the cube.
 For each sphere $\sigma_i \in \Sigma$, this requirement is enforced by:
+
 $$
-\rho_i \upsilon_i \le \xi_i \le \lambda - \rho_i \upsilon_i,
+\rho\_i \upsilon\_i \le \xi\_i \le \lambda - \rho\_i \upsilon\_i,
 $$
+
 $$
-\rho_i \upsilon_i \le \eta_i \le \lambda - \rho_i \upsilon_i,
+\rho\_i \upsilon\_i \le \eta\_i \le \lambda - \rho\_i \upsilon\_i,
 $$
+
 $$
-\rho_i \upsilon_i \le \zeta_i \le \lambda - \rho_i \upsilon_i.
+\rho\_i \upsilon\_i \le \zeta\_i \le \lambda - \rho\_i \upsilon\_i.
 $$
 
 ### 2. Non-Intersection Constraints
@@ -44,18 +47,21 @@ $$
 No two positioned spheres may intersect.
 For every pair of distinct spheres $\sigma_i, \sigma_j \in \Sigma$ with $i < j$, the squared Euclidean distance between
 their centers must be at least the square of the sum of their radii whenever both spheres are positioned:
+
 $$
-(\xi_i - \xi_j)^2 + (\eta_i - \eta_j)^2 + (\zeta_i - \zeta_j)^2
+(\xi\_i - \xi\_j)^2 + (\eta\_i - \eta\_j)^2 + (\zeta\_i - \zeta\_j)^2
 \ge
-(\rho_i + \rho_j)^2 - \Phi \bigl(2 - \upsilon_i - \upsilon_j\bigr),
+(\rho\_i + \rho\_j)^2 - \Phi \bigl(2 - \upsilon\_i - \upsilon\_j\bigr),
 $$
+
 where $\Phi > 0$ is a sufficiently large constant.
 
 ## Objective
 
 The objective is to optimize the count of spheres positioned within the cube:
+
 $$
-\max \sum_{i \in \Sigma} \upsilon_i.
+\max \sum\_{i \in \Sigma} \upsilon\_i.
 $$
 
 [//]: # (Generated using llama3.3:latest from D001 formal.en.md and model.mzn; minor manual amendments applied)

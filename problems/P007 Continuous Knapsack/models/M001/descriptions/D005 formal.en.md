@@ -20,12 +20,14 @@ cargo is maximized.
 - Decision variables:
     - $x_i \in [0,1]$ – the fraction of fluid $i$ that is loaded into the car.
 - Capacity constraint:
-  $$
-  \sum_{i\in\mathcal{O}} s_i\,x_i \;\le\; c .
-  $$
+
+$$
+\sum\_{i\in\mathcal{O}} s\_i\\,x\_i \\;\le\\; c .
+$$
 - Objective:
-  $$
-  \max \;\sum_{i\in\mathcal{O}} p_i\,x_i .
-  $$
+
+$$
+\max \\;\sum_{i\in\mathcal{O}} p\_i\\,x\_i .
+$$
 
 [//]: # (Generated using gpt-oss:latest from D001 description.en.md and model.mzn; minor manual amendments applied)

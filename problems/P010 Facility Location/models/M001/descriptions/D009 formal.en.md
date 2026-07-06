@@ -32,23 +32,26 @@ imposing upper bounds on how much demand each opened facility can serve.
 ### Objective
 
 Minimize the total cost, comprising both fixed opening costs and variable service costs:
+
 $$
-\min Z = \sum_{i\in Fac} \text{fixed\_cost}[i] \text{open}[i]  +
-\sum_{i\in Fac}\sum_{j\in Cust}
-\bigl(\text{demand}[j] \text{dist\_cost}[i,j]\bigr) \text{satisfied}[i,j].
+\min Z = \sum\_{i\in Fac} \text{fixed\\_cost}[i] \text{open}[i]  +
+\sum\_{i\in Fac}\sum\_{j\in Cust}
+\bigl(\text{demand}[j] \text{dist\\_cost}[i,j]\bigr) \text{satisfied}[i,j].
 $$
 
 ### Constraints
 
 **(a) Demand Satisfaction** – Every customer’s demand must be met in full:
+
 $$
-\sum_{i\in Fac} \text{satisfied}[i,j] \ge 1 \quad \forall j\in Cust.
+\sum\_{i\in Fac} \text{satisfied}[i,j] \ge 1 \quad \forall j\in Cust.
 $$
 
 **(b) Capacity & Activation** – Demand can only be assigned to a facility that is opened, and the total assigned demand
 must not exceed the facility’s capacity:
+
 $$
-\sum_{j\in Cust} \text{demand}[j] \text{satisfied}[i,j]
+\sum\_{j\in Cust} \text{demand}[j] \text{satisfied}[i,j]
 \le
 \text{capacity}[i] \text{open}[i] \quad \forall  i\in Fac.
 $$

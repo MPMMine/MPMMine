@@ -10,3 +10,4 @@ p =
 R = [141, 136, 158];
 Production = 435;
 Surplus = 250;
+% _objective = 435;

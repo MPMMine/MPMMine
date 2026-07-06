@@ -4,8 +4,7 @@ The cutting stock problem concerns partitioning large blank units (e.g., rolls) 
 pieces while keeping waste to a minimum or, equivalently, reducing the number of raw units required. Typical settings
 involve many product widths and quantities that must be satisfied from stock items of a single fixed length.
 
-Mathematically let **N** denote the total set of distinct piece types; each type *i* has an associated requirement **D_i
-** (represented by a symbolic variable). Raw material blocks all share a common size parameter, denoted **L**.
+Mathematically let **N** denote the total set of distinct piece types; each type *i* has an associated requirement **D_i** (represented by a symbolic variable). Raw material blocks all share a common size parameter, denoted **L**.
 
 The planning formulation introduces binary indicators **U_j** that signal whether a particular raw block *j* is actually
 taken into service. For each ordered pair *(i,j)* the model stores an integer count **C_{i,j}**, representing how many

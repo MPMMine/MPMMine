@@ -27,24 +27,30 @@ space, and a binary variable indicating whether the sphere is included in the pa
 
 If a sphere is selected, its center must be positioned such that it lies entirely within the cube. This is enforced by
 requiring that for each sphere $i$, the center coordinates satisfy:
+
 $$
-r_i s_i \le x_i \le L - r_i s_i,
+r\_i s\_i \le x\_i \le L - r\_i s\_i,
 $$
+
 $$
-r_i s_i \le y_i \le L - r_i s_i,
+r\_i s\_i \le y\_i \le L - r\_i s\_i,
 $$
+
 $$
-r_i s_i \le z_i \le L - r_i s_i.
+r\_i s\_i \le z\_i \le L - r\_i s\_i.
 $$
+
 When $s_i = 0$, these constraints do not impose restrictions on the center coordinates.
 
 ### 2. Non-Overlap Constraints
 
 To ensure that no two packed spheres overlap, for every pair of distinct spheres $i$ and $j$ with $i < j$, the Euclidean
 distance between their centers must be at least the sum of their radii if both are selected. This is expressed as:
+
 $$
-(x_i - x_j)^2 + (y_i - y_j)^2 + (z_i - z_j)^2 \ge (r_i + r_j)^2 - M (2 - s_i - s_j),
+(x\_i - x\_j)^2 + (y\_i - y\_j)^2 + (z\_i - z\_j)^2 \ge (r\_i + r\_j)^2 - M (2 - s\_i - s\_j),
 $$
+
 where $M > 0$ is a sufficiently large constant chosen to relax the constraint whenever at least one of the spheres is
 not selected.
 
@@ -53,8 +59,9 @@ not selected.
 ## Objective Function
 
 The aim is to maximize the total number of spheres that are packed, which is given by:
+
 $$
-\max \sum_{i} s_i.
+\max \sum\_{i} s\_i.
 $$
 
 [//]: # (Generated using deepseek-r1:latest from D001 formal.en.md and model.mzn; minor manual amendments applied)

@@ -20,8 +20,8 @@ expenditure.
 |----------------------|------------------------------------------------------------------------|
 | $\text{cost}[i,t]$   | Purchase price of ingredient $i$ during period $t$                     |
 | $\text{comp}[i,j]$   | Content of nutrient $j$ per unit of ingredient $i$                     |
-| $\text{min\_req}[j]$ | Minimum allowable total amount of nutrient $j$ in a batch              |
-| $\text{max\_req}[j]$ | Maximum allowable total amount of nutrient $j$ in a batch              |
+| $\text{min\\_req}[j]$ | Minimum allowable total amount of nutrient $j$ in a batch              |
+| $\text{max\\_req}[j]$ | Maximum allowable total amount of nutrient $j$ in a batch              |
 | $\text{W}$           | Target total mass of the blended feed for each period                  |
 | $\text{SC}$          | Maximum units of any ingredient that may be held in stock              |
 | $\text{HC}$          | Holding cost per unit of ingredient per period                         |
@@ -46,26 +46,28 @@ expenditure.
    $\text{stock}[i,t] = \text{stock}[i,t-1] + \text{buy}[i,t] - \text{use}[i,t]$.
 
 3. **Production mass balance**  
-   In every period the blended feed must weigh exactly $\text{W}$:  
-   $\sum_{i\in I}\text{use}[i,t] = \text{W}$ for all $t\in T$.
+   In every period the blended feed must weigh exactly $\text{W}$:
+   $\sum\_{i\in I}\text{use}[i,t] = \text{W}$ for all $t\in T$.
 
-4. **Nutrient limits**  
-   For every nutrient $j$ and period $t$:  
-   $$
-   \text{min_req}[j] \le \sum_{i\in I}\text{use}[i,t] \text{comp}[i,j] \le \text{max_req}[j].
-   $$
+5. **Nutrient limits**  
+   For every nutrient $j$ and period $t$:
 
-5. **Grain proportion**  
-   In each period the total amount of grains used must be at least a fraction $\gamma$ of the batch:  
-   $$
-   \sum_{i\in G}\text{use}[i,t] \ge \gamma \text{W}.
-   $$
+$$
+\text{min\\_req}[j] \le \sum\_{i\in I}\text{use}[i,t] \text{comp}[i,j] \le \text{max\\_req}[j].
+$$
 
-6. **Storage capacity**  
+6. **Grain proportion**  
+   In each period the total amount of grains used must be at least a fraction $\gamma$ of the batch:
+
+$$
+\sum\_{i\in G}\text{use}[i,t] \ge \gamma \text{W}.
+$$
+
+8. **Storage capacity**  
    For all $i,t$:  
    $0 \le \text{stock}[i,t] \le \text{SC}$.
 
-7. **Non‑negativity**  
+9. **Non‑negativity**  
    All purchase, usage and stock quantities are non‑negative and bounded by logical limits implied by the above
    constraints.
 
@@ -75,7 +77,7 @@ Minimize the sum of buying and holding costs over the entire horizon:
 
 $$
 \min
-\sum_{t\in T} \sum_{i\in I}\bigl(
+\sum\_{t\in T} \sum\_{i\in I}\bigl(
 \text{buy}[i,t] \text{cost}[i,t] + \text{stock}[i,t] \text{HC}
 \bigr).
 $$

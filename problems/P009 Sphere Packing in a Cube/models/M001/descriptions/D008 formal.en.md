@@ -21,8 +21,7 @@ We wish to determine:
 
 * For every ball `i`, a binary indicator **`δ_i ∈ {0,1}`** that equals 1 when ball `i` is packed into the cube and 0
   otherwise.
-* The centre coordinates **`cx_i , cy_i , cz_i`**, each constrained to live somewhere inside the interval **[0 , L_side]
-  **.
+* The centre coordinates **`cx_i , cy_i , cz_i`**, each constrained to live somewhere inside the interval **[0 , L_side]**.
 
 ---
 
@@ -33,12 +32,12 @@ requirements can be written as three simultaneous inequalities for every index `
 
 $$
 \begin{aligned}
-cx_i &\ge rad_i\,δ_i ,\\
-cy_i &\ge rad_i\,δ_i ,\\
-cz_i &\ge rad_i\,δ_i ,\$$2pt]
-cx_i &\le L_{side} - rad_i\,δ_i ,\\
-cy_i &\le L_{side} - rad_i\,δ_i ,\\
-cz_i &\le L_{side} - rad_i\,δ_i .
+cx\_i \ge rad\_i\\,δ\_i ,\\\
+cy\_i \ge rad\_i\\,δ_i ,\\\
+cz\_i \ge rad\_i\\,δ_i ,\\\
+cx\_i \le L\_{side} - rad\_i\\,δ\_i ,\\\
+cy\_i \le L\_{side} - rad\_i\\,δ\_i ,\\\
+cz\_i \le L\_{side} - rad\_i\\,δ\_i .
 \end{aligned}
 $$
 

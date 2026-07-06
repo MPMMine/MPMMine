@@ -28,21 +28,24 @@ on each operational site.
 ### Purpose Function
 
 The optimization seeks to minimize overall expenditure, which aggregates opening expenses and servicing costs:  
+
 $$
-\min \Bigl[\sum_{i\in\text{Fac}} FC_i open_i + \sum_{i\in\text{Fac}} \sum_{j\in\text{Cust}} (DEM_j \cdot C_{ij})  sat_{ij} \Bigr]
+\min \Bigl[\sum\_{i\in\text{Fac}} FC_i open_i + \sum\_{i\in\text{Fac}} \sum\_{j\in\text{Cust}} (DEM_j \cdot C_{ij})  sat_{ij} \Bigr]
 $$
 
 ### Required Conditions
 
 **A. Full Demand Coverage** – Every demand node must be completely satisfied:  
+
 $$
-\sum_{i\in\text{Fac}} sat_{ij} \ge  1 \qquad\forall j\in\text{Cust}
+\sum\_{i\in\text{Fac}} sat\_{ij} \ge  1 \qquad\forall j\in\text{Cust}
 $$
 
 **B. Capacity together with Activation Rule** – Flow can only be assigned to a site that is open, and the cumulative
 flow into any open site cannot exceed its capacity:  
+
 $$
-\sum_{j\in\text{Cust}} (DEM_j \cdot sat_{ij}) \le CAP_i open_i \qquad\forall i\in\text{Fac}
+\sum\_{j\in\text{Cust}} (DEM\_j \cdot sat\_{ij}) \le CAP\_i open\_i \qquad\forall i\in\text{Fac}
 $$
 
 These expressions capture both the allocation limitation imposed by a facility’s size and the necessity that any

@@ -11,7 +11,7 @@ represented by the positive quantity $\Lambda$.
 * For every index $i\in\mathcal{I}$ introduce real‑valued centre coordinates
   $(\alpha_i,\beta_i,\gamma_i)\in\mathbb{R}^3$ describing its geometric centre.
 
-* Introduce a binary selector $ \delta_i\in\{0,1\}$ whose value $1$ indicates that ball $i$ is placed inside the
+* Introduce a binary selector $\delta_i\in\{0,1\}$ whose value $1$ indicates that ball $i$ is placed inside the
   enclosure, while $0$ signals omission.
 
 ---

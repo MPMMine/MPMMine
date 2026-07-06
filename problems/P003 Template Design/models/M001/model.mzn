@@ -79,6 +79,8 @@ constraint symmetry_breaking_constraint(
 
 % implied constraints on the surplus
 
+% [Rafał Stachowiak] Since those constraints despite being `implied` make the attached instances infeasible, we include them in the descriptions.
+
 % These are presented in the paper as necessary to get good
 % performance for this model, but I think bounds consistency on the
 % sum(R[i]) constraint would produce the same amount of propagation
