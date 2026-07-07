@@ -13,6 +13,12 @@ set of int : hosts;
 array [Boat, Time] of int : visit;
 int: optVar;
 
+% Flag to determine if the objective value should be checked flag passed via -D "check_objective=true" or "check_objective=false"
+bool: check_objective;
+% Float with the objective value from the solution file (it is saved there as a comment) -D "obj_from_sol=<number>"
+float: obj_from_sol;
+float: eps = 1e-6; 
+
 test check(bool: b, string: s) =
   if b then true else trace_stdout("ERROR: " ++ s ++ "\n", false) endif;
 
@@ -59,7 +65,17 @@ array[int] of bool: checks =
       "  Period " ++ show(i)   ++ ": " ++ show(col(visit, i)) ++ "\n" ++
       "  Period " ++ show(i+1) ++ ": " ++ show(col(visit, i+1))
     )
-  | i in 1..n_periods-1 ];
+  | i in 1..n_periods-1 ]
+  ++
+  % Conditionally append the objective check inline
+  if check_objective then 
+    [ check(
+        int2float(optVar) >= obj_from_sol - eps /\ int2float(optVar) <= obj_from_sol + eps,
+        "The objective: " ++ show(optVar) ++ " does not match the objective from the solution file: " ++ show(obj_from_sol)
+      ) ]
+  else 
+    [] 
+  endif;
 
 output [
   if forall(checks)

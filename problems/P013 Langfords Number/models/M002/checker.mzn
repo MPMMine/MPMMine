@@ -6,6 +6,10 @@ set of int: positionDomain = 1..2*k;
 array[positionDomain] of positionDomain: position;
 array[positionDomain] of 1..k: solution;
 
+% To ensure common contract of the checker files we add those parameters as unused optionals. 
+opt bool: check_objective;
+opt float: obj_from_sol;
+
 test check(bool: b, string: s) = 
     if b then true else trace_stdout("ERROR: " ++ s ++ "\n", false) endif;
 

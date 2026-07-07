@@ -1,6 +1,9 @@
 int: boxes;
 int: balls;
 array[1..balls] of 1..boxes: box;
+% To ensure common contract of the checker files we add those parameters as unused optionals. 
+opt bool: check_objective;
+opt float: obj_from_sol;
 
 test check(bool: b, string: s) = 
     if b then true else trace_stdout("ERROR: " ++ s ++ "\n", false) endif;

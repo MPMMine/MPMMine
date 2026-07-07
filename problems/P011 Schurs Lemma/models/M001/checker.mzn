@@ -4,6 +4,11 @@ int: n;
 int: max_k = floor((exp(1) - 1.0/6.0) * product(i in 1..n)(int2float(i))); 
 int: k;
 array[1..max_k] of 1..n: x;
+% Flag to determine if the objective value should be checked flag passed via -D "check_objective=true" or "check_objective=false"
+bool: check_objective;
+% Float with the objective value from the solution file (it is saved there as a comment) -D "obj_from_sol=<number>"
+float: obj_from_sol;
+float: eps = 1e-6; 
 
 
 test check(bool: b, string: s) = 
@@ -74,7 +79,17 @@ array[int] of bool: checks =
     [ check(
         par_value_precede_chain_int([i | i in 1..n], x),
         "Symmetry breaking failed: Value precedence order (1.." ++ show(n) ++ ") is broken."
-      ) ];
+      ) ]
+    ++
+    % Conditionally append the objective check inline
+    if check_objective then 
+        [ check(
+            k >= obj_from_sol - eps /\ k <= obj_from_sol + eps,
+            "The objective: " ++ show(k) ++ " does not match the objective from the solution file: " ++ show(obj_from_sol)
+        ) ]
+    else 
+        [] 
+    endif;
 
 output [
     if forall(checks)

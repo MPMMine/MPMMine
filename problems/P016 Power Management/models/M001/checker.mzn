@@ -32,6 +32,10 @@ float: total_earn;
 % Unification flag passed via -D "is_solution=true" or "is_solution=false"
 bool: is_solution;
 float: eps = if is_solution then 1e-4 else -1e-4 endif; 
+% Flag to determine if the objective value should be checked flag passed via -D "check_objective=true" or "check_objective=false"
+bool: check_objective;
+% Float with the objective value from the solution file (it is saved there as a comment) -D "obj_from_sol=<number>"
+float: obj_from_sol;
 
 test check(bool: b, string: s) = 
     if b then true else trace_stdout("ERROR: " ++ s ++ "\n", false) endif;
@@ -130,7 +134,18 @@ array[int] of bool: checks =
         total_earn <= sum(earn) + eps,
         "Aggregated total_earn doesn't match sum of periodic earnings."
       )
-    ];
+    ]
+    ++
+    % Conditionally append the objective check inline
+    if check_objective then 
+    let {float: res = total_cost - total_earn} in 
+        [ check(
+            res >= obj_from_sol - eps /\ res <= obj_from_sol + eps,
+            "The objective: " ++ show(res) ++ " does not match the objective from the solution file: " ++ show(obj_from_sol)
+        ) ]
+    else 
+        [] 
+    endif;
 
 output [
     if forall(checks)

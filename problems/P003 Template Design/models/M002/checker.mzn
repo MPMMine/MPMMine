@@ -9,6 +9,12 @@ int: lupper = 2*llower;
 array[1..n,1..t] of 0..S: p;
 array[1..t] of 1..lupper: R;
 
+% Flag to determine if the objective value should be checked flag passed via -D "check_objective=true" or "check_objective=false"
+bool: check_objective;
+% Float with the objective value from the solution file (it is saved there as a comment) -D "obj_from_sol=<number>"
+float: obj_from_sol;
+float: eps = 1e-6; 
+
 test check(bool: b, string: s) = 
     if b then true else trace_stdout("ERROR: " ++ s ++ "\n", false) endif;
 
@@ -50,7 +56,18 @@ array[int] of bool: checks =
         else true endif,
         "Pseudo symmetry violation: Variation " ++ show(i) ++ " has more total prints ( " ++ show(sum(j in 1..t)(p[i,j]*R[j])) ++ " ) than Variation " ++ show(i+1) ++ " ( " ++ show(sum(j in 1..t)(p[i+1,j]*R[j])) ++ " )."
     )
-    | i in 1..n-1 ];
+    | i in 1..n-1 ]
+    ++
+    % Conditionally append the objective check inline
+    if check_objective then 
+    let {float: res = sum(i in 1..t)(R[i])} in 
+        [ check(
+            int2float(res) >= obj_from_sol - eps /\ int2float(res) <= obj_from_sol + eps,
+            "The objective: " ++ show(res) ++ " does not match the objective from the solution file: " ++ show(obj_from_sol)
+        ) ]
+    else 
+        [] 
+    endif;
 
 output [
   if forall(checks)
