@@ -12,6 +12,10 @@ array[Options] of int: numberOfCarsWithGivenOption = [sum(j in Classes) (carQuan
 array[Slots] of int: slot;
 array[Options, Slots] of int: setup;
 
+% To ensure common contract of the checker files we add those parameters as unused optionals. 
+opt bool: check_objective;
+opt float: obj_from_sol;
+
 test check(bool: b, string: s) = 
     if b then true else trace_stdout("ERROR: " ++ s ++ "\n", false) endif;
 

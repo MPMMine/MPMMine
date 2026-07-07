@@ -8,6 +8,12 @@ array[1..m] of 0..n: mark;
 array[1..(m*(m-1)) div 2] of int: differences =
     [ mark[j] - mark[i] | i in 1..m, j in i+1..m];
 
+% Flag to determine if the objective value should be checked flag passed via -D "check_objective=true" or "check_objective=false"
+bool: check_objective;
+% Float with the objective value from the solution file (it is saved there as a comment) -D "obj_from_sol=<number>"
+float: obj_from_sol;
+float: eps = 1e-6; 
+
 test check(bool: b, string: s) = 
     if b then true else trace_stdout("ERROR: " ++ s ++ "\n", false) endif;
 
@@ -44,7 +50,17 @@ array[int] of bool: checks =
     [ check(
         differences[1] < differences[max(index_set(differences))],
         "The first difference is bigger than the last one"
-    )];
+    )]
+    ++
+    % Conditionally append the objective check inline
+    if check_objective then 
+        [ check(
+            int2float(mark[m]) >= obj_from_sol - eps /\ int2float(mark[m]) <= obj_from_sol + eps,
+            "The objective: " ++ show(mark[m]) ++ " does not match the objective from the solution file: " ++ show(obj_from_sol)
+        ) ]
+    else 
+        [] 
+    endif;
 
 output [
   if forall(checks)

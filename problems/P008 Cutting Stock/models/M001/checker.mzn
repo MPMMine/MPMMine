@@ -14,6 +14,10 @@ array[1..n_items, 1..max_rolls] of 0..max(max_cuts_per_item): cut;
 % Unification flag passed via -D "is_solution=true" or "is_solution=false"
 bool: is_solution;
 float: eps = if is_solution then 1e-7 else -1e-7 endif;
+% Flag to determine if the objective value should be checked flag passed via -D "check_objective=true" or "check_objective=false"
+bool: check_objective;
+% Float with the objective value from the solution file (it is saved there as a comment) -D "obj_from_sol=<number>"
+float: obj_from_sol;
 
 test check(bool: b, string: s) = 
     if b then true else trace_stdout("ERROR: " ++ s ++ "\n", false) endif;
@@ -43,7 +47,18 @@ array[int] of bool: checks =
         use[j] >= use[j+1],
         "Item " ++ show(j) ++ " is smaller than item " ++ show(j+1)
     )
-    | j in 1..max_rolls-1 ];
+    | j in 1..max_rolls-1 ]
+    ++
+    % Conditionally append the objective check inline
+    if check_objective then 
+    let {float: res = sum(j in 1..max_rolls) (use[j])} in 
+        [ check(
+            res >= obj_from_sol - eps /\ res <= obj_from_sol + eps,
+            "The objective: " ++ show(res) ++ " does not match the objective from the solution file: " ++ show(obj_from_sol)
+        ) ]
+    else 
+        [] 
+    endif;
 
 output [
     if forall(checks)

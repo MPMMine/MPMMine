@@ -11,6 +11,12 @@ array[1..t] of 1..lupper: R;
 llower..lupper: Production;
 0..lupper-llower: Surplus;
 
+% Flag to determine if the objective value should be checked flag passed via -D "check_objective=true" or "check_objective=false"
+bool: check_objective;
+% Float with the objective value from the solution file (it is saved there as a comment) -D "obj_from_sol=<number>"
+float: obj_from_sol;
+float: eps = 1e-6; 
+
 test check(bool: b, string: s) = 
     if b then true else trace_stdout("ERROR: " ++ s ++ "\n", false) endif;
 
@@ -88,8 +94,18 @@ array[int] of bool: checks =
             (R[1] <= Production div 3 /\ R[2] <= Production div 2 /\ R[3] >= Production div 3)
         else true endif,
         "Run length implied constraints violated for t = " ++ show(t) ++ " with template runs R = " ++ show(R) ++ "."
-    )];
-
+    )] 
+    ++
+    % Conditionally append the objective check inline
+    if check_objective then 
+        [ check(
+            int2float(Production) >= obj_from_sol - eps /\ int2float(Production) <= obj_from_sol + eps,
+            "The objective: " ++ show(Production) ++ " does not match the objective from the solution file: " ++ show(obj_from_sol)
+        ) ]
+    else 
+        [] 
+    endif;
+    
 output [
   if forall(checks)
   then "CORRECT: all constraints hold.\n"

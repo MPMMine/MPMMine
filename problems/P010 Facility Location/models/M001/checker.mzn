@@ -13,6 +13,10 @@ array[Fac, Cust] of float: satisfied;
 
 % Unification flag passed via -D "is_solution=true" or "is_solution=false"
 bool: is_solution;
+% Flag to determine if the objective value should be checked flag passed via -D "check_objective=true" or "check_objective=false"
+bool: check_objective;
+% Float with the objective value from the solution file (it is saved there as a comment) -D "obj_from_sol=<number>"
+float: obj_from_sol;
 float: eps = if is_solution then 1e-6 else -1e-6 endif;
 
 test check(bool: b, string: s) = 
@@ -39,7 +43,18 @@ array[int] of bool: checks =
         sum(j in Cust)(int2float(demand[j]) * satisfied[i, j]) <= int2float(capacity[i] * open[i]) + eps,
         "Facility " ++ show(i) ++ " capacity violated. Serviced: " ++ show(sum(j in Cust)(int2float(demand[j]) * satisfied[i, j])) ++ ", Available: " ++ show(capacity[i] * open[i])
       )
-    | i in Fac ];
+    | i in Fac ]
+    ++
+    % Conditionally append the objective check inline
+    if check_objective then 
+        let {float: res = sum(i in Fac)(int2float(open[i]) * fixed_cost[i]) + sum(i in Fac, j in Cust)(satisfied[i, j] * int2float(demand[j]) * dist_cost[i, j]);} in 
+        [ check(
+            res >= obj_from_sol - eps /\ res <= obj_from_sol + eps,
+            "The objective: " ++ show(res) ++ " does not match the objective from the solution file: " ++ show(obj_from_sol)
+        ) ]
+    else 
+        [] 
+    endif;
 
 output [
     if forall(checks)
