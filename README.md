@@ -220,6 +220,38 @@ Every model checker should return the control string `CORRECT: all constraints h
 If a valid solution is found to be infeasible, or a non-solution is unexpectedly marked as feasible, the checker should return the control string `INCORRECT: See error log above for specific violations.` 
 Problems that contain float expressions in their constraints or operate on float variables must be checked with the appropriate tolerance defined by the `eps` parameter. 
 To distinguish between a solution and a non-solution, the model checker should accept an `is_solution` flag passed via the MiniZinc `-D "is_solution=true" or "is_solution=false"` option.
+To check the correctness of the objective function in the comment stored inside the solution file, one should pass `-D check_objective=true` and `-D obj_from_sol=<value>`.
+
+General use:
+
+**minizinc** **--solver** *SOLVER* *CHECKER_PATH* *INSTANCE_PATH* *SOLUTION_PATH* [**--statistics**] [KWARGS]
+
+Runs the MiniZinc constraint modeling tool with a specified solver, checker script, instance data, and solution file.
+
+OPTIONS:
+
+* **--solver** *SOLVER* Specify the name or path of the solver to be used.
+
+* **--statistics** Output performance and search statistics upon completion.
+
+* **-D** *assignment* Pass a data definition or parameter assignment to the model via *KWARGS*:
+
+  * **-D check_objective=**{**true**|**false**}  
+    Enable or disable objective value validation. 
+    When set to `true` passing `obj_from_sol` is highly advised, as the checker will fail when the objective is set to be checked but there is nothing to compare it to.
+    
+  * **-D is_solution=**{**true**|**false**}  
+    Specify whether the input solution represents a feasible solution.
+    
+  * **-D obj_from_sol=***VALUE* Inject a specific objective *VALUE* parsed from the solution file.
+
+The optionality of particular injections are defined by the checker files.
+
+## EXAMPLES
+
+```bash
+minizinc --solver gurobi checker.mzn data.dzn sol.dzn --statistics -D "-D check_objective=true;" "-D is_solution=true;" "-D obj_from_sol=73.12"
+```
 
 ### Descriptions
 
