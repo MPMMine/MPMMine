@@ -1,6 +1,8 @@
 import os
 import re
 import json
+import time
+import random
 import urllib.request
 import urllib.parse
 
@@ -16,19 +18,40 @@ README_PATH = os.path.join(BASE_DIR, "README.md")
 START_TAG = "## Problem and MP model list"
 END_TAG = "## Guidelines for the development of MPMMine"
 
-def get_contents(path=""):
+def get_contents(path="", max_retries=5):
     safe_path = urllib.parse.quote(path)
     url = f"{API_URL}/{safe_path}?ref={BRANCH_NAME}"
     
     req = urllib.request.Request(url)
     if TOKEN:
         req.add_header("Authorization", f"token {TOKEN}")
-    try:
-        with urllib.request.urlopen(req) as response:
-            return json.loads(response.read().decode())
-    except Exception as e:
-        print(f"Error fetching {path} on branch {BRANCH_NAME}: {e}")
-        return []
+
+    for attempt in range(max_retries):
+        try:
+            with urllib.request.urlopen(req) as response:
+                return json.loads(response.read().decode())
+
+        except urllib.error.HTTPError as e:
+            if e.code in [404, 429, 500, 502, 503, 504]:
+                if attempt == max_retries - 1:
+                    print(f"Failed to fetch {path} after {max_retries} attempts. Final Error: HTTP {e.code}")
+                    return []
+                sleep_time = (2 ** attempt) + random.uniform(0, 1)
+                print(f"HTTP {e.code} for {path}. Retrying in {sleep_time:.2f} seconds... (Attempt {attempt + 1}/{max_retries})")
+                time.sleep(sleep_time)
+            else:
+                print(f"Permanent HTTP Error {e.code} fetching {path}: {e.reason}")
+                return []
+
+        except urllib.error.URLError as e:
+            if attempt == max_retries - 1:
+                print(f"Network error for {path} after {max_retries} attempts: {e.reason}")
+                return []
+            sleep_time = (2 ** attempt) + random.uniform(0, 1)
+            print(f"Network error. Retrying in {sleep_time:.2f} seconds...")
+            time.sleep(sleep_time)
+
+    return []
 
 def update_repo_stats():
     print("Fetching problems from API...")
