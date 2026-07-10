@@ -43,6 +43,7 @@ test check(bool: b, string: s) =
 array[int] of bool: checks = 
     % Check 1. Production Limit
     [ check(
+        production[p] == estimated_production[p] \/
         production[p] <= estimated_production[p] + eps,
         "Period " ++ show(p) ++ ": Production (" ++ show(production[p]) ++ 
         ") exceeds estimated production (" ++ show(estimated_production[p]) ++ ")."
@@ -99,6 +100,7 @@ array[int] of bool: checks =
     ++
     % Check 6. Final State of Charge Target
     [ check(
+        soc[max(periods)] == soc_final \/
         soc[max(periods)] >= soc_final - eps,
         "Planning horizon target failed. Final SoC (" ++ show(soc[max(periods)]) ++ 
         ") is below required soc_final (" ++ show(soc_final) ++ ")."

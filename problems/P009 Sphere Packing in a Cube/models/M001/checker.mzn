@@ -56,7 +56,7 @@ array[int] of bool: checks =
     let {float: res = sum(i in S)(use[i])} in 
         [ check(
             res >= obj_from_sol - eps /\ res <= obj_from_sol + eps,
-            "The objective: " ++ res ++ " does not match the objective from the solution file: " ++ show(obj_from_sol)
+            "The objective: " ++ show(res) ++ " does not match the objective from the solution file: " ++ show(obj_from_sol)
         ) ]
     else 
         [] 
