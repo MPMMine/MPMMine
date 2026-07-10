@@ -1,3 +1,5 @@
+# 3D Noughts and Crosses (Tic-Tac-Toe)
+
 $n^3$ cells are arranged $n \times n \times n$ in a three-dimensional array. 
 
 $n$ cells are regarded as lying in the same line if they are on the same
