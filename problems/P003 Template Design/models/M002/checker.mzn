@@ -62,7 +62,7 @@ array[int] of bool: checks =
     if check_objective then 
     let {float: res = sum(i in 1..t)(R[i])} in 
         [ check(
-            int2float(res) >= obj_from_sol - eps /\ int2float(res) <= obj_from_sol + eps,
+            res >= obj_from_sol - eps /\ res <= obj_from_sol + eps,
             "The objective: " ++ show(res) ++ " does not match the objective from the solution file: " ++ show(obj_from_sol)
         ) ]
     else 
