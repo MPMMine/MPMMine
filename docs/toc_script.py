@@ -7,6 +7,7 @@ import urllib.parse
 # Environment and Paths
 REPO = os.getenv("GITHUB_REPOSITORY")
 TOKEN = os.getenv("GITHUB_TOKEN")
+BRANCH_NAME = os.getenv("BRANCH_NAME", "main")
 API_URL = f"https://api.github.com/repos/{REPO}/contents"
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -17,7 +18,7 @@ END_TAG = "## Guidelines for the development of MPMMine"
 
 def get_contents(path=""):
     safe_path = urllib.parse.quote(path)
-    url = f"{API_URL}/{safe_path}"
+    url = f"{API_URL}/{safe_path}?ref={BRANCH_NAME}"
     
     req = urllib.request.Request(url)
     if TOKEN:
@@ -26,6 +27,7 @@ def get_contents(path=""):
         with urllib.request.urlopen(req) as response:
             return json.loads(response.read().decode())
     except Exception as e:
+        print(f"Error fetching {path} on branch {BRANCH_NAME}: {e}")
         return []
 
 def update_repo_stats():
