@@ -3,9 +3,9 @@
 # MPMMine: Mathematical Programming model mining benchmarks
 
 ![Problems](https://img.shields.io/badge/Problems-17-blue)
-![MZN Models](https://img.shields.io/badge/MZN%20Models-23-orange)
-![Instances](https://img.shields.io/badge/Instances-367-purple)
-![Descriptions](https://img.shields.io/badge/Descriptions-320-brightgreen)
+![MZN Models](https://img.shields.io/badge/MZN%20Models-24-orange)
+![Instances](https://img.shields.io/badge/Instances-373-purple)
+![Descriptions](https://img.shields.io/badge/Descriptions-305-brightgreen)
 
 ---
 MPMMine is a standardized dataset of benchmark problems for Mathematical Programming model mining problems.
@@ -58,8 +58,8 @@ a systematic survey of works on MP model mining from 2000 to 2025 can be found i
 * [P013 Langfords Number](problems/P013%20Langfords%20Number) — `40 instances`, `37 descriptions`
 * [P014 Crude Mix](problems/P014%20Crude%20Mix) — `6 instances`, `12 descriptions`
 * [P015 Feed Blend](problems/P015%20Feed%20Blend) — `6 instances`, `32 descriptions`
-* [P016 Power Management](problems/P016%20Power%20Management) — `37 instances`, `16 descriptions`
-* [P017 Three-dimensional noughts and crosses](problems/P017%20Three-dimensional%20noughts%20and%20crosses) — `6 instances`, `1 descriptions`
+* [P016 Power Management](problems/P016%20Power%20Management) — `37 instances`, `0 descriptions`
+* [P017 Three-dimensional noughts and crosses](problems/P017%20Three-dimensional%20noughts%20and%20crosses) — `12 instances`, `2 descriptions`
 
 ## Guidelines for the development of MPMMine
 
