@@ -6,7 +6,7 @@ int: result = sum(k in 1..n-1) ((sum(i in 1..n-k) (S[i] * S[i+k])) ^ 2);
 % Flag to determine if the objective value should be checked flag passed via -D "check_objective=true" or "check_objective=false"
 bool: check_objective;
 % Float with the objective value from the solution file (it is saved there as a comment) -D "obj_from_sol=<number>"
-float: obj_from_sol;
+opt float: obj_from_sol;
 float: eps = 1e-6; 
 
 
