@@ -2,10 +2,10 @@
 
 # MPMMine: Mathematical Programming model mining benchmarks
 
-![Problems](https://img.shields.io/badge/Problems-16-blue)
-![MZN Models](https://img.shields.io/badge/MZN%20Models-22-orange)
-![Instances](https://img.shields.io/badge/Instances-316-purple)
-![Descriptions](https://img.shields.io/badge/Descriptions-319-brightgreen)
+![Problems](https://img.shields.io/badge/Problems-17-blue)
+![MZN Models](https://img.shields.io/badge/MZN%20Models-23-orange)
+![Instances](https://img.shields.io/badge/Instances-367-purple)
+![Descriptions](https://img.shields.io/badge/Descriptions-320-brightgreen)
 
 ---
 MPMMine is a standardized dataset of benchmark problems for Mathematical Programming model mining problems.
@@ -49,16 +49,17 @@ a systematic survey of works on MP model mining from 2000 to 2025 can be found i
 * [P004 Low Autocorrelation Binary Sequences](problems/P004%20Low%20Autocorrelation%20Binary%20Sequences) — `50 instances`, `20 descriptions`
 * [P005 Golomb Ruler](problems/P005%20Golomb%20Ruler) — `10 instances`, `19 descriptions`
 * [P006 Vessel Loading](problems/P006%20Vessel%20Loading) — `5 instances`, `19 descriptions`
-* [P007 Continuous Knapsack](problems/P007%20Continuous%20Knapsack) — `0 instances`, `14 descriptions`
+* [P007 Continuous Knapsack](problems/P007%20Continuous%20Knapsack) — `5 instances`, `14 descriptions`
 * [P008 Cutting Stock](problems/P008%20Cutting%20Stock) — `5 instances`, `18 descriptions`
 * [P009 Sphere Packing in a Cube](problems/P009%20Sphere%20Packing%20in%20a%20Cube) — `3 instances`, `11 descriptions`
 * [P010 Facility Location](problems/P010%20Facility%20Location) — `3 instances`, `11 descriptions`
-* [P011 Schurs Lemma](problems/P011%20Schurs%20Lemma) — `5 instances`, `15 descriptions`
+* [P011 Schurs Lemma](problems/P011%20Schurs%20Lemma) — `45 instances`, `15 descriptions`
 * [P012 Bus Driver Scheduling](problems/P012%20Bus%20Driver%20Scheduling) — `9 instances`, `19 descriptions`
 * [P013 Langfords Number](problems/P013%20Langfords%20Number) — `40 instances`, `37 descriptions`
 * [P014 Crude Mix](problems/P014%20Crude%20Mix) — `6 instances`, `12 descriptions`
 * [P015 Feed Blend](problems/P015%20Feed%20Blend) — `6 instances`, `32 descriptions`
 * [P016 Power Management](problems/P016%20Power%20Management) — `37 instances`, `16 descriptions`
+* [P017 Three-dimensional noughts and crosses](problems/P017%20Three-dimensional%20noughts%20and%20crosses) — `6 instances`, `1 descriptions`
 
 ## Guidelines for the development of MPMMine
 
@@ -86,7 +87,6 @@ problems
      |- models
         |- M000
            |- model.mzn                   [R]
-           |- checker.mzn                 [R]
            |- descriptions
               |- D000 description.en.md
               |- ...
@@ -111,7 +111,6 @@ All items within this hierarchy are uniquely identified by concatenating ids of 
 
 * `P000` - Prefix 'P' plus three-digit problem id,
 * `M000` - Prefix 'M' plus three-digit MP model id within the problem,
-* `C000` - Prefix 'C' plus three-digit MP model checker id within the problem; the id shall be equal to the id of the corresponding MP model,
 * `I000` - Prefix 'I' plus three-digit instance id within the MP model,
 * `D000` - Prefix 'D' plus three-digit description id within the MP model or instance,
 * `S000000` - Prefix 'S' plus six-digit solution id within the instance,
@@ -211,47 +210,6 @@ The `models` directory consists of at least one subdirectory of a reference MP m
 `model.mzn` consists of the [MiniZinc](https://www.minizinc.org/) MP model. The MP models at this level are
 instance-independent, in the sense that they do not use specific values of parameters. Instead, they define a backbone
 that needs to be supplemented with concrete numbers to instantiate.
-
-### Checkers
-
-Every model has a corresponding `checker.mzn` model to verify the feasibility of solutions and the infeasibility of non-solutions. 
-The model checkers inform the user why a non-solution is infeasible by printing all broken constraints to the output stream. 
-Every model checker should return the control string `CORRECT: all constraints hold.\n` if all constraints pass the check. 
-If a valid solution is found to be infeasible, or a non-solution is unexpectedly marked as feasible, the checker should return the control string `INCORRECT: See error log above for specific violations.` 
-Problems that contain float expressions in their constraints or operate on float variables must be checked with the appropriate tolerance defined by the `eps` parameter. 
-To distinguish between a solution and a non-solution, the model checker should accept an `is_solution` flag passed via the MiniZinc `-D "is_solution=true" or "is_solution=false"` option.
-To check the correctness of the objective function in the comment stored inside the solution file, one should pass `-D check_objective=true` and `-D obj_from_sol=<value>`.
-
-General use:
-
-**minizinc** **--solver** *SOLVER* *CHECKER_PATH* *INSTANCE_PATH* *SOLUTION_PATH* [**--statistics**] [KWARGS]
-
-Runs the MiniZinc constraint modeling tool with a specified solver, checker script, instance data, and solution file.
-
-OPTIONS:
-
-* **--solver** *SOLVER* Specify the name or path of the solver to be used.
-
-* **--statistics** Output performance and search statistics upon completion.
-
-* **-D** *assignment* Pass a data definition or parameter assignment to the model via *KWARGS*:
-
-  * **-D check_objective=**{**true**|**false**}  
-    Enable or disable objective value validation. 
-    When set to `true` passing `obj_from_sol` is highly advised, as the checker will fail when the objective is set to be checked but there is nothing to compare it to.
-    
-  * **-D is_solution=**{**true**|**false**}  
-    Specify whether the input solution represents a feasible solution.
-    
-  * **-D obj_from_sol=***VALUE* Inject a specific objective *VALUE* parsed from the solution file.
-
-The optionality of particular injections are defined by the checker files.
-
-## EXAMPLES
-
-```bash
-minizinc --solver gurobi checker.mzn data.dzn sol.dzn --statistics -D "-D check_objective=true;" "-D is_solution=true;" "-D obj_from_sol=73.12"
-```
 
 ### Descriptions
 
