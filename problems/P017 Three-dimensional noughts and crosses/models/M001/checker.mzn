@@ -11,6 +11,11 @@ int: end_ortho = count_ortho;
 int: end_2d    = end_ortho + count_2d;
 int: end_3d    = end_2d + count_3d;
 
+% Flag to determine if the objective value should be checked flag passed via -D "check_objective=true" or "check_objective=false"
+bool: check_objective;
+% Float with the objective value from the solution file (it is saved there as a comment) -D "obj_from_sol=<number>"
+opt float: obj_from_sol;
+float: eps = 1e-6; 
 
 function int: idx(int: x, int: y, int: z) = 
     let {
@@ -73,7 +78,18 @@ array[int] of bool: checks =
         sum(j in 1..total_blocks)(balls[j]) = total_black_balls,
         "The number of black balls do not match the number of total black balls. Expected " ++ 
         show(total_black_balls) ++ " but got " ++ show(sum(j in 1..total_blocks)(balls[j]))
-    )];
+    )]
+    ++
+    % Conditionally append the objective check inline
+    if check_objective then 
+        let {int: res = sum(i in 1..total_lines)(lines[i]);} in
+        [ check(
+            res >= obj_from_sol - eps /\ res <= obj_from_sol + eps,
+            "The objective: " ++ show(res) ++ " does not match the objective from the solution file: " ++ show(obj_from_sol)
+        ) ]
+    else 
+        [] 
+    endif;
 
 output [
     if forall(checks)
