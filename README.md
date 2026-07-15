@@ -97,10 +97,10 @@ problems
                     |- D000 description.en.md
                     |- ...
                  |- solutions
-                    |- S000000 sol.dzn
+                    |- S00000 sol.dzn
                     |- ...
                  |- non solutions
-                    |- N000000 non_sol.dzn
+                    |- N00000 non_sol.dzn
                     |- ...
               
 ```
@@ -113,19 +113,19 @@ All items within this hierarchy are uniquely identified by concatenating ids of 
 * `M000` - Prefix 'M' plus three-digit MP model id within the problem,
 * `I000` - Prefix 'I' plus three-digit instance id within the MP model,
 * `D000` - Prefix 'D' plus three-digit description id within the MP model or instance,
-* `S000000` - Prefix 'S' plus six-digit solution id within the instance,
-* `N000000` - Prefix 'N' plus six-digit non-solution id within the instance.
+* `S00000` - Prefix 'S' plus five-digit solution id within the instance,
+* `N00000` - Prefix 'N' plus five-digit non-solution id within the instance.
 
 Hence, a complete id of an MP model is a composition of problem id and MP model id, e.g., `P001M000` indicates the
 Progressive Party Problem, model M000. Conversely, a complete id of a solution to the Ian01 instance is given by
-`P001M000I001S000001`. When referencing an item from outside the dataset, please use the `MPMMine-`
+`P001M000I001S00001`. When referencing an item from outside the dataset, please use the `MPMMine-`
 prefix, e.g.,
 
 ```
 MPMMine-P001
 MPMMine-P001M001
 MPMMine-P001M001I001
-MPMMine-P001M001I001S000001
+MPMMine-P001M001I001S00001
 ```
 
 where the first identifier indicates a problem, the second problem and specific MP model, the next a specific instance
@@ -246,11 +246,11 @@ held in subdirectories:
   concrete data of this instance. However, the creators of instance descriptions are free to change specific wording
   and narration except that the message is left intact. The purpose of these files is to facilitate benchmarking
   text-to-MP model algorithms.
-* `solutions` - feasible solutions to this instance, following the naming convention `S000000 sol.dzn`. By default,
+* `solutions` - feasible solutions to this instance, following the naming convention `S00000 sol.dzn`. By default,
   10000 solutions are stored, however, for instances with a smaller number of feasible solutions and/or hard instances,
   a smaller number of solutions are reported. **All solutions are unique w.r.t. the output variables of the MP model.**
   For an unsatisfiable instance, this directory does not exist. See below for how the solutions are calculated.
-* `non-solutions` - infeasible solutions to this instance, following the naming conventions `N000000 non_sol.dzn`. By
+* `non-solutions` - infeasible solutions to this instance, following the naming conventions `N00000 non_sol.dzn`. By
   default, 10000 non-solutions are stored, however, for unconstrained instances, where non-solutions do not exist,
   this directory does not exist. See below for how the non-solutions are obtained.
 
