@@ -1,5 +1,5 @@
 {
-  "id": "P016",
+  "id": "P017",
   "name": "Three-dimensional noughts and crosses",
   "tags": {
     "Q210339": "tic-tac-toe",
@@ -24,13 +24,14 @@
   "references": [
     {
         "type": "book",
-        "key": "model_building_in_mp",
-        "title": "Model building in mathematical programming",
-        "author": "Williams, H Paul",
+        "key": "williams2013model",
+        "title": "Model Building in Mathematical Programming",
+        "author": "Williams, H. Paul",
         "year": "2013",
         "publisher": "John Wiley & Sons"
     }
   ],
   "links": {
+    "github": "https://github.com/naraqb/williams-problems/blob/main/17%203D%20Noughts%20and%20Crosses.ipynb"
   }
 }
