@@ -310,7 +310,7 @@ OPTIONS:
 
 The optionality of particular injections are defined by the checker files.
 
-## EXAMPLES
+#### EXAMPLES
 
 ```bash
 minizinc --solver gurobi checker.mzn data.dzn sol.dzn --statistics -D "-D check_objective=true;" "-D is_solution=true;" "-D obj_from_sol=73.12"
