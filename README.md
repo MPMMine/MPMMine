@@ -441,6 +441,16 @@ Unique solutions in Continuous problems are defined as solutions that differ in 
 
 To facilitate text-to-model mining tasks, every MP model is paired with multiple natural language descriptions, all of which have been human-curated and validated for technical accuracy. These descriptions originate from diverse sources: some were sourced from original repositories or drafted by the MPMMine developers, while others were generated using a suite of Large Language Models, including Llama 3.3, DeepSeek-R1, Gemma 3, GPT-OSS, Nemotron-3-Nano, and Mistral Small 3.2. When prompting these LLMs, both the reference MP model and a handcrafted description were provided as context, following standardized prompts. To ensure high quality and eliminate any hallucinations or errors, a human expert manually revised every AI-generated output. This multi-model approach ensures a heterogeneous dataset characterized by a wide variety of narrative styles and levels of formality, all while maintaining strict consistency with the underlying mathematical constraints.
 
+### Working with the MPMMine repository
+
+Since the repository consists of several million small files, working with it can be challenging. To facilitate working with the repository, we recommend configuring Git for a large set of files prior to cloning:
+
+```shell
+git config set --global feature.manyfiles true
+git config set --global core.fsmonitor true
+git clone https://github.com/MPMMine/MPMMine.git
+```
+
 ## Related work
 
 Existing MP benchmark suites are primarily designed to evaluate solver performance rather than the algorithms used to discover and manage models through domain knowledge. A review of common datasets—such as those in the [paper](https://doi.org/10.1016/j.cosrev.2026.100905) — reveals significant gaps when compared to MPMMine.
