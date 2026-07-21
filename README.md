@@ -87,6 +87,7 @@ problems
      |- models
         |- M000
            |- model.mzn                   [R]
+           |- checker.mzn                 [R]
            |- descriptions
               |- D000 description.en.md
               |- ...
@@ -111,6 +112,7 @@ All items within this hierarchy are uniquely identified by concatenating ids of 
 
 * `P000` - Prefix 'P' plus three-digit problem id,
 * `M000` - Prefix 'M' plus three-digit MP model id within the problem,
+* `C000` - Prefix 'C' plus three-digit MP model checker id within the problem; the id shall be equal to the id of the corresponding MP model,
 * `I000` - Prefix 'I' plus three-digit instance id within the MP model,
 * `D000` - Prefix 'D' plus three-digit description id within the MP model or instance,
 * `S00000` - Prefix 'S' plus five-digit solution id within the instance,
@@ -210,6 +212,50 @@ The `models` directory consists of at least one subdirectory of a reference MP m
 `model.mzn` consists of the [MiniZinc](https://www.minizinc.org/) MP model. The MP models at this level are
 instance-independent, in the sense that they do not use specific values of parameters. Instead, they define a backbone
 that needs to be supplemented with concrete numbers to instantiate.
+
+### Checkers
+
+Every model has a corresponding `checker.mzn` model to verify the feasibility of solutions and the infeasibility of non-solutions.
+The model checkers inform the user why a non-solution is infeasible by printing all broken constraints to the output stream.
+Every model checker should return the control string `CORRECT: all constraints hold.\n` if all constraints pass the check.
+If a valid solution is found to be infeasible, or a non-solution is unexpectedly marked as feasible, the checker should return the control string `INCORRECT: See error log above for specific violations.`
+Problems that contain float expressions in their constraints or operate on float variables must be checked with the appropriate tolerance defined by the `eps` parameter.
+To distinguish between a solution and a non-solution, the model checker should accept an `is_solution` flag passed via the MiniZinc `-D "is_solution=true" or "is_solution=false"` option.
+To check the correctness of the objective function in the comment stored inside the solution file, one should pass `-D check_objective=true` and `-D obj_from_sol=<value>`.
+
+General use:
+
+```shell
+minizinc --solver SOLVER CHECKER_PATH INSTANCE_PATH SOLUTION_PATH  [--statistics] [KWARGS]
+````
+
+Runs the MiniZinc constraint modeling tool with a specified solver, checker script, instance data, and solution file.
+
+OPTIONS:
+
+* `--solver SOLVER` - Specify the name or path of the solver to be used.
+
+* `--statistics` - Output performance and search statistics upon completion.
+
+* `-D assignment` Pass a data definition or parameter assignment to the model via `KWARGS`:
+
+  * `-D check_objective={true|false}` 
+    Enable or disable objective value validation.
+    When set to `true` passing `obj_from_sol` is highly advised, as the checker will fail when the objective is set to 
+    be checked but there is nothing to compare it to.
+
+  * `-D is_solution={true|false}` 
+    Specify whether the input solution represents a feasible solution.
+
+  * `-D obj_from_sol=VALUE` Inject a specific objective `VALUE` parsed from the solution file.
+
+The optionality of particular injections are defined by the checker files.
+
+## EXAMPLES
+
+```bash
+minizinc --solver gurobi checker.mzn data.dzn sol.dzn --statistics -D "-D check_objective=true;" "-D is_solution=true;" "-D obj_from_sol=73.12"
+```
 
 ### Descriptions
 
@@ -342,7 +388,7 @@ Existing MP benchmark suites are primarily designed to evaluate solver performan
 
 
 
-* [CSPLIB](www.csplib.org) - is a collection of combinatorial problems mostly for Constraint Programming, it suffers from a lack of standardization. Discrepancies in directory structures and the quality of supplementary data mean that researchers must often manually adapt each problem. Unlike MPMMine, it rarely includes representative solutions or counterexamples.
+* [CSPLIB](https://www.csplib.org) - is a collection of combinatorial problems mostly for Constraint Programming, it suffers from a lack of standardization. Discrepancies in directory structures and the quality of supplementary data mean that researchers must often manually adapt each problem. Unlike MPMMine, it rarely includes representative solutions or counterexamples.
 
 * [MiniZinc Benchmarks](https://github.com/MiniZinc/minizinc-benchmarks) - although provide well-structured models, they are restricted to combinatorial optimization and lack the natural-language descriptions and solution sets necessary for broader MPMM research.
 
