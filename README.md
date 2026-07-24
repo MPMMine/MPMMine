@@ -2,10 +2,10 @@
 
 # MPMMine: Mathematical Programming model mining benchmarks
 
-![Problems](https://img.shields.io/badge/Problems-17-blue)
-![MZN Models](https://img.shields.io/badge/MZN%20Models-24-orange)
-![Instances](https://img.shields.io/badge/Instances-373-purple)
-![Descriptions](https://img.shields.io/badge/Descriptions-321-brightgreen)
+![Problems](https://img.shields.io/badge/Problems-18-blue)
+![MZN Models](https://img.shields.io/badge/MZN%20Models-25-orange)
+![Instances](https://img.shields.io/badge/Instances-374-purple)
+![Descriptions](https://img.shields.io/badge/Descriptions-322-brightgreen)
 
 ---
 MPMMine is a standardized dataset of benchmark problems for Mathematical Programming model mining problems.
@@ -60,6 +60,7 @@ a systematic survey of works on MP model mining from 2000 to 2025 can be found i
 * [P015 Feed Blend](problems/P015%20Feed%20Blend) — `6 instances`, `32 descriptions`
 * [P016 Power Management](problems/P016%20Power%20Management) — `37 instances`, `16 descriptions`
 * [P017 Three-dimensional noughts and crosses](problems/P017%20Three-dimensional%20noughts%20and%20crosses) — `12 instances`, `2 descriptions`
+* [P018 Lost Baggage Distribution](problems/P018%20Lost%20Baggage%20Distribution) — `1 instances`, `1 descriptions`
 
 ## Usage
 
