@@ -16,7 +16,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 README_PATH = os.path.join(BASE_DIR, "README.md")
 
 START_TAG = "## Problem and MP model list"
-END_TAG = "## Guidelines for the development of MPMMine"
+END_TAG = "## Usage"
 
 def get_contents(path="", max_retries=5):
     safe_path = urllib.parse.quote(path)
