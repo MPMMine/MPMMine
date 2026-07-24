@@ -1,0 +1,38 @@
+{
+  "id": "P018",
+  "name": "Lost Baggage Distribution",
+  "tags": {
+    "Q273037": "Hamiltonian path",
+    "Q322212": "travelling salesperson problem",
+    "Q984063": "optimization problem",
+    "Q70467303": "minimization"
+  },
+  "features": {
+    "constraints": true,
+    "objective": true,
+    "optimization": true,
+    "satisfiability": false,
+    "variables": {
+      "binary": true,
+      "continuous": false,
+      "integer": false,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+    "Model Building in Mathematical Programming": "13.27"
+  },
+  "references": [
+    {
+        "type": "book",
+        "key": "williams2013model",
+        "title": "Model Building in Mathematical Programming",
+        "author": "Williams, H. Paul",
+        "year": "2013",
+        "publisher": "John Wiley & Sons"
+    }
+  ],
+  "links": {
+    "github": "https://github.com/naraqb/williams-problems/blob/main/27%20Lost%20Baggage.ipynb"
+  }
+}
