@@ -62,6 +62,65 @@ a systematic survey of works on MP model mining from 2000 to 2025 can be found i
 * [P017 Three-dimensional noughts and crosses](problems/P017%20Three-dimensional%20noughts%20and%20crosses) — `12 instances`, `2 descriptions`
 * [P018 Lost Baggage Distribution](problems/P018%20Lost%20Baggage%20Distribution) — `1 instances`, `1 descriptions`
 
+## Usage
+
+For use in the development, verification, and benchmarking of MPMM algorithms, we recommend using the [SQLite-backed package](https://github.com/MPMMine/MPMMine/releases) alongside the [mpmmine-py](https://github.com/MPMMine/mpmmine-py) Python package for data access. This setup offers lower latency than direct file-system access while providing a highly compressed representation. In contrast, bare repository clones consume roughly 5-6x more disk space and result in significantly higher latency.
+
+We provide three release packages for each version of MPMMine:
+* `MPMMine-zstd-v[version].sqlite` - An [SQLite](https://sqlite.org/) database containing all dataset files, compressed using the [ZSTD algorithm](https://github.com/facebook/zstd). This is the recommended package for most use cases. Consult the [mpmmine-py docs](https://github.com/MPMMine/mpmmine-py) for details on the database schema and decompression procedure.
+* `MPMMine-v[version].sqlite` - An SQLite database containing all dataset files uncompressed. It offers similar access times to the compressed package but consumes 5x more disk space. Recommended for use in environments where the ZSTD decompressor is unavailable.
+* `MPMMine-v[version].7z` - A bare repository clone compressed using [7-zip](https://7-zip.org/) with LZMA2. The archive content is equivalent to running `git clone https://github.com/MPMMine/MPMMine.git`, stripped of the files with dot prefix such as the `.git` directory. Use this package only if your setup uses a file system capable of handling several million small files without a performance hit. Note that some common file systems, such as [NTFS](https://stackoverflow.com/questions/197162) and ext3, suffer from high latency on volumes with millions of files.
+
+### Use in Python
+
+To install `mpmmine` just run standard package installation, e.g., for `pip`:
+```shell
+pip install mpmmine
+```
+
+Consult the code below for common use-cases.
+
+```python
+from mpmmine.dataset import MPMMine
+from pathlib import Path
+
+mpmmine = MPMMine(Path("~/path/to/MPMMine-zstd.sqlite").expanduser())
+
+print("Available benchmarks and their statistics: ")
+for problem in mpmmine.problems:
+    for model in problem.models:
+        for instance in model.instances:
+            print(f"{instance.full_id}: {len(list(instance.solutions))} solutions, and " +
+                  f"{len(list(instance.non_solutions))} non-solutions")
+
+print("A reference MiniZinc model for benchmark P016M001:")
+model = mpmmine["MPMMine-P016M001"]
+print(model.mzn)  # read MiniZinc code
+
+print("Here's the problem description in natural text:")
+print(model.get_description("D001").markdown)  # read Markdown
+
+print("Here's another description read using full artifact id:")
+print(mpmmine["MPMMine-P016M001D002"].markdown)  # read Markdown
+
+print("Here's I001 instance (model parameters):")
+print(model.get_instance("I001").dzn)  # read MiniZinc data 
+
+print("Here's some solutions (variable values):")
+for i, solution in enumerate(mpmmine["MPMMine-P016M001I001"].solutions):
+    if i >= 3:
+        break
+    print(f"% {solution.full_id}:\n{solution.dzn}")
+
+print("... and non-solutions:")
+for i, non_solution in enumerate(mpmmine["MPMMine-P016M001I001"].non_solutions):
+    if i >= 3:
+        break
+    print(f"% {non_solution.full_id}:\n{non_solution.dzn}")
+```
+
+
+
 ## Guidelines for the development of MPMMine
 
 MPMMine is build upon several rules:
@@ -88,6 +147,7 @@ problems
      |- models
         |- M000
            |- model.mzn                   [R]
+           |- checker.mzn                 [R]
            |- descriptions
               |- D000 description.en.md
               |- ...
@@ -112,6 +172,7 @@ All items within this hierarchy are uniquely identified by concatenating ids of 
 
 * `P000` - Prefix 'P' plus three-digit problem id,
 * `M000` - Prefix 'M' plus three-digit MP model id within the problem,
+* `C000` - Prefix 'C' plus three-digit MP model checker id within the problem; the id shall be equal to the id of the corresponding MP model,
 * `I000` - Prefix 'I' plus three-digit instance id within the MP model,
 * `D000` - Prefix 'D' plus three-digit description id within the MP model or instance,
 * `S00000` - Prefix 'S' plus five-digit solution id within the instance,
@@ -211,6 +272,50 @@ The `models` directory consists of at least one subdirectory of a reference MP m
 `model.mzn` consists of the [MiniZinc](https://www.minizinc.org/) MP model. The MP models at this level are
 instance-independent, in the sense that they do not use specific values of parameters. Instead, they define a backbone
 that needs to be supplemented with concrete numbers to instantiate.
+
+### Checkers
+
+Every model has a corresponding `checker.mzn` model to verify the feasibility of solutions and the infeasibility of non-solutions.
+The model checkers inform the user why a non-solution is infeasible by printing all broken constraints to the output stream.
+Every model checker should return the control string `CORRECT: all constraints hold.\n` if all constraints pass the check.
+If a valid solution is found to be infeasible, or a non-solution is unexpectedly marked as feasible, the checker should return the control string `INCORRECT: See error log above for specific violations.`
+Problems that contain float expressions in their constraints or operate on float variables must be checked with the appropriate tolerance defined by the `eps` parameter.
+To distinguish between a solution and a non-solution, the model checker should accept an `is_solution` flag passed via the MiniZinc `-D "is_solution=true" or "is_solution=false"` option.
+To check the correctness of the objective function in the comment stored inside the solution file, one should pass `-D check_objective=true` and `-D obj_from_sol=<value>`.
+
+General use:
+
+```shell
+minizinc --solver SOLVER CHECKER_PATH INSTANCE_PATH SOLUTION_PATH  [--statistics] [KWARGS]
+````
+
+Runs the MiniZinc constraint modeling tool with a specified solver, checker script, instance data, and solution file.
+
+OPTIONS:
+
+* `--solver SOLVER` - Specify the name or path of the solver to be used.
+
+* `--statistics` - Output performance and search statistics upon completion.
+
+* `-D assignment` Pass a data definition or parameter assignment to the model via `KWARGS`:
+
+  * `-D check_objective={true|false}` 
+    Enable or disable objective value validation.
+    When set to `true` passing `obj_from_sol` is highly advised, as the checker will fail when the objective is set to 
+    be checked but there is nothing to compare it to.
+
+  * `-D is_solution={true|false}` 
+    Specify whether the input solution represents a feasible solution.
+
+  * `-D obj_from_sol=VALUE` Inject a specific objective `VALUE` parsed from the solution file.
+
+The optionality of particular injections are defined by the checker files.
+
+#### EXAMPLES
+
+```bash
+minizinc --solver gurobi checker.mzn data.dzn sol.dzn --statistics -D "-D check_objective=true;" "-D is_solution=true;" "-D obj_from_sol=73.12"
+```
 
 ### Descriptions
 
@@ -337,13 +442,23 @@ Unique solutions in Continuous problems are defined as solutions that differ in 
 
 To facilitate text-to-model mining tasks, every MP model is paired with multiple natural language descriptions, all of which have been human-curated and validated for technical accuracy. These descriptions originate from diverse sources: some were sourced from original repositories or drafted by the MPMMine developers, while others were generated using a suite of Large Language Models, including Llama 3.3, DeepSeek-R1, Gemma 3, GPT-OSS, Nemotron-3-Nano, and Mistral Small 3.2. When prompting these LLMs, both the reference MP model and a handcrafted description were provided as context, following standardized prompts. To ensure high quality and eliminate any hallucinations or errors, a human expert manually revised every AI-generated output. This multi-model approach ensures a heterogeneous dataset characterized by a wide variety of narrative styles and levels of formality, all while maintaining strict consistency with the underlying mathematical constraints.
 
+### Working with the MPMMine repository
+
+Since the repository consists of several million small files, working with it can be challenging. To facilitate working with the repository, we recommend configuring Git for a large set of files prior to cloning:
+
+```shell
+git config set --global feature.manyfiles true
+git config set --global core.fsmonitor true
+git clone https://github.com/MPMMine/MPMMine.git
+```
+
 ## Related work
 
 Existing MP benchmark suites are primarily designed to evaluate solver performance rather than the algorithms used to discover and manage models through domain knowledge. A review of common datasets—such as those in the [paper](https://doi.org/10.1016/j.cosrev.2026.100905) — reveals significant gaps when compared to MPMMine.
 
 
 
-* [CSPLIB](www.csplib.org) - is a collection of combinatorial problems mostly for Constraint Programming, it suffers from a lack of standardization. Discrepancies in directory structures and the quality of supplementary data mean that researchers must often manually adapt each problem. Unlike MPMMine, it rarely includes representative solutions or counterexamples.
+* [CSPLIB](https://www.csplib.org) - is a collection of combinatorial problems mostly for Constraint Programming, it suffers from a lack of standardization. Discrepancies in directory structures and the quality of supplementary data mean that researchers must often manually adapt each problem. Unlike MPMMine, it rarely includes representative solutions or counterexamples.
 
 * [MiniZinc Benchmarks](https://github.com/MiniZinc/minizinc-benchmarks) - although provide well-structured models, they are restricted to combinatorial optimization and lack the natural-language descriptions and solution sets necessary for broader MPMM research.
 
