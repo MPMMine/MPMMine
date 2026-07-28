@@ -56,70 +56,11 @@ a systematic survey of works on MP model mining from 2000 to 2025 can be found i
 * [P011 Schurs Lemma](problems/P011%20Schurs%20Lemma) — `45 instances`, `15 descriptions`
 * [P012 Bus Driver Scheduling](problems/P012%20Bus%20Driver%20Scheduling) — `9 instances`, `19 descriptions`
 * [P013 Langfords Number](problems/P013%20Langfords%20Number) — `40 instances`, `37 descriptions`
-* [P014 Crude Mix](problems/P014%20Crude%20Mix) — `6 instances`, `12 descriptions`
+* [P014 Crude Mix](problems/P014%20Crude%20Mix) — `6 instances`, `13 descriptions`
 * [P015 Feed Blend](problems/P015%20Feed%20Blend) — `6 instances`, `32 descriptions`
 * [P016 Power Management](problems/P016%20Power%20Management) — `37 instances`, `16 descriptions`
 * [P017 Three-dimensional noughts and crosses](problems/P017%20Three-dimensional%20noughts%20and%20crosses) — `12 instances`, `2 descriptions`
 * [P018 Lost Baggage Distribution](problems/P018%20Lost%20Baggage%20Distribution) — `3 instances`, `1 descriptions`
-
-## Usage
-
-For use in the development, verification, and benchmarking of MPMM algorithms, we recommend using the [SQLite-backed package](https://github.com/MPMMine/MPMMine/releases) alongside the [mpmmine-py](https://github.com/MPMMine/mpmmine-py) Python package for data access. This setup offers lower latency than direct file-system access while providing a highly compressed representation. In contrast, bare repository clones consume roughly 5-6x more disk space and result in significantly higher latency.
-
-We provide three release packages for each version of MPMMine:
-* `MPMMine-zstd-v[version].sqlite` - An [SQLite](https://sqlite.org/) database containing all dataset files, compressed using the [ZSTD algorithm](https://github.com/facebook/zstd). This is the recommended package for most use cases. Consult the [mpmmine-py docs](https://github.com/MPMMine/mpmmine-py) for details on the database schema and decompression procedure.
-* `MPMMine-v[version].sqlite` - An SQLite database containing all dataset files uncompressed. It offers similar access times to the compressed package but consumes 5x more disk space. Recommended for use in environments where the ZSTD decompressor is unavailable.
-* `MPMMine-v[version].7z` - A bare repository clone compressed using [7-zip](https://7-zip.org/) with LZMA2. The archive content is equivalent to running `git clone https://github.com/MPMMine/MPMMine.git`, stripped of the files with dot prefix such as the `.git` directory. Use this package only if your setup uses a file system capable of handling several million small files without a performance hit. Note that some common file systems, such as [NTFS](https://stackoverflow.com/questions/197162) and ext3, suffer from high latency on volumes with millions of files.
-
-### Use in Python
-
-To install `mpmmine` just run standard package installation, e.g., for `pip`:
-```shell
-pip install mpmmine
-```
-
-Consult the code below for common use-cases.
-
-```python
-from mpmmine.dataset import MPMMine
-from pathlib import Path
-
-mpmmine = MPMMine(Path("~/path/to/MPMMine-zstd.sqlite").expanduser())
-
-print("Available benchmarks and their statistics: ")
-for problem in mpmmine.problems:
-    for model in problem.models:
-        for instance in model.instances:
-            print(f"{instance.full_id}: {len(list(instance.solutions))} solutions, and " +
-                  f"{len(list(instance.non_solutions))} non-solutions")
-
-print("A reference MiniZinc model for benchmark P016M001:")
-model = mpmmine["MPMMine-P016M001"]
-print(model.mzn)  # read MiniZinc code
-
-print("Here's the problem description in natural text:")
-print(model.get_description("D001").markdown)  # read Markdown
-
-print("Here's another description read using full artifact id:")
-print(mpmmine["MPMMine-P016M001D002"].markdown)  # read Markdown
-
-print("Here's I001 instance (model parameters):")
-print(model.get_instance("I001").dzn)  # read MiniZinc data 
-
-print("Here's some solutions (variable values):")
-for i, solution in enumerate(mpmmine["MPMMine-P016M001I001"].solutions):
-    if i >= 3:
-        break
-    print(f"% {solution.full_id}:\n{solution.dzn}")
-
-print("... and non-solutions:")
-for i, non_solution in enumerate(mpmmine["MPMMine-P016M001I001"].non_solutions):
-    if i >= 3:
-        break
-    print(f"% {non_solution.full_id}:\n{non_solution.dzn}")
-```
-
-
 
 ## Guidelines for the development of MPMMine
 
