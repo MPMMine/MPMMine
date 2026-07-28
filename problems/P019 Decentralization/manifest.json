@@ -1,0 +1,37 @@
+{
+  "id": "P019",
+  "name": "Decentralization",
+  "tags": {
+    "Q188961": "decentralization",
+    "Q984063": "optimization problem",
+    "Q70467303": "minimization"
+  },
+  "features": {
+    "constraints": true,
+    "objective": true,
+    "optimization": true,
+    "satisfiability": false,
+    "variables": {
+      "binary": false,
+      "continuous": false,
+      "integer": true,
+      "string": false
+    }
+  },
+  "alternative_ids": {
+    "Model Building in Mathematical Programming": "13.10"
+  },
+  "references": [
+    {
+        "type": "book",
+        "key": "williams2013model",
+        "title": "Model Building in Mathematical Programming",
+        "author": "Williams, H. Paul",
+        "year": "2013",
+        "publisher": "John Wiley & Sons"
+    }
+  ],
+  "links": {
+    "github": "https://github.com/naraqb/williams-problems/blob/main/10%20Decentralisation.ipynb"
+  }
+}

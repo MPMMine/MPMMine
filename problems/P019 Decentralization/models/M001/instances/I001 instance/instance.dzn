@@ -1,0 +1,27 @@
+DEPT = { A, B, C, D, E };
+CITY = { Bristol, Brighton, London };
+
+% Bristol, Brighton, London
+benefits = [|
+  10, 10, 0 |  % A
+  15, 20, 0 |  % B
+  10, 15, 0 |  % C
+  20, 15, 0 |  % D
+   5, 15, 0    % E
+|];
+
+% A, B, C, D, E
+comm_quantity = [|
+  0.0, 0.0, 1.0, 1.5, 0.0 |% A
+  0.0, 0.0, 1.4, 1.2, 0.0 |% B
+  1.0, 1.4, 0.0, 0.0, 2.0 |% C
+  1.5, 1.2, 0.0, 0.0, 0.7 |% D
+  0.0, 0.0, 2.0, 0.7, 0.0  % E
+|];
+
+% Bristol, Brighton, London
+comm_cost = [|
+   5, 14, 13 |% Bristol
+  14,  5,  9 |% Brighton
+  13,  9, 10  % London
+|];
