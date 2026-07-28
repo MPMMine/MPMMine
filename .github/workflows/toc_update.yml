@@ -2,6 +2,8 @@ name: Auto-update Problem TOC
 
 on:
   push:
+    branches:
+      - '**'
     paths:
       - 'problems/**'
   workflow_dispatch:
