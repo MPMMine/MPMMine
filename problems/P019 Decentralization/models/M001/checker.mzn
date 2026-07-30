@@ -7,9 +7,8 @@ array[DEPT, DEPT] of float: comm_quantity;
 array[CITY, CITY] of int: comm_cost;
 array[DEPT] of CITY: loc;
 
-% Unification flag passed via -D "is_solution=true" or "is_solution=false"
-bool: is_solution;
-float: eps = if is_solution then 1e-4 else -1e-4 endif; 
+
+float: eps = 1e-4; 
 % Flag to determine if the objective value should be checked flag passed via -D "check_objective=true" or "check_objective=false"
 bool: check_objective;
 % Float with the objective value from the solution file (it is saved there as a comment) -D "obj_from_sol=<number>"
