@@ -1,0 +1,20 @@
+T = 3;
+
+init_strength = [2000, 1500, 1000];
+
+req = [| 1000, 1400, 1000
+       |  500, 2000, 1500
+       |    0, 2500, 2000 |];
+
+retention_existing = [0.90, 0.95, 0.95];
+retention_new      = [0.75, 0.80, 0.90];
+
+max_recruit = [500, 800, 500];
+max_short_time = 50;
+max_retrain_unskilled = 200;
+max_overmanning = 150;
+
+retrain_cost = [400, 500];
+redundancy_cost = [200, 500, 500];
+overmanning_cost = [1500, 2000, 3000];
+short_time_cost = [500, 400, 400];
