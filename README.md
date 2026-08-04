@@ -62,7 +62,7 @@ a systematic survey of works on MP model mining from 2000 to 2025 can be found i
 * [P017 Three-dimensional noughts and crosses](problems/P017%20Three-dimensional%20noughts%20and%20crosses) — `12 instances`, `2 descriptions`
 * [P018 Lost Baggage Distribution](problems/P018%20Lost%20Baggage%20Distribution) — `3 instances`, `1 descriptions`
 * [P019 Decentralization](problems/P019%20Decentralization) — `3 instances`, `1 descriptions`
-* [P020 Manpower Planning](problems/P020%20Manpower%20Planning) — `1 instances`, `1 descriptions`
+* [P020 Manpower Planning](problems/P020%20Manpower%20Planning) — `2 instances`, `2 descriptions`
 
 ## Usage
 
