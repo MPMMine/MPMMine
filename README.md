@@ -2,10 +2,10 @@
 
 # MPMMine: Mathematical Programming model mining benchmarks
 
-![Problems](https://img.shields.io/badge/Problems-18-blue)
-![MZN Models](https://img.shields.io/badge/MZN%20Models-25-orange)
-![Instances](https://img.shields.io/badge/Instances-376-purple)
-![Descriptions](https://img.shields.io/badge/Descriptions-322-brightgreen)
+![Problems](https://img.shields.io/badge/Problems-19-blue)
+![MZN Models](https://img.shields.io/badge/MZN%20Models-26-orange)
+![Instances](https://img.shields.io/badge/Instances-379-purple)
+![Descriptions](https://img.shields.io/badge/Descriptions-323-brightgreen)
 
 ---
 MPMMine is a standardized dataset of benchmark problems for Mathematical Programming model mining problems.
