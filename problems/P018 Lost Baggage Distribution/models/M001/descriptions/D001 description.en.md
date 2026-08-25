@@ -9,14 +9,14 @@ the minimum number of vans they need to use and to which customers each
 van should deliver and in what order. There is no practical capacity limitation
 on each van. All baggage that needs to be delivered in a time limit can
 be accommodated in a van. Having ascertained the minimum number of vans
-needed, a solution is then sought, which minimises the maximum time taken by
+needed, a solution is then sought, which minimizes the maximum time taken by
 any van.
 On a particular evening, the places where deliveries need to be made and the
 times to travel between them (in minutes) are given in the `dist_m` matrix.
 No allowance is made for drop off times. For convenience, `X` will be regarded as the
 first location.
-Formulate optimisation models that will minimise the number of vans that
-need to be used, and within this minimum, minimise the time taken for the
+Formulate optimization models that will minimize the number of vans that
+need to be used, and within this minimum, minimize the time taken for the
 longest time delivery.
 
 
