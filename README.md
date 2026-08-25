@@ -5,7 +5,7 @@
 ![Problems](https://img.shields.io/badge/Problems-18-blue)
 ![MZN Models](https://img.shields.io/badge/MZN%20Models-25-orange)
 ![Instances](https://img.shields.io/badge/Instances-376-purple)
-![Descriptions](https://img.shields.io/badge/Descriptions-322-brightgreen)
+![Descriptions](https://img.shields.io/badge/Descriptions-323-brightgreen)
 
 ---
 MPMMine is a standardized dataset of benchmark problems for Mathematical Programming model mining problems.
@@ -56,7 +56,7 @@ a systematic survey of works on MP model mining from 2000 to 2025 can be found i
 * [P011 Schurs Lemma](problems/P011%20Schurs%20Lemma) — `45 instances`, `15 descriptions`
 * [P012 Bus Driver Scheduling](problems/P012%20Bus%20Driver%20Scheduling) — `9 instances`, `19 descriptions`
 * [P013 Langfords Number](problems/P013%20Langfords%20Number) — `40 instances`, `37 descriptions`
-* [P014 Crude Mix](problems/P014%20Crude%20Mix) — `6 instances`, `12 descriptions`
+* [P014 Crude Mix](problems/P014%20Crude%20Mix) — `6 instances`, `13 descriptions`
 * [P015 Feed Blend](problems/P015%20Feed%20Blend) — `6 instances`, `32 descriptions`
 * [P016 Power Management](problems/P016%20Power%20Management) — `37 instances`, `16 descriptions`
 * [P017 Three-dimensional noughts and crosses](problems/P017%20Three-dimensional%20noughts%20and%20crosses) — `12 instances`, `2 descriptions`
