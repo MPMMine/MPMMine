@@ -3,8 +3,8 @@
 # MPMMine: Mathematical Programming model mining benchmarks
 
 ![Problems](https://img.shields.io/badge/Problems-19-blue)
-![MZN Models](https://img.shields.io/badge/MZN%20Models-26-orange)
-![Instances](https://img.shields.io/badge/Instances-379-purple)
+![MZN Models](https://img.shields.io/badge/MZN%20Models-27-orange)
+![Instances](https://img.shields.io/badge/Instances-378-purple)
 ![Descriptions](https://img.shields.io/badge/Descriptions-324-brightgreen)
 
 ---
