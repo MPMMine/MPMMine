@@ -2,6 +2,7 @@ include "globals.mzn";
 
 enum DEPT;
 enum CITY;
+int: max_dept;
 array[DEPT, CITY] of int: benefits;
 array[DEPT, DEPT] of float: comm_quantity;
 array[CITY, CITY] of int: comm_cost;
@@ -18,11 +19,11 @@ test check(bool: b, string: s) =
     if b then true else trace_stdout("ERROR: " ++ s ++ "\n", false) endif;
 
 array[int] of bool: checks = 
-    % Check 1. City capacity constraint (at most 3 departments per city)
+    % Check 1. City capacity constraint (at most `max_dept` departments per city)
     [ check(
-        sum(d in DEPT)(bool2int(loc[d] == c)) <= 3,
+        sum(d in DEPT)(bool2int(loc[d] == c)) <= max_dept,
         "City capacity violated for city " ++ show(c) ++ ". Assigned departments: " ++ 
-        show(sum(d in DEPT)(bool2int(loc[d] == c))) ++ ", maximum allowed is 3."
+        show(sum(d in DEPT)(bool2int(loc[d] == c))) ++ ", maximum allowed is " ++ show(max_dept) ++ "."
       )
     | c in CITY ]
     ++

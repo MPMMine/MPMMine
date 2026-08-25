@@ -1,6 +1,6 @@
 DEPT = { A, B, C, D, E };
 CITY = { Bristol, Brighton, London };
-
+max_dept = 3;
 % Bristol, Brighton, London
 benefits = [|
   10, 10, 0 |  % A
