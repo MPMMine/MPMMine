@@ -9,6 +9,8 @@ CITY = {
   C01, C02, C03, C04, C05, C06, C07, C08, C09, C10, C11, C12, C13, C14, C15
 };
 
+max_dept = 3;
+
 % High benefits concentrated in primary hub cities (C01-C03), forcing heavy competition for slots
 benefits = [|
   120, 110, 105, 40, 35, 30, 25, 20, 15, 10, 5, 5, 5, 0, 0 |

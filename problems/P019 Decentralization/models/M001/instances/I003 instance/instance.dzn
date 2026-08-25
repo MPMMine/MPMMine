@@ -12,6 +12,8 @@ CITY = {
   C11, C12, C13, C14, C15, C16, C17, C18, C19, C20
 };
 
+max_dept = 3;
+
 % Highly varied benefits to create deep local minima
 benefits = [|
   150, 140, 130, 90, 80, 70, 60, 50, 40, 30, 20, 10, 5, 5, 0, 0, 0, 0, 0, 0 |
