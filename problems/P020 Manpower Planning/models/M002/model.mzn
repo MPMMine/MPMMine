@@ -1,30 +1,34 @@
 enum Skill = { UNSKILLED, SEMI_SKILLED, SKILLED };
-int: T;                                               % Planning horison
-array[Skill] of int: init_strength;                   % Initial workforce
-array[1..T, Skill] of int: req;                       % Future workforce
-array[Skill] of float: retention_existing;            % Rate of resignation
-array[Skill] of float: retention_new;
-array[Skill] of int: max_recruit;                     % Cap on additional recruitment
-int: max_short_time;
-int: max_retrain_unskilled;
-int: max_overmanning;
-array[1..2] of int: retrain_cost;
-array[Skill] of int: redundancy_cost;
-array[Skill] of int: overmanning_cost;
-array[Skill] of int: short_time_cost;
+int: M = 1*10^6;
+int: T;                                               % Planning horizon
+int: max_short_time;                                  % Max number of employees put on short-time working
+int: max_overmanning;                                 % Max number of people that can be employed over the whole company
 
-array[0..T, Skill] of var 0..infinity: t_strength;    % Workers employed in year i
-array[1..T, Skill] of var 0..infinity: u_recruit;     % Recruitment in year i
-                                                      % Retraining
-array[1..T] of var 0..max_retrain_unskilled: v_US_SS; % Unskilled -> Semi
-array[1..T] of var 0..infinity: v_SS_SK;              % Semi -> Skilled
-                                                      % Downgrading
-array[1..T] of var 0..infinity: v_SK_SS;              % Skilled -> Semi
-array[1..T] of var 0..infinity: v_SK_US;              % Skilled -> Unskilled
-array[1..T] of var 0..infinity: v_SS_US;              % Semi -> Unskilled
-array[1..T, Skill] of var 0..infinity: w_redundancy;  % Redundancy in year i
-array[1..T, Skill] of var 0..max_short_time: x_short; % Short-time working in year i
-array[1..T, Skill] of var 0..infinity: y_overmanning; % Overmanning in year i
+0.0..1.0: downgrade_dropout;                          % Fraction of workers leaving after downgrade
+0.0..1.0: short_time_efficiency;                      % Fraction of full time employee efficiency that meets a short-time employee
+
+array[Skill] of int: init_strength;                   % Initial workforce
+array[1..T, Skill] of int: req;                       % Future workforce requirements
+array[Skill] of 0.0..1.0: retention_existing;         % Complement rate of resignation for existing staff
+array[Skill] of 0.0..1.0: retention_new;              % Complement rate of resignation within first year
+array[Skill] of int: max_recruit;                     % Cap on additional recruitment
+
+% Unified transfer limit matrix (fractions relative to source/target workforce capacity)
+% Rows: From skill level, Columns: To skill level
+array[Skill, Skill] of 0.0..1.0: transfer_limit; 
+
+array[1..2] of int: retrain_cost;                     % Cost of retraining [UNSKILLED->SEMI, SEMI->SKILLED]
+array[Skill] of int: redundancy_cost;                 % Cost of declaring an employee redundant based on skill
+array[Skill] of int: overmanning_cost;                % Cost of superfluous employee based on skill
+array[Skill] of int: short_time_cost;                 % Cost of employee on short-time based on skill
+
+% Decision Variables
+array[0..T, Skill] of var 0..M: t_strength;           % Workforce strength at end of year i
+array[1..T, Skill] of var 0..M: u_recruit;            % Recruitment at start of year i
+array[1..T, Skill, Skill] of var 0..M: transfer;      % Personnel transfer from s1 to s2 in year i
+array[1..T, Skill] of var 0..M: w_redundancy;         % Redundancies in year i
+array[1..T, Skill] of var 0..max_short_time: x_short; % Short-time workers in year i
+array[1..T, Skill] of var 0..M: y_overmanning;        % Overmanning in year i
 
 
 % Initial Conditions (Year 0)
@@ -32,36 +36,33 @@ constraint forall(s in Skill) (
     t_strength[0, s] = init_strength[s]
 );
 
-% Natural wastage and continuity
-constraint forall(i in 1..T) (
-    t_strength[i, SKILLED] = 
-        retention_existing[SKILLED] * t_strength[i-1, SKILLED] % Existing skilled
-      + retention_new[SKILLED] * u_recruit[i, SKILLED]         % New skilled recruits
-      + retention_existing[SKILLED] * v_SS_SK[i]               % Existing workers retrained to be skilled can immediately leave
-      - v_SK_SS[i]                                             % Downgrading to semi-skilled
-      - v_SK_US[i]                                             % Downgrading to unskilled
-      - w_redundancy[i, SKILLED]                               % redundant workers
+% Zero self-transfers (diagonal)
+constraint forall(i in 1..T, s in Skill) (
+    transfer[i, s, s] = 0
 );
 
-constraint forall(i in 1..T) (
-    t_strength[i, SEMI_SKILLED] = 
-        retention_existing[SEMI_SKILLED] * t_strength[i-1, SEMI_SKILLED]
-      + retention_new[SEMI_SKILLED] * u_recruit[i, SEMI_SKILLED]
-      + retention_existing[SEMI_SKILLED] * v_US_SS[i]
-      + 0.50 * v_SK_SS[i]                                      % fifty percent of downgraded workers leave the company
-      - v_SS_SK[i]                                             % these workers leave semi-skilled status to be skilled
-      - v_SS_US[i]
-      - w_redundancy[i, SEMI_SKILLED]
-);
-
-constraint forall(i in 1..T) (
-    t_strength[i, UNSKILLED] = 
-        retention_existing[UNSKILLED] * t_strength[i-1, UNSKILLED]
-      + retention_new[UNSKILLED] * u_recruit[i, UNSKILLED]
-      + 0.50 * v_SK_US[i]
-      + 0.50 * v_SS_US[i]
-      - v_US_SS[i]
-      - w_redundancy[i, UNSKILLED]
+% Unified Natural Wastage and Workforce Continuity Constraint
+constraint forall(i in 1..T, target in Skill) (
+    t_strength[i, target] = 
+        retention_existing[target] * t_strength[i-1, target]
+      + retention_new[target] * u_recruit[i, target]
+      
+      % Incoming transfers from lower skills (Retraining/Promotion)
+      + sum(source in Skill where source < target) (
+            retention_existing[target] * transfer[i, source, target]
+        )
+        
+      % Incoming transfers from higher skills (Downgrading)
+      + sum(source in Skill where source > target) (
+            (1.0 - downgrade_dropout) * transfer[i, source, target]
+        )
+        
+      % Outgoing transfers to any other skill level
+      - sum(dest in Skill where dest != target) (
+            transfer[i, target, dest]
+        )
+        
+      - w_redundancy[i, target]
 );
 
 % Upper bounds on recruitment
@@ -69,70 +70,71 @@ constraint forall(i in 1..T, s in Skill) (
     u_recruit[i, s] <= max_recruit[s]
 );
 
-% Retraining Semi-skilled Workers limit: vSSSKi <= 0.25 * tSKi
-% The retraining of semi-skilled workers to
-% make them skilled is limited to no more than one quarter of the skilled labour
-% force at the time as some training is done on the job.
-constraint forall(i in 1..T) (
-    v_SS_SK[i] <= 0.25 * t_strength[i, SKILLED]
+% Unified Transfer / Promotion / Retraining Limits (Start-of-Year Capacity)
+constraint forall(i in 1..T, s1 in Skill, s2 in Skill where s1 != s2) (
+    if s1 < s2 then
+        % Retraining limited by existing capacity at START of year (i - 1)
+        transfer[i, s1, s2] <= transfer_limit[s1, s2] * t_strength[i - 1, s2]
+    else
+        % Demotion/downgrade limits relative to source workforce at START of year (i - 1)
+        transfer[i, s1, s2] <= transfer_limit[s1, s2] * t_strength[i - 1, s1]
+    endif
 );
 
-% Upper boounds on overmanning
+% Upper bounds on overall company overmanning per year
 constraint forall(i in 1..T) (
     sum(s in Skill)(y_overmanning[i, s]) <= max_overmanning
 );
 
-% Production Requirements Constraint: t_i - y_i - 0.5*x_i = req_i
+% Production Requirements
 constraint forall(i in 1..T, s in Skill) (
-    t_strength[i, s] - y_overmanning[i, s] - 0.5 * x_short[i, s] = req[i, s]
+    t_strength[i, s] - y_overmanning[i, s] - short_time_efficiency * x_short[i, s] = req[i, s]
 );
 
-% constraint total_redundancy <= 843;
-
-% constraint total_cost <= 508700;
-
-var float: total_redundancy = sum(i in 1..T, s in Skill)(w_redundancy[i, s]);
-
+% Objective Definition
 var float: total_cost = sum(i in 1..T) (
-    retrain_cost[1] * v_US_SS[i]                                + retrain_cost[2] * v_SS_SK[i]
-    + redundancy_cost[UNSKILLED] * w_redundancy[i, UNSKILLED]   + redundancy_cost[SEMI_SKILLED] * w_redundancy[i, SEMI_SKILLED]   + redundancy_cost[SKILLED] * w_redundancy[i, SKILLED]
-    + short_time_cost[UNSKILLED] * x_short[i, UNSKILLED]        + short_time_cost[SEMI_SKILLED] * x_short[i, SEMI_SKILLED]        + short_time_cost[SKILLED] * x_short[i, SKILLED]
-    + overmanning_cost[UNSKILLED] * y_overmanning[i, UNSKILLED] + overmanning_cost[SEMI_SKILLED] * y_overmanning[i, SEMI_SKILLED] + overmanning_cost[SKILLED] * y_overmanning[i, SKILLED]
+    retrain_cost[1] * transfer[i, UNSKILLED, SEMI_SKILLED] 
+  + retrain_cost[2] * transfer[i, SEMI_SKILLED, SKILLED]
+  
+  + sum(s in Skill) (
+        redundancy_cost[s]  * w_redundancy[i, s]
+      + short_time_cost[s]  * x_short[i, s]
+      + overmanning_cost[s] * y_overmanning[i, s]
+    )
 );
-
 
 solve minimize total_cost;
 
-% solve minimize total_cost;
+% var int: total_redundancy = sum(y in 1..T, s in Skill)(w_redundancy[y, s]);
 
 % output [
 %   "=================================================================================\n",
 %   "                            MANPOWER PLANNING RESULTS                             \n",
 %   "=================================================================================\n",
 %   "Total Redundancy : ", show(total_redundancy), " workers\n",
-%   "Total Cost       : £", show(total_cost), "\n",
+%   "Total Cost       : £", show_int(0, fix(round(total_cost))), "\n",
 %   "=================================================================================\n\n",
 
 %   "--- RECRUITMENT ---\n",
 %   "        Unskilled  Semi-skilled   Skilled\n"
 % ] ++ [
 %   "Year " ++ show(y) ++ "   " ++
-%   show_int(8, (u_recruit[y, UNSKILLED])) ++ "    " ++
-%   show_int(10, (u_recruit[y, SEMI_SKILLED])) ++ "  " ++
-%   show_int(8, (u_recruit[y, SKILLED])) ++ "\n"
+%   show_int(8, fix(u_recruit[y, UNSKILLED])) ++ "    " ++
+%   show_int(10, fix(u_recruit[y, SEMI_SKILLED])) ++ "  " ++
+%   show_int(8, fix(u_recruit[y, SKILLED])) ++ "\n"
 %   | y in 1..T
 % ] ++ [
 
-%   "\n--- RETRAINING AND DOWNGRADING ---\n",
+%   "\n--- TRANSFERS (RETRAINING & DOWNGRADING) ---\n",
 %   "        Unskilled to   Semi-skilled   Semi-skilled   Skilled to     Skilled to\n",
 %   "        semi-skilled   to skilled     to unskilled   unskilled      semi-skilled\n"
 % ] ++ [
 %   "Year " ++ show(y) ++ "   " ++
-%   show_int(8, (v_US_SS[y])) ++ "       " ++
-%   show_int(10, (v_SS_SK[y])) ++ "     " ++
-%   show_int(10, (v_SS_US[y])) ++ "     " ++
-%   show_int(10, (v_SK_US[y])) ++ "     " ++
-%   show_int(12, (v_SK_SS[y])) ++ "\n"
+%   show_int(8, fix(transfer[y, UNSKILLED, SEMI_SKILLED])) ++ "       " ++
+%   show_int(10, fix(transfer[y, SEMI_SKILLED, SKILLED])) ++ "     " ++
+%   show_int(10, fix(transfer[y, SEMI_SKILLED, UNSKILLED])) ++ "     " ++
+%   show_int(10, fix(transfer[y, SKILLED, UNSKILLED])) ++ "     " ++
+%   show_int(12, fix(transfer[y, SKILLED, SEMI_SKILLED])) ++ "\n"
 %   | y in 1..T
 % ] ++ [
 
@@ -140,9 +142,9 @@ solve minimize total_cost;
 %   "        Unskilled  Semi-skilled   Skilled\n"
 % ] ++ [
 %   "Year " ++ show(y) ++ "   " ++
-%   show_int(8, (w_redundancy[y, UNSKILLED])) ++ "    " ++
-%   show_int(10, (w_redundancy[y, SEMI_SKILLED])) ++ "  " ++
-%   show_int(8, (w_redundancy[y, SKILLED])) ++ "\n"
+%   show_int(8, fix(w_redundancy[y, UNSKILLED])) ++ "    " ++
+%   show_int(10, fix(w_redundancy[y, SEMI_SKILLED])) ++ "  " ++
+%   show_int(8, fix(w_redundancy[y, SKILLED])) ++ "\n"
 %   | y in 1..T
 % ] ++ [
 
@@ -150,9 +152,9 @@ solve minimize total_cost;
 %   "        Unskilled  Semi-skilled   Skilled\n"
 % ] ++ [
 %   "Year " ++ show(y) ++ "   " ++
-%   show_int(8, (x_short[y, UNSKILLED])) ++ "    " ++
-%   show_int(10, (x_short[y, SEMI_SKILLED])) ++ "  " ++
-%   show_int(8, (x_short[y, SKILLED])) ++ "\n"
+%   show_int(8, fix(x_short[y, UNSKILLED])) ++ "    " ++
+%   show_int(10, fix(x_short[y, SEMI_SKILLED])) ++ "  " ++
+%   show_int(8, fix(x_short[y, SKILLED])) ++ "\n"
 %   | y in 1..T
 % ] ++ [
 
@@ -160,22 +162,22 @@ solve minimize total_cost;
 %   "        Unskilled  Semi-skilled   Skilled\n"
 % ] ++ [
 %   "Year " ++ show(y) ++ "   " ++
-%   show_int(8, (y_overmanning[y, UNSKILLED])) ++ "    " ++
-%   show_int(10, (y_overmanning[y, SEMI_SKILLED])) ++ "  " ++
-%   show_int(8, (y_overmanning[y, SKILLED])) ++ "\n"
+%   show_int(8, fix(y_overmanning[y, UNSKILLED])) ++ "    " ++
+%   show_int(10, fix(y_overmanning[y, SEMI_SKILLED])) ++ "  " ++
+%   show_int(8, fix(y_overmanning[y, SKILLED])) ++ "\n"
 %   | y in 1..T
 % ] ++ [
 
-%   "\n--- WORKFORCE STRENGTH (START OF YEAR) ---\n",
+%   "\n--- WORKFORCE STRENGTH (END OF YEAR) ---\n",
 %   "        Unskilled  Semi-skilled   Skilled\n",
 %   "Year 0   " ++
-%   show_int(8, (t_strength[0, UNSKILLED])) ++ "    " ++
-%   show_int(10, (t_strength[0, SEMI_SKILLED])) ++ "  " ++
-%   show_int(8, (t_strength[0, SKILLED])) ++ "\n"
+%   show_int(8, fix(t_strength[0, UNSKILLED])) ++ "    " ++
+%   show_int(10, fix(t_strength[0, SEMI_SKILLED])) ++ "  " ++
+%   show_int(8, fix(t_strength[0, SKILLED])) ++ "\n"
 % ] ++ [
 %   "Year " ++ show(y) ++ "   " ++
-%   show_int(8, (t_strength[y, UNSKILLED])) ++ "    " ++
-%   show_int(10, (t_strength[y, SEMI_SKILLED])) ++ "  " ++
-%   show_int(8, (t_strength[y, SKILLED])) ++ "\n"
+%   show_int(8, fix(t_strength[y, UNSKILLED])) ++ "    " ++
+%   show_int(10, fix(t_strength[y, SEMI_SKILLED])) ++ "  " ++
+%   show_int(8, fix(t_strength[y, SKILLED])) ++ "\n"
 %   | y in 1..T
 % ];

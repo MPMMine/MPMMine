@@ -11,10 +11,18 @@ retention_new      = [0.75, 0.80, 0.90];
 
 max_recruit = [500, 800, 500];
 max_short_time = 50;
-max_retrain_unskilled = 200;
 max_overmanning = 150;
 
 retrain_cost = [400, 500];
 redundancy_cost = [200, 500, 500];
 overmanning_cost = [1500, 2000, 3000];
 short_time_cost = [500, 400, 400];
+
+downgrade_dropout = 0.5;
+short_time_efficiency = 0.5;
+
+% Matrix format: [UNSKILLED, SEMI_SKILLED, SKILLED]
+% Rows = Source skill (s1), Columns = Target skill (s2)
+transfer_limit = [| 0.0,      0.142857, 0.0  % UNSKILLED -> [SEMI (200/1400), SKILLED (N/A)]
+                  | 1.0,      0.0,      0.25 % SEMI_SKILLED -> [UNSKILLED (100%), SKILLED (25%)]
+                  | 1.0,      1.0,      0.0  |]; % SKILLED -> [UNSKILLED (100%), SEMI (100%)]
