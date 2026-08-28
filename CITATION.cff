@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+title: "MPMMine: Mathematical Programming model mining benchmarks"
+message: "If you use this benchmark suite or repository in your research, please cite it as below."
+type: dataset
+authors:
+  - family-names: "Stachowiak"
+    given-names: "Rafał"
+    orcid: "https://orcid.org/0009-0002-7978-900X"
+  - family-names: "Pawlak"
+    given-names: "Tomasz P."
+    orcid: "https://orcid.org/0000-0002-8353-0562"
+repository-code: "https://github.com/MPMMine/MPMMine"
+url: "https://github.com/MPMMine/MPMMine"
+abstract: "A standardized benchmark suite for evaluating algorithmic performance across mathematical programming model mining tasks, including model discovery, conformance checking, and enhancement."
+keywords:
+  - mathematical programming
+  - constraint acquisition
+  - model mining
+  - optimization
+  - minizinc
+  - benchmarks
+license: "CC0-1.0"
+date-released: "2026-07-25"
+version: 0.1.0.20260722-beta
+doi: 10.5281/zenodo.19650201
