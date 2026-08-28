@@ -18,3 +18,7 @@ retrain_cost = [400, 500];
 redundancy_cost = [200, 500, 500];
 overmanning_cost = [1500, 2000, 3000];
 short_time_cost = [500, 400, 400];
+
+promotion_limit = 0.25;
+downgrade_dropout = 0.5;
+short_time_efficiency = 0.5;
