@@ -22,4 +22,6 @@ keywords:
 license: "CC0-1.0"
 date-released: "2026-07-25"
 version: 0.1.0.20260722-beta
-doi: 10.5281/zenodo.19650201
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.19650201
