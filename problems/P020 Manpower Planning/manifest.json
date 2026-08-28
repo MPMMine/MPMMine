@@ -2,9 +2,14 @@
   "id": "P020",
   "name": "Manpower planning",
   "tags": {
-    "Q118303052": "manpower planning",
     "Q984063": "optimization problem",
-    "Q70467303": "minimization"
+    "Q1204361": "redundancy",
+    "Q1783605": "staffing",
+    "Q2072151": "human resource planning",
+    "Q2072185": "workforce management",
+    "Q25324631": "workforce optimization",
+    "Q70467303": "minimization",
+    "Q118303052": "manpower planning"
   },
   "features": {
     "constraints": true,
