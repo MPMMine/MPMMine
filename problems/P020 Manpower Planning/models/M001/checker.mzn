@@ -8,6 +8,9 @@ array[Skill] of int: max_recruit;
 int: max_short_time;
 int: max_retrain_unskilled;
 int: max_overmanning;
+float: downgrade_dropout;
+float: promotion_limit;
+float: short_time_efficiency;
 array[1..2] of int: retrain_cost;
 array[Skill] of int: redundancy_cost;
 array[Skill] of int: overmanning_cost;
@@ -58,7 +61,7 @@ array[int] of bool: checks =
             retention_existing[SEMI_SKILLED] * t_strength[i-1, SEMI_SKILLED]
           + retention_new[SEMI_SKILLED] * u_recruit[i, SEMI_SKILLED]
           + retention_existing[SEMI_SKILLED] * v_US_SS[i]
-          + 0.50 * v_SK_SS[i]
+          + (1.0 - downgrade_dropout) * v_SK_SS[i]
           - v_SS_SK[i]
           - v_SS_US[i]
           - w_redundancy[i, SEMI_SKILLED]
@@ -70,8 +73,8 @@ array[int] of bool: checks =
         abs(t_strength[i, UNSKILLED] - (
             retention_existing[UNSKILLED] * t_strength[i-1, UNSKILLED]
           + retention_new[UNSKILLED] * u_recruit[i, UNSKILLED]
-          + 0.50 * v_SK_US[i]
-          + 0.50 * v_SS_US[i]
+          + (1.0 - downgrade_dropout) * v_SK_US[i]
+          + (1.0 - downgrade_dropout) * v_SS_US[i]
           - v_US_SS[i]
           - w_redundancy[i, UNSKILLED]
         )) <= eps,
@@ -92,9 +95,9 @@ array[int] of bool: checks =
     ) | i in 1..T ]
     ++
     [ check(
-        v_SS_SK[i] <= 0.25 * t_strength[i, SKILLED] + eps,
-        "Semi-to-Skilled retraining limit (25% of skilled force) exceeded in Year " ++ show(i) ++ 
-        ": " ++ show(v_SS_SK[i]) ++ " > " ++ show(0.25 * t_strength[i, SKILLED])
+        v_SS_SK[i] <= promotion_limit * t_strength[i, SKILLED] + eps,
+        "Semi-to-Skilled retraining limit (" ++ show(promotion_limit * 100) ++ "% of skilled force) exceeded in Year " ++ show(i) ++ 
+        ": " ++ show(v_SS_SK[i]) ++ " > " ++ show(promotion_limit * t_strength[i, SKILLED])
     ) | i in 1..T ]
     ++
     [ check(
@@ -111,9 +114,9 @@ array[int] of bool: checks =
     ++
     % Production Requirements
     [ check(
-        abs(t_strength[i, s] - y_overmanning[i, s] - 0.5 * x_short[i, s] - req[i, s]) <= eps,
+        abs(t_strength[i, s] - y_overmanning[i, s] - short_time_efficiency * x_short[i, s] - req[i, s]) <= eps,
         "Production requirement violated for " ++ show(s) ++ " in Year " ++ show(i) ++ 
-        ": Calculated = " ++ show(t_strength[i, s] - y_overmanning[i, s] - 0.5 * x_short[i, s]) ++ 
+        ": Calculated = " ++ show(t_strength[i, s] - y_overmanning[i, s] - short_time_efficiency * x_short[i, s]) ++ 
         ", Required = " ++ show(req[i, s])
     ) | i in 1..T, s in Skill ]
     ++
