@@ -1,4 +1,5 @@
 cff-version: 1.2.0
+type: dataset
 title: "MPMMine: Mathematical Programming model mining benchmarks"
 message: "If you use this benchmark suite or repository in your research, please cite it as below."
 type: dataset
