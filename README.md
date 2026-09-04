@@ -31,7 +31,7 @@ MP model mining divides into three top-level problems:
   This problem was widely addressed in scientific literature and carries various names, such as constraint or MP model
   acquisition, learning, synthesis, induction, generation, and identification.
 * Conformance checking - given an MP model and a domain knowledge artifact, evaluate how well the model and the artifact
-  match, indentify discrepancies, and diagnose reasons for non-conformance.
+  match, identify discrepancies, and diagnose reasons for non-conformance.
 * Enhancement - given an MP model and a domain knowledge artifact, modify this model to increase their conformance.
   Specific problems include model repair, rewriting, and extension.
 
