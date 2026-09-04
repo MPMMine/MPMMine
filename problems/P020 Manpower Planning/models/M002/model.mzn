@@ -17,7 +17,7 @@ array[Skill] of int: max_recruit;                     % Cap on additional recrui
 % Rows: From skill level, Columns: To skill level
 array[Skill, Skill] of 0.0..1.0: transfer_limit; 
 
-array[1..2] of int: retrain_cost;                     % Cost of retraining [UNSKILLED->SEMI, SEMI->SKILLED]
+array[Skill] of int: retrain_cost;                    % Cost of retraining from the indexed skill to level up
 array[Skill] of int: redundancy_cost;                 % Cost of declaring an employee redundant based on skill
 array[Skill] of int: overmanning_cost;                % Cost of superfluous employee based on skill
 array[Skill] of int: short_time_cost;                 % Cost of employee on short-time based on skill
@@ -93,8 +93,8 @@ constraint forall(i in 1..T, s in Skill) (
 
 % Objective Definition
 var float: total_cost = sum(i in 1..T) (
-    retrain_cost[1] * transfer[i, UNSKILLED, SEMI_SKILLED] 
-  + retrain_cost[2] * transfer[i, SEMI_SKILLED, SKILLED]
+    retrain_cost[UNSKILLED] * transfer[i, UNSKILLED, SEMI_SKILLED] 
+  + retrain_cost[SEMI_SKILLED] * transfer[i, SEMI_SKILLED, SKILLED]
   
   + sum(s in Skill) (
         redundancy_cost[s]  * w_redundancy[i, s]

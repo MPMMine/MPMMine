@@ -13,7 +13,7 @@ max_recruit = [500, 800, 500];
 max_short_time = 50;
 max_overmanning = 150;
 
-retrain_cost = [400, 500];
+retrain_cost = [400, 500, 0];
 redundancy_cost = [200, 500, 500];
 overmanning_cost = [1500, 2000, 3000];
 short_time_cost = [500, 400, 400];
