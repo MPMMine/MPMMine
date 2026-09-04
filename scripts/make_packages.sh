@@ -2,11 +2,11 @@
 
 set -e
 
+cd "$(dirname -- "${BASH_SOURCE[0]}")/.." || exit
+
 # Update the VERSION file to change version information
 VERSION="$(cat VERSION)"
 declare VERSION
-
-cd "$(dirname -- "${BASH_SOURCE[0]}")/.." || exit
 
 # Build 7z package
 git ls-tree -r --name-only HEAD | grep -e .dzn -e .mzn -e .md -e .json -e .bib -e .png -e .svg -e LICENSE -e VERSION > filelist
