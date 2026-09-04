@@ -1,8 +1,8 @@
 # Manpower Planning
 
-A company is undergoing a number of changes that will affect its manpower requirements in future years. Owing to the installation of new machinery, fewer unskilled but more skilled and semi-skilled workers will be required. In addition to this, a downturn in trade is expected in the next year, which will reduce the need for workers in all categories. The estimated manpower requirements for the next three years are saved in the tables `init_strength` and `req`.
+A company is undergoing a number of changes that will affect its manpower requirements in future years. Owing to the installation of new machinery, fewer unskilled but more skilled and semi-skilled workers will be required. In addition to this, a downturn in trade is expected in the next year, which will reduce the need for workers in all categories. The estimated manpower requirements for the next years are saved in the tables `init_strength` and `req`.
 
-The company wishes to decide its policy with regard to the following over the next three years:
+The company wishes to decide its policy with regard to the following over the next years:
 1. Recruitment,
 2. Retraining,
 3. Redundancy,

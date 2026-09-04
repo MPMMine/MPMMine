@@ -10,7 +10,7 @@ int: max_overmanning;
 float: downgrade_dropout;
 float: short_time_efficiency;
 array[Skill, Skill] of float: transfer_limit;
-array[1..2] of int: retrain_cost;
+array[Skill] of int: retrain_cost;
 array[Skill] of int: redundancy_cost;
 array[Skill] of int: overmanning_cost;
 array[Skill] of int: short_time_cost;
@@ -109,8 +109,8 @@ array[int] of bool: checks =
     if check_objective then 
         let { 
             float: total_cost = sum(i in 1..T) (
-                retrain_cost[1] * transfer[i, UNSKILLED, SEMI_SKILLED] 
-              + retrain_cost[2] * transfer[i, SEMI_SKILLED, SKILLED]
+                retrain_cost[UNSKILLED] * transfer[i, UNSKILLED, SEMI_SKILLED] 
+              + retrain_cost[SEMI_SKILLED] * transfer[i, SEMI_SKILLED, SKILLED]
               + sum(s in Skill) (
                     redundancy_cost[s]  * w_redundancy[i, s]
                   + short_time_cost[s]  * x_short[i, s]
