@@ -4,7 +4,7 @@
 
 ![Problems](https://img.shields.io/badge/Problems-20-blue)
 ![MZN Models](https://img.shields.io/badge/MZN%20Models-28-orange)
-![Instances](https://img.shields.io/badge/Instances-386-purple)
+![Instances](https://img.shields.io/badge/Instances-387-purple)
 ![Descriptions](https://img.shields.io/badge/Descriptions-326-brightgreen)
 
 ---
@@ -59,7 +59,7 @@ a systematic survey of works on MP model mining from 2000 to 2025 can be found i
 * [P014 Crude Mix](problems/P014%20Crude%20Mix) — `6 instances`, `13 descriptions`
 * [P015 Feed Blend](problems/P015%20Feed%20Blend) — `6 instances`, `32 descriptions`
 * [P016 Power Management](problems/P016%20Power%20Management) — `37 instances`, `16 descriptions`
-* [P017 Three-dimensional noughts and crosses](problems/P017%20Three-dimensional%20noughts%20and%20crosses) — `12 instances`, `2 descriptions`
+* [P017 Three-dimensional noughts and crosses](problems/P017%20Three-dimensional%20noughts%20and%20crosses) — `13 instances`, `2 descriptions`
 * [P018 Lost Baggage Distribution](problems/P018%20Lost%20Baggage%20Distribution) — `3 instances`, `1 descriptions`
 * [P019 Decentralization](problems/P019%20Decentralization) — `3 instances`, `1 descriptions`
 * [P020 Manpower Planning](problems/P020%20Manpower%20Planning) — `2 instances`, `2 descriptions`
