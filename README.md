@@ -4,7 +4,7 @@
 
 ![Problems](https://img.shields.io/badge/Problems-20-blue)
 ![MZN Models](https://img.shields.io/badge/MZN%20Models-28-orange)
-![Instances](https://img.shields.io/badge/Instances-382-purple)
+![Instances](https://img.shields.io/badge/Instances-383-purple)
 ![Descriptions](https://img.shields.io/badge/Descriptions-326-brightgreen)
 
 ---
@@ -44,7 +44,7 @@ a systematic survey of works on MP model mining from 2000 to 2025 can be found i
 ## Problem and MP model list
 
 * [P001 Progressive Party](problems/P001%20Progressive%20Party) — `12 instances`, `19 descriptions`
-* [P002 Car Sequencing](problems/P002%20Car%20Sequencing) — `110 instances`, `19 descriptions`
+* [P002 Car Sequencing](problems/P002%20Car%20Sequencing) — `111 instances`, `19 descriptions`
 * [P003 Template Design](problems/P003%20Template%20Design) — `16 instances`, `38 descriptions`
 * [P004 Low Autocorrelation Binary Sequences](problems/P004%20Low%20Autocorrelation%20Binary%20Sequences) — `50 instances`, `20 descriptions`
 * [P005 Golomb Ruler](problems/P005%20Golomb%20Ruler) — `10 instances`, `19 descriptions`
