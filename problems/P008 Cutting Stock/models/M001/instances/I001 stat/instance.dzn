@@ -1,0 +1,9 @@
+n_items = 6;
+max_rolls = 25; 
+roll_width = 150.0;
+
+% These widths are designed to leave awkward gaps
+% 81.5 + 69.1 = 150.6 (Just over!)
+% 49.5 * 3 = 148.5 (Tight fit with small waste)
+item_widths = [81.5, 69.1, 51.2, 49.5, 33.8, 22.4];
+demand = [8, 10, 5, 12, 7, 15];
