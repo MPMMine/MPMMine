@@ -4,7 +4,7 @@
 
 ![Problems](https://img.shields.io/badge/Problems-20-blue)
 ![MZN Models](https://img.shields.io/badge/MZN%20Models-28-orange)
-![Instances](https://img.shields.io/badge/Instances-393-purple)
+![Instances](https://img.shields.io/badge/Instances-394-purple)
 ![Descriptions](https://img.shields.io/badge/Descriptions-326-brightgreen)
 
 ---
@@ -54,7 +54,7 @@ a systematic survey of works on MP model mining from 2000 to 2025 can be found i
 * [P009 Sphere Packing in a Cube](problems/P009%20Sphere%20Packing%20in%20a%20Cube) — `4 instances`, `11 descriptions`
 * [P010 Facility Location](problems/P010%20Facility%20Location) — `4 instances`, `11 descriptions`
 * [P011 Schurs Lemma](problems/P011%20Schurs%20Lemma) — `46 instances`, `15 descriptions`
-* [P012 Bus Driver Scheduling](problems/P012%20Bus%20Driver%20Scheduling) — `9 instances`, `19 descriptions`
+* [P012 Bus Driver Scheduling](problems/P012%20Bus%20Driver%20Scheduling) — `10 instances`, `19 descriptions`
 * [P013 Langfords Number](problems/P013%20Langfords%20Number) — `40 instances`, `37 descriptions`
 * [P014 Crude Mix](problems/P014%20Crude%20Mix) — `6 instances`, `13 descriptions`
 * [P015 Feed Blend](problems/P015%20Feed%20Blend) — `6 instances`, `32 descriptions`
