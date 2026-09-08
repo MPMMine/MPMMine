@@ -4,7 +4,7 @@
 
 ![Problems](https://img.shields.io/badge/Problems-20-blue)
 ![MZN Models](https://img.shields.io/badge/MZN%20Models-28-orange)
-![Instances](https://img.shields.io/badge/Instances-389-purple)
+![Instances](https://img.shields.io/badge/Instances-391-purple)
 ![Descriptions](https://img.shields.io/badge/Descriptions-326-brightgreen)
 
 ---
@@ -50,8 +50,8 @@ a systematic survey of works on MP model mining from 2000 to 2025 can be found i
 * [P005 Golomb Ruler](problems/P005%20Golomb%20Ruler) — `11 instances`, `19 descriptions`
 * [P006 Vessel Loading](problems/P006%20Vessel%20Loading) — `6 instances`, `19 descriptions`
 * [P007 Continuous Knapsack](problems/P007%20Continuous%20Knapsack) — `6 instances`, `14 descriptions`
-* [P008 Cutting Stock](problems/P008%20Cutting%20Stock) — `5 instances`, `18 descriptions`
-* [P009 Sphere Packing in a Cube](problems/P009%20Sphere%20Packing%20in%20a%20Cube) — `3 instances`, `11 descriptions`
+* [P008 Cutting Stock](problems/P008%20Cutting%20Stock) — `6 instances`, `18 descriptions`
+* [P009 Sphere Packing in a Cube](problems/P009%20Sphere%20Packing%20in%20a%20Cube) — `4 instances`, `11 descriptions`
 * [P010 Facility Location](problems/P010%20Facility%20Location) — `3 instances`, `11 descriptions`
 * [P011 Schurs Lemma](problems/P011%20Schurs%20Lemma) — `45 instances`, `15 descriptions`
 * [P012 Bus Driver Scheduling](problems/P012%20Bus%20Driver%20Scheduling) — `9 instances`, `19 descriptions`
