@@ -1,0 +1,12 @@
+output ["production = ",showDzn(production),";\n","buy = ",showDzn(buy),";\n","sell = ",showDzn(sell),";\n","charge = ",showDzn(charge),";\n","discharge = ",showDzn(discharge),";\n","soc = ",showDzn(soc),";\n","cost = ",showDzn(cost),";\n","earn = ",showDzn(earn),";\n","total_cost = ",showDzn(total_cost),";\n","total_earn = ",showDzn(total_earn),";\n"];
+float: total_earn;
+float: total_cost;
+set of int: periods = 1..96;
+array [periods] of float: earn;
+array [periods] of float: cost;
+array [periods] of float: soc;
+array [periods] of float: discharge;
+array [periods] of float: charge;
+array [periods] of float: sell;
+array [periods] of float: buy;
+array [periods] of float: production;
