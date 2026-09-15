@@ -12,3 +12,4 @@ visit =
  |  4, 6, 8, 7,  2
  |];
 optVar = 5;
+% _objective = 5;

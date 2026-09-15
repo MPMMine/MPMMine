@@ -33,3 +33,4 @@ p =
 R = [20, 71, 50];
 Production = 85;
 Surplus = 70;
+% _objective = 85;
