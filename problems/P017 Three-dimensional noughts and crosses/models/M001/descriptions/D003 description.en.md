@@ -6,8 +6,8 @@ A *line* is any collection of exactly $n$ positions that share a common directio
 
 Two kinds of markers are available: white pieces (noughts) and black pieces (crosses). The supply is fixed at $n^3 - total\\_black\\_balls$ white pieces and $total\\_black\\_balls$ black pieces, where $total\\_black\\_balls$ is a given parameter.
 
-Each position receives a single binary assignment: one value encoding a black piece, the other encoding a white piece. Every line, in turn, is assigned a binary flag that is raised precisely when all $n$ positions along that line carry markers of a single colour (all black or all white).
+Each position receives a single binary assignment: one value encoding a black piece, the other encoding a white piece. Every line, in turn, is assigned a binary flag that is raised precisely when all $n$ positions along that line carry markers of a single color (all black or all white).
 
-The requirement is to place exactly $total\\_black\\_balls$ black pieces and $n^3 - total\\_black\\_balls$ white pieces into the $n^3$ positions—no more, no less, one piece per position—so that the total number of lines whose flag is raised (i.e., uniformly coloured lines) is as small as possible.
+The requirement is to place exactly $total\\_black\\_balls$ black pieces and $n^3 - total\\_black\\_balls$ white pieces into the $n^3$ positions—no more, no less, one piece per position—so that the total number of lines whose flag is raised (i.e., uniformly colored lines) is as small as possible.
 
 [//]: # (Generated using qwen3.8:27b from D001 description.en.md and model.mzn; minor manual adjustments applied)
