@@ -14,21 +14,18 @@ We must place $B$ black balls (crosses) and $W = n^{3}-B$ white balls (noughts),
 - $lines[l] \in \{0,1\}$ for each line $l$ ($1$ = monochrome, $0$ = mixed).
 
 **Constraints**  
-- For every line $l$ and its $n$ cells $c_{l,j}$:  
-  \[
-  \sum_{j=1}^{n} balls[c_{l,j}] - lines[l] \le n-1,\qquad
-  \sum_{j=1}^{n} balls[c_{l,j}] + lines[l] \ge 1,
-  \]  
+- For every line $l$ and its $n$ cells $c_{l,j}$:
+$\sum\_{j=1}^{n} balls[c\_{l,j}] - lines[l] \le n-1$
+$\sum\_{j=1}^{n} balls[c\_{l,j}] + lines[l] \ge 1$
+
   which forces $lines[l]=1$ exactly when all $n$ cells of the line share the same color.  
 - The total number of black balls must equal $B$:  
-  \[
-  \sum_{i=1}^{total\_blocks} balls[i] = B.
-  \]
+$\sum\_{i=1}^{total\\_blocks} balls[i] = B$
+
 
 **Objective**  
 Minimise the total count of monochrome lines:  
-\[
-\text{minimise}\;\; \sum_{l=1}^{total\_lines} lines[l].
-\]
+$\text{minimise}\\;\\; \sum\_{l=1}^{total\\_lines} lines[l]$
 
-[//]: # (Generated using nemotron3:33b from D001 description.en.md and model.mzn)
+
+[//]: # (Generated using nemotron3:33b from D001 description.en.md and model.mzn; major manual adjustments applied)
