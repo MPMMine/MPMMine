@@ -44,7 +44,7 @@ A substantial proportion of employees leave during the first year of employment;
 
 * **Retraining unskilled workers** - is capped at `max_retrain_unskilled` number of workers.
 
-* **Over‑manning ceiling** – the total number of employees kept above the required level across all skills in year *i* may not exceed `max_overmanning`: `∑_s y_overmanning[i, s] ≤ max_overmanning`.  
+* **Over‑manning ceiling** – the total number of employees kept above the required level across all skills in year *i* may not exceed `max_overmanning`: $∑_s y\\_overmanning[i, s] ≤ max\\_overmanning$.  
 
 * **Production requirement** – the effective output of year *i* must meet demand after accounting for short‑time efficiency: `t_strength[i, s] – y_overmanning[i, s] – short_time_efficiency·x_short[i, s] = req[i, s]` for every skill `s`.  
 
@@ -54,9 +54,9 @@ A substantial proportion of employees leave during the first year of employment;
 
 The firm’s primary goal is to **minimise total redundancy**, expressed as  
 
-```
-total_redundancy = Σ_{i=1}^{T} Σ_{s∈Skill} w_redundancy[i, s]
-```
+$$
+total\\_redundancy = Σ_{i=1}^{T} Σ_{s∈Skill} w\\_redundancy[i, s]
+$$
 
 and the model is solved as a minimisation problem:
 
