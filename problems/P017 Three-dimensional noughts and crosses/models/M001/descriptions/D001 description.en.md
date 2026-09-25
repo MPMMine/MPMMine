@@ -8,6 +8,6 @@ and vertical section and connecting opposite vertices of the cube. (For $n = 3$ 
 lines altogether.)
 
 Given $n^3 - total\\_black\\_balls$ white balls (noughts) and $total\\_black\\_balls$ black balls (crosses), arrange them,
-one to a cell, so as to minimise the number of lines with balls all of one colour.
+one to a cell, so as to minimise the number of lines with balls all of one color.
 
 [//]: # (Original problem form the book "Model Building in Mathematical Programming". Manually adjusted for the n x n case.)

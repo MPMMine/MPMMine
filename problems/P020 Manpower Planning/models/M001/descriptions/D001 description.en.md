@@ -18,7 +18,7 @@ It is possible to retrain up to `max_retrain_unskilled` unskilled workers per ye
 
 Downgrading of workers to a lower skill is possible but `downgrade_dropout` fraction of such workers leave, although it costs the company nothing. (This wastage is additional to the ‘natural wastage’ described above).
 
-The redundancy payment are gathered in the `redundancy_cost` table.
+The redundancy payments are gathered in the `redundancy_cost` table.
 
 It is possible to employ up to `max_overmanning` more workers over the whole company than are needed, but the extra costs per employee per year are gathered in `overmanning_cost` table.
 
