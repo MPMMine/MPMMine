@@ -45,9 +45,9 @@ t_i(s) - ov_i(s) - short_time_efficiency·sh_i(s) = req_i(s)
 
 The firm’s declared goal is to **minimise total redundancy**, i.e. minimise  
 
-```
-Σ_{i=1..T} Σ_{s∈Skills} red_i(s)
-```
+$$
+Σ_{i=1..T} Σ_{s∈Skills} red\_i(s)
+$$
 
 subject to all constraints above.  
 
