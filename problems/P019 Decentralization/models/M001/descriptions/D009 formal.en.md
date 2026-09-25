@@ -11,16 +11,20 @@ A corporate organization intends to shift certain divisions away from the Home C
 - Decision variable `loc[dept]`: city assigned to each division  
 
 **Constraints**  
-For every city *c* in `CITY`:  
-\[
-\sum_{d \in DEPT} \mathbf{1}\bigl(loc[d] = c\bigr) \le max\_dept
-\]  
+For every city *c* in `CITY`: 
+
+$$
+\sum\_{d \in DEPT} \mathbf{1}\bigl(loc[d] = c\bigr) \le max\\_dept
+$$
+
 ensuring the capacity limit is respected.
 
 **Objective**  
-\[
-\text{total\_cost}= \sum_{\substack{i \in DEPT \\ k \in DEPT \\ i < k}} \bigl(comm\_quantity[i,k] \times comm\_cost[loc[i],\,loc[k]]\bigr) \;-\; \sum_{i \in DEPT} benefits[i,\,loc[i]]
-\]  
+
+$$
+\text{total\\_cost}= \sum_{\substack{i \in DEPT \\ k \in DEPT \\ i < k}} \bigl(comm\\_quantity[i,k] \times comm\\_cost[loc[i],\\,loc[k]]\bigr) \\;-\\; \sum\_{i \in DEPT} benefits[i,\\,loc[i]]
+$$  
+
 The model seeks the assignment `loc` that minimizes `total_cost`.
 
 [//]: # (Generated using nemotron3:33b from D001 description.en.md and model.mzn)
