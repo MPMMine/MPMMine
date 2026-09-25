@@ -10,10 +10,10 @@ We must place exactly B black pieces and W white pieces (B + W = n³), o
 
 **Constraints**  
 - For each line l: `sum(cell[c] on l) – line[l] ≤ n‑1` and `sum(cell[c] on l) + line[l] ≥ 1`, ensuring `line[l]` correctly indicates a uniform color.  
-- `∑_{c=1}^{n³} cell[c] = B`.
+- $∑_{c=1}^{n³} cell[c] = B$.
 
 **Objective**  
-- Minimise `∑_{l=1}^{L} line[l]`.
+- Minimise $∑_{l=1}^{L} line[l]$.
 
 The model arranges the given numbers of black and white pieces to obtain the fewest wholly uniform lines.
 
