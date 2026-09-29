@@ -1,0 +1,28 @@
+T = 3;
+
+init_strength = [2500, 1800, 1200];
+
+req = [| 2000, 1600, 1100
+       | 1500, 1400, 1000
+       | 1000, 1200,  850 |];
+
+retention_existing = [0.92, 0.94, 0.97];
+retention_new      = [0.80, 0.85, 0.90];
+
+max_recruit = [300, 400, 300];
+max_short_time = 75;
+max_overmanning = 200;
+
+retrain_cost = [350, 450, 0];
+redundancy_cost = [300, 550, 650];
+overmanning_cost = [1600, 2200, 3200];
+short_time_cost = [450, 350, 350];
+
+downgrade_dropout = 0.60;
+short_time_efficiency = 0.50;
+
+% Matrix format: [UNSKILLED, SEMI_SKILLED, SKILLED]
+% Rows = Source skill (s1), Columns = Target skill (s2)
+transfer_limit = [| 0.0,      0.09375, 0.0  % UNSKILLED -> [SEMI (150/1600), SKILLED (N/A)]
+                  | 1.0,      0.0,      0.2 % SEMI_SKILLED -> [UNSKILLED (100%), SKILLED (20%)]
+                  | 1.0,      1.0,      0.0  |]; % SKILLED -> [UNSKILLED (100%), SEMI (100%)]
