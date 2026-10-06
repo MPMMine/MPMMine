@@ -7,13 +7,13 @@ On any given evening, the set of `n_cities` delivery destinations and the pairwi
 The formulation must satisfy the following structural requirements:
 
 - **Vehicle activation:** A vehicle is considered active only if it visits at least one delivery point.
-- **Time budget:** The cumulative travel time along each active vehicle's route must not exceed `T_limit`.
+- **Time budget:** The cumulative travel time for each active vehicle from airport to each destination must not exceed `T_limit`; the vehicle may come back to the airport after `T_limit`.
 - **Unique assignment:** Every delivery destination (excluding the depot) is served by exactly one vehicle.
 - **Depot visitation:** The starting airport is included in the route of every active vehicle.
 - **Flow conservation:** For each vehicle and each location, the number of incoming legs equals the number of outgoing legs, and both equal the visitation indicator for that location.
 - **Subtour elimination:** Each vehicle's assigned locations must form a single contiguous tour (no disconnected cycles), enforced via a successor-array and subcircuit condition.
 - **Symmetry breaking:** Vehicles are ordered so that vehicle index `r` serves at least as many locations as vehicle index `r+1`, preventing equivalent re-indexings.
 
-**Objective.** The combined goal is lexicographic: first, minimize the total count of active vehicles; second, subject to that minimum, minimize the maximum route duration across all active vehicles. This is achieved by forming a weighted sum in which the vehicle-count term is scaled by a factor of `T_limit + 1` (ensuring it dominates) and added to the maximum per-vehicle travel time.
+**Objective.** The combined goal is lexicographic: first, minimize the total count of active vehicles; second, subject to that minimum, minimize the maximum route duration across all active vehicles. This is achieved by forming a weighted sum in which the vehicle-count term is scaled by a factor of `T_limit + 1` (ensuring it dominates) and added to the maximum per-vehicle travel time to the furthest destination.
 
 [//]: # (Generated using qwen3.8:27b from D001 description.en.md and model.mzn; minor manual adjustments applied)

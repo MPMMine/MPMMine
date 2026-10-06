@@ -1,6 +1,6 @@
 # Manpower Planning  
 
-A firm is facing a series of transformations that will change its staffing needs in the coming years. New equipment will favour more qualified personnel, while a projected decline in trade will cut overall labor demand. The anticipated workforce requirements for the next **T** periods are stored in the tables `init_strength` (current headcount) and `req` (future demand).  
+A firm is facing a series of transformations that will change its staffing needs in the coming years. New equipment will favor more qualified personnel, while a projected decline in trade will cut overall labor demand. The anticipated workforce requirements for the next **T** periods are stored in the tables `init_strength` (current headcount) and `req` (future demand).  
 
 The company must choose a policy for the following actions during the planning horizon:  
 
@@ -27,16 +27,20 @@ A substantial proportion of employees leave during the first year of employment;
 | `w_redundancy[i, s]` | Employees of skill `s` made redundant in year *i* |
 | `x_short[i, s]` | Workers of skill `s` placed on short‑time in year *i* (bounded by `max_short_time`) |
 | `y_overmanning[i, s]` | Additional employees of skill `s` retained beyond the required headcount in year *i* (capped by `max_overmanning`) |
+| `retrain_cost`| Unit cost of converting unskilled→semi‑skilled and semi‑skilled→skilled |
+| `redundancy_cost[s]` | Cost associated with making a worker of skill `s` redundant |  
+| `overmanning_cost[s]` | Extra yearly cost per superfluous employee of skill `s` |
+| `short_time_cost[s]` | Yearly cost per short‑time worker of skill `s` |
 
 ## Core constraints  
 
 * **Workforce balance** – the headcount at the end of each year is built from the previous year’s stock, new hires, conversions, downgrades, natural attrition and redundancies. For each skill `s` and each year *i*:
 
-  * Skilled: `t_strength[i, SKILL] = retention_existing[SKILL]·t_strength[i‑1, SKILL] + retention_new[SKILL]·u_recruit[i, SKILL] + (1‑downgrade_dropout)·v_SS_SK[i] – v_SK_SS[i] – v_SK_US[i] – w_redundancy[i, SKILL]`  
+  * Skilled: `t_strength[i, s] = retention_existing[s]·t_strength[i‑1, s] + retention_new[s]·u_recruit[i, s] + (1‑downgrade_dropout)·v_SS_SK[i] – v_SK_SS[i] – v_SK_US[i] – w_redundancy[i, s]`  
 
-  * Semi‑skilled: `t_strength[i, SESK] = retention_existing[SESK]·t_strength[i‑1, SESK] + retention_new[SESK]·u_recruit[i, SESK] + (1‑downgrade_dropout)·v_SK_SS[i] + retention_existing[SESK]·v_US_SS[i] – v_SS_SK[i] – v_SS_US[i] – w_redundancy[i, SESK]`  
+  * Semi‑skilled: `t_strength[i, s] = retention_existing[s]·t_strength[i‑1, s] + retention_new[s]·u_recruit[i, s] + (1‑downgrade_dropout)·v_SK_SS[i] + retention_existing[s]·v_US_SS[i] – v_SS_SK[i] – v_SS_US[i] – w_redundancy[i, s]`  
 
-  * Unskilled: `t_strength[i, UNSK] = retention_existing[UNSK]·t_strength[i‑1, UNSK] + retention_new[UNSK]·u_recruit[i, UNSK] + (1‑downgrade_dropout)·(v_SK_US[i] + v_SS_US[i]) – v_US_SS[i] – w_redundancy[i, UNSK]`  
+  * Unskilled: `t_strength[i, s] = retention_existing[s]·t_strength[i‑1, s] + retention_new[s]·u_recruit[i, s] + (1‑downgrade_dropout)·(v_SK_US[i] + v_SS_US[i]) – v_US_SS[i] – w_redundancy[i, s]`  
 
 * **Recruitment caps** – the number of hires of any skill in a given year cannot exceed the limit defined in `max_recruit[s]`.  
 
@@ -52,24 +56,17 @@ A substantial proportion of employees leave during the first year of employment;
 
 ## Objective  
 
-The firm’s primary goal is to **minimise total redundancy**, expressed as  
+The firm’s primary goal is to **minimize total redundancy**, expressed as  
 
 $$
 total\\_redundancy = Σ_{i=1}^{T} Σ_{s∈Skill} w\\_redundancy[i, s]
 $$
 
-and the model is solved as a minimisation problem:
+and the model is solved as a minimization problem:
 
 ```
 solve minimize total_redundancy;
 ```
-
-## Cost data (used for reporting, not for the optimisation objective)
-
-* `retrain_cost` – unit cost of converting unskilled→semi‑skilled and semi‑skilled→skilled.  
-* `redundancy_cost[s]` – cost associated with making a worker of skill `s` redundant.  
-* `overmanning_cost[s]` – extra yearly cost per superfluous employee of skill `s`.  
-* `short_time_cost[s]` – yearly cost per short‑time worker of skill `s`.  
 
 These tables allow the analysis of total expenditure, but the optimisation itself focuses solely on reducing the number of redundancies.
 

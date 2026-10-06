@@ -27,7 +27,7 @@ In each skill category, a maximum of `max_short_time` workers can be placed on r
 
 A short‑time employee provides `short_time_efficiency` of the output of a full‑time employee.  
 
-The firm’s primary objective is to **minimise redundancy**. How should the company act to achieve this?  
+The firm’s primary objective is to **minimize redundancy**. How should the company act to achieve this?  
 
 ---  
 
@@ -50,6 +50,6 @@ The firm’s primary objective is to **minimise redundancy**. How should the com
 - `retrain_cost` - cost associated with retraining
 - `short_time_efficiency` – productivity ratio of a short‑time employee relative to a full‑time one  
 
-All decisions (recruitment, retraining, redundancy, short‑time placement, overmanning) are modelled as variables subject to the constraints described above, and the model seeks the policy that minimises the total redundancy count.
+All decisions (recruitment, retraining, redundancy, short‑time placement, overmanning) are modelled as variables subject to the constraints described above, and the model seeks the policy that minimizes the total redundancy count.
 
 [//]: # (Generated using nemotron3:33b from D001 description.en.md and model.mzn; minor manual adjustments applied)

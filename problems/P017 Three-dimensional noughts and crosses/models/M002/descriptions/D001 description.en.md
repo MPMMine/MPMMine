@@ -8,7 +8,7 @@ and vertical section and connecting opposite vertices of the cube. (For $n = 3$ 
 lines altogether.)
 
 Given $n^3 - total\\_black\\_balls$ white balls (noughts) and $total\\_black\\_balls$ black balls (crosses), arrange them,
-one to a cell, so as to minimise the number of lines with balls all of one color.
+one to a cell, so as to minimize the number of lines with balls all of one color.
 
 To break the symmetry two balls in the opposite vertices of the cube are set to the same color.
 

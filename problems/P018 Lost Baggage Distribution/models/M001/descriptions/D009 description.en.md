@@ -1,6 +1,6 @@
 # Lost Baggage Distribution  
 
-A small firm operates **`v`** vans and has contracts with airlines to retrieve misplaced luggage from the London region, departing airport **`X`** each evening at 6 p.m. The contract requires that every customer’s luggage be delivered within **`T`** minutes. The firm needs a quick model to determine the smallest number of vans to employ and to assign each customer to a van, specifying the visiting order. There is no van capacity limit; any luggage that fits the time window can be carried. After finding the minimal fleet, the goal is to minimise the longest travel time among the vans.  
+A small firm operates **`v`** vans and has contracts with airlines to retrieve misplaced luggage from the London region, departing airport **`X`** each evening at 6 p.m. The contract requires that every customer’s luggage be delivered within **`T`** minutes. The firm needs a quick model to determine the smallest number of vans to employ and to assign each customer to a van, specifying the visiting order. There is no van capacity limit; any luggage that fits the time window can be carried. After finding the minimal fleet, the goal is to minimize the longest travel time among the vans.  
 
 The travel times (in minutes) between every pair of locations are given in a matrix **`D`**. For convenience, airport **`X`** is treated as location 1.  
 
@@ -22,7 +22,7 @@ The travel times (in minutes) between every pair of locations are given in a mat
 **Constraints (worded)**  
 
 1. A van is considered used only if it visits at least one location.  
-2. The sum of travel times along a van’s route must not exceed `T`.  
+2. The sum of travel times along a van’s route to the farthest location must not exceed `T`.
 3. Every location except the airport must be served by exactly one van.  
 4. The airport is visited by all employed vans.  
 5. Flow conservation: if a van enters a location it must also leave it, ensuring a single tour per van.  
@@ -31,6 +31,6 @@ The travel times (in minutes) between every pair of locations are given in a mat
 
 **Objective (symbolic)**  
 
-- Minimise `Σ use[k]·(T+1) + max_route`, i.e., first minimise the number of vans, then the worst‑case route length.
+- Minimize `Σ use[k]·(T+1) + max_route`, i.e., first minimize the number of vans, then the worst‑case route length.
 
-[//]: # (Generated using nemotron3:33b from D001 description.en.md and model.mzn)
+[//]: # (Generated using nemotron3:33b from D001 description.en.md and model.mzn; minor manual adjustments applied)
