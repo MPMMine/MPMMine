@@ -12,6 +12,7 @@ We must place $B$ black balls (crosses) and $W = n^{3}-B$ white balls (noughts),
 - $total\_lines = 3n^{2}+6n+4$ – total lines in the cube.  
 - $balls[i] \in \{0,1\}$ for each cell $i$ ($1$ = black, $0$ = white).  
 - $lines[l] \in \{0,1\}$ for each line $l$ ($1$ = monochrome, $0$ = mixed).
+- $c\_{l,j}$ - refers to the $j^{th}$ cell in the $l^{th}$ line, where j is from 1 to $n$.
 
 **Constraints**  
 - For every line $l$ and its $n$ cells $c_{l,j}$:
@@ -24,8 +25,8 @@ $\sum\_{i=1}^{total\\_blocks} balls[i] = B$
 
 
 **Objective**  
-Minimise the total count of monochrome lines:  
-$\text{minimise}\\;\\; \sum\_{l=1}^{total\\_lines} lines[l]$
+Minimize the total count of monochrome lines:  
+$\text{minimize} \sum\_{l=1}^{total\\_lines} lines[l]$
 
 
 [//]: # (Generated using nemotron3:33b from D001 description.en.md and model.mzn; major manual adjustments applied)

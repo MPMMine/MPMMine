@@ -19,7 +19,7 @@ Skill transitions are possible:
 - Semi-skilled employees can be promoted to skilled status, though this is limited to a `promotion_limit` fraction of the current skilled workforce.
 The expenses for these training programs are listed in `retrain_cost`.
 
-Staff can also be downgraded to lower skill levels. A fraction `downgrade_dropout` of these demoted workers will leave the company, which is an additional loss beyond natural turnover.
+Staff can also be downgraded to lower skill levels. A fraction `downgrade_dropout` of these demoted workers will leave the company in the same year, which is an additional loss beyond natural turnover.
 
 The costs associated with redundancies are provided in the `redundancy_cost` table.
 

@@ -1,6 +1,6 @@
 # Manpower Planning  
 
-A firm faces a three‑year horizon and must determine how to adjust its labour pool in order to meet projected staffing needs while keeping the number of dismissals as low as possible.  The workforce is divided into three skill categories (unskilled, semi‑skilled, skilled).  Initial staffing levels for each category are given in `init_strength`, and future demand for each skill in each year is recorded in `req`.  
+A firm faces a `T`‑year horizon and must determine how to adjust its labour pool in order to meet projected staffing needs while keeping the number of dismissals as low as possible.  The workforce is divided into three skill categories (unskilled, semi‑skilled, skilled).  Initial staffing levels for each category are given in `init_strength`, and future demand for each skill in each year is recorded in `req`.  
 
 ## Decision variables  
 
@@ -10,14 +10,14 @@ A firm faces a three‑year horizon and must determine how to adjust its labour 
 * **Short‑time** – the number of workers placed on reduced‑hour schedules in year *i* for skill *s* is `sh_i(s)`.  
 * **Overmanning** – the surplus staff kept beyond the required level in year *i* for skill *s* is `ov_i(s)`.  
 
-All variables are bounded by the limits supplied in the tables `max_recruit`, `max_retrain_unskilled`, `max_overmanning`, `max_short_time`, and by the fractions `downgrade_dropout` and `promotion_limit`. There is a natural wastage of labor. A fairly large number of workers leave during their first year. After this, the rate is much smaller. Taking this into account, the wastage rates can be found in the table `retention_existing` and `retention_new`.
+All variables are bounded by the corresponding limits supplied in the tables `max_recruit`, `max_retrain_unskilled`, `max_overmanning`, `max_short_time`, and by the fractions `downgrade_dropout` and `promotion_limit`. There is a natural wastage of labor. A fairly large number of workers leave during their first year. After this, the rate is much smaller. Taking this into account, the wastage rates can be found in the table `retention_existing` and `retention_new`.
 
 ## Continuity and labour flow  
 
-For each year *i* = 1…T and each skill *s* the workforce at the end of the year must satisfy  
+For each year *i* = 1...T and each skill *s* the workforce at the end of the year must satisfy  
 
 ```
-t_i(s) =  (1‑downgrade_dropout)·d_i(prev→s)          % workers that stay after a downgrade/promotion
+t_i(s) =  (1‑downgrade_dropout)·d_i(prev→s)          % workers that stay after a downgrade
         + retention_existing(s)·t_{i‑1}(s)          % existing workers who remain
         + retention_new(s)·r_i(s)                  % newly recruited workers of this skill
         - red_i(s)                                 % dismissals
@@ -43,14 +43,12 @@ t_i(s) - ov_i(s) - short_time_efficiency·sh_i(s) = req_i(s)
 
 ## Objective  
 
-The firm’s declared goal is to **minimise total redundancy**, i.e. minimise  
+The firm’s declared goal is to **minimize total redundancy**, i.e. minimize  
 
 $$
 Σ_{i=1..T} Σ_{s∈Skills} red\_i(s)
 $$
 
 subject to all constraints above.  
-
-The model therefore decides the optimal mix of hiring, retraining, dismissals, short‑time assignments and excess staffing over the planning horizon, ensuring that the company can meet its future staffing requirements while keeping the number of terminations as low as possible.
 
 [//]: # (Generated using nemotron3:33b from D001 description.en.md and model.mzn; minor manual adjustments applied)

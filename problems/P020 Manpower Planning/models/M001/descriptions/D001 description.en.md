@@ -24,7 +24,7 @@ It is possible to employ up to `max_overmanning` more workers over the whole com
 
 Up to `max_short_time` workers in each category of skill can be put on short-time working. The cost of this (per employee per year) is gathered in the table `short_time_cost`.
 
-An employee on short-time working meets the production requirements of `short_time_efficiency` of a full-time employee. The company’s declared objective is to **minimise redundancy**. How should they operate in order to do this?
+An employee on short-time working meets the production requirements of `short_time_efficiency` of a full-time employee. The company’s declared objective is to **minimize redundancy**. How should they operate in order to do this?
 
 
 [//]: # (Original problem form the book "Model Building in Mathematical Programming". Manually adjusted for the general case with redundancy minimization.)

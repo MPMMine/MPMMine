@@ -17,7 +17,7 @@ External hiring is constrained. In any single period, the number of new hires ad
 
 Upskilling is permitted within limits: at most `max_retrain_unskilled` entry-level workers may be reskilled to intermediate level each period. Promotion from intermediate to top level is further restricted—no more than a `promotion_limit` fraction of the top-level headcount in that period may be advanced, since part of the training is delivered on the job. The expenditure associated with each upskilling route is collected in `retrain_cost`.
 
-Downgrading (moving a worker to a lower skill tier) is also feasible, but a `downgrade_dropout` fraction of those demoted will subsequently exit the organisation at no cost to the employer. This additional leakage is on top of the natural attrition described above. Downgrading is available from top to intermediate, top to entry-level, and intermediate to entry-level.
+Downgrading (moving a worker to a lower skill tier) is also feasible, but a `downgrade_dropout` fraction of those demoted will subsequently exit the organization at no cost to the employer. This additional leakage is on top of the natural attrition described above. Downgrading is available from top to intermediate, top to entry-level, and intermediate to entry-level.
 
 Severance payments vary by skill tier and are tabulated in `redundancy_cost`.
 
@@ -25,6 +25,6 @@ The firm may carry up to `max_overmanning` surplus employees in aggregate across
 
 At most `max_short_time` employees in each skill tier may be placed on reduced-hours arrangements in a given period. The per-employee annual expense for such arrangements is stored in `short_time_cost`. A reduced-hours worker fulfils a `short_time_efficiency` share of a full-time worker's output.
 
-The firm's stated goal is to **minimise the total number of redundancies** across the entire horizon. Determine the optimal sequence of hiring, reskilling, demotion, redundancy, overmanning, and reduced-hours decisions that achieves this objective while satisfying all production requirements.
+The firm's stated goal is to **minimize the total number of redundancies** across the entire horizon. Determine the optimal sequence of hiring, reskilling, demotion, redundancy, overmanning, and reduced-hours decisions that achieves this objective while satisfying all production requirements.
 
 [//]: # (Generated using qwen3.8:27b from D001 description.en.md and model.mzn)

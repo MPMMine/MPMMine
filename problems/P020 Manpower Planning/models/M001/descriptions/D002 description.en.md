@@ -30,6 +30,6 @@ The governing balance for each period and each skill tier states that the total 
 
 The workforce at the end of each period is determined by: the retained tenured staff from the prior period, plus retained new hires made that period, plus retained newly retrained workers (who are subject to tenured-staff retention since they may depart immediately), minus any demotions out of that tier, minus any layoffs.
 
-The organization's stated goal is to **minimise the total number of layoffs** across all periods and all skill tiers. What operating policy achieves this?
+The organization's stated goal is to **minimize the total number of layoffs** across all periods and all skill tiers. What operating policy achieves this?
 
 [//]: # (Generated using qwen3.8:27b from D001 description.en.md and model.mzn)

@@ -1,6 +1,6 @@
 # Lost Baggage Distribution  
 
-A company operates `nV` vans that must collect and deliver lost or delayed baggage from `X` airport (treated as city 1) to `nC` customer locations each evening. The contract requires every delivery to be completed within `T` minutes. The aim is first to use as few vans as possible, and then, among those minimal‑van solutions, to minimise the longest travel time experienced by any van.  
+A company operates `nV` vans that must collect and deliver lost or delayed baggage from `X` airport (treated as city 1) to `nC` customer locations each evening. The contract requires every delivery to be completed within `T` minutes. The aim is first to use as few vans as possible, and then, among those minimal‑van solutions, to minimize the longest travel time experienced by any van.  
 
 The travel times between any two locations are given by an `nC × nC` matrix `D`, where `D[i,j]` is the minutes needed to travel from location `i` to location `j`. Location 1 is the depot.  
 
@@ -18,11 +18,11 @@ The travel times between any two locations are given by an `nC × nC` matrix
 5. The depot is visited by each van that is used: $\(\sum\_{k} y[1,k] ≥ \sum\_{k} z[k]\)$.  
 6. Flow conservation: if a van enters a city it must leave it, and vice‑versa:  
    $\(\sum\_{i≠j} x[i,j,k] = y[j,k]\)$ and $\(\sum\_{i≠j} x[j,i,k] = y[j,k]\)$ for all `j, k`.  
-7. Sub‑circuit (subtour) elimination is enforced through a successor array that creates a single closed route for each used van.  
-8. Symmetry breaking: for each `k = 1…nV‑1`, the number of visited cities by van `k` is at least that of van `k+1`.  
+7. Sub‑circuit (subtour) elimination is enforced through a successor global constraint that enforces a single closed route for each used van. 
+8. Symmetry breaking: for each `k = 1...nV‑1`, the number of visited cities by van `k` is at least that of van `k+1`.  
 
 **Objective**  
-Minimise  
+Minimize  
 
 $$
 \text{sum}(z)·w + M,
@@ -30,6 +30,5 @@ $$
 
 where `w = T + 1` is a penalty weight and `M` is the largest journey time among the vans.  
 
-With these elements the model selects the smallest fleet and, subject to that, the most balanced schedule.
 
 [//]: # (Generated using nemotron3:33b from D001 description.en.md and model.mzn; major manual adjustments applied)
