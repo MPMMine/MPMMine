@@ -14,11 +14,11 @@ u_recruit =
 v_US_SS = [0, 250, 250];
 v_SS_SK = [0, 1, 2];
 v_SK_SS = [315, 90, 19];
-v_SK_US = [4, 0, 0];
-v_SS_US = [1, 0, 0];
+v_SK_US = [3, 0, 0];
+v_SS_US = [2, 0, 0];
 w_redundancy = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
- |       593,          345,       0
+ |       593,          344,       1
  |       367,            0,       0
  |       285,            0,       1
  |];
