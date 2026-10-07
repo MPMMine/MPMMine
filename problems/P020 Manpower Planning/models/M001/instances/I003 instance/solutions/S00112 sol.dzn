@@ -13,13 +13,13 @@ u_recruit =
  |];
 v_US_SS = [150, 150, 0];
 v_SS_SK = [0, 0, 100];
-v_SK_SS = [60, 6, 0];
-v_SK_US = [0, 61, 180];
-v_SS_US = [0, 232, 0];
+v_SK_SS = [60, 11, 0];
+v_SK_US = [0, 53, 180];
+v_SS_US = [0, 235, 0];
 w_redundancy = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
  |        10,          217,       4
- |       436,            3,       0
+ |       434,            2,       3
  |       692,           63,       0
  |];
 x_short = 

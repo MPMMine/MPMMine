@@ -1,0 +1,37 @@
+t_strength = 
+[|    UNSKILLED: SEMI_SKILLED: SKILLED: 
+ | 0:      2500,         1800,    1200
+ | 1:      2040,         1610,    1100
+ | 2:      1500,         1400,    1047
+ | 3:      1000,         1384,     850
+ |];
+u_recruit = 
+[| UNSKILLED: SEMI_SKILLED: SKILLED: 
+ |         0,          400,       3
+ |         0,            4,       2
+ |       300,            0,     300
+ |];
+v_US_SS = [150, 0, 150];
+v_SS_SK = [90, 160, 153];
+v_SK_SS = [0, 143, 580];
+v_SK_US = [2, 8, 0];
+v_SS_US = [473, 895684, 0];
+w_redundancy = 
+[| UNSKILLED: SEMI_SKILLED: SKILLED: 
+ |       300,            0,     152
+ |       380,           14,      26
+ |       470,       496151,       4
+ |];
+x_short = 
+[| UNSKILLED: SEMI_SKILLED: SKILLED: 
+ |        74,            0,       0
+ |         0,            0,      74
+ |         0,            0,       0
+ |];
+y_overmanning = 
+[| UNSKILLED: SEMI_SKILLED: SKILLED: 
+ |         3,           10,       0
+ |         0,            0,      10
+ |         0,          184,       0
+ |];
+% _objective = 497497.0;

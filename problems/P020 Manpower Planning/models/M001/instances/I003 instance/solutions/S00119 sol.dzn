@@ -12,14 +12,14 @@ u_recruit =
  |       300,            0,       0
  |];
 v_US_SS = [150, 150, 0];
-v_SS_SK = [0, 0, 100];
-v_SK_SS = [60, 11, 0];
-v_SK_US = [0, 55, 180];
-v_SS_US = [0, 233, 0];
+v_SS_SK = [0, 100, 100];
+v_SK_SS = [60, 81, 0];
+v_SK_US = [0, 83, 180];
+v_SS_US = [0, 160, 0];
 w_redundancy = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
  |        10,          217,       4
- |       434,            4,       1
+ |       416,            5,       0
  |       692,           63,       0
  |];
 x_short = 
@@ -34,4 +34,4 @@ y_overmanning =
  |         0,           13,       0
  |         0,            0,       0
  |];
-% _objective = 1425.0;
+% _objective = 1407.0;
