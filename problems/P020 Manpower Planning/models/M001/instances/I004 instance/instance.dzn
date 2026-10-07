@@ -1,0 +1,25 @@
+T = 4;
+
+init_strength = [180, 120, 80];
+
+req = [| 120, 130, 100
+       | 100, 150, 120
+       |  70, 160, 140
+       |  20, 180, 190 |];
+
+retention_existing = [0.85, 0.92, 0.96];
+retention_new      = [0.70, 0.82, 0.92];
+
+max_recruit = [40, 60, 60];
+max_short_time = 10;
+max_retrain_unskilled = 25;
+max_overmanning = 12;
+
+retrain_cost = [45, 60];
+redundancy_cost = [25, 60, 70];
+overmanning_cost = [120, 180, 280];
+short_time_cost = [40, 40, 50];
+
+promotion_limit = 0.30;
+downgrade_dropout = 0.40;
+short_time_efficiency = 0.50;
