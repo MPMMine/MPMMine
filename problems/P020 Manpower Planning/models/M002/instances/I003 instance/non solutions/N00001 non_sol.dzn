@@ -28,6 +28,6 @@ y_overmanning =
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
  |         0,            0,     191
  |       198,            2,       0
- |         0,       731365,       0
+ |         0,       563789,       0
  |];
-% _objective = 1611335650.0;
+% _objective = 1242668450.0;

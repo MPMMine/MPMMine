@@ -1,0 +1,38 @@
+t_strength = 
+[|    UNSKILLED: SEMI_SKILLED: SKILLED: 
+ | 0:       180,          120,      80
+ | 1:       120,          131,     116
+ | 2:       104,          150,     125
+ | 3:        72,          165,     149
+ | 4:        25,          185,     190
+ |];
+u_recruit = 
+[| UNSKILLED: SEMI_SKILLED: SKILLED: 
+ |        40,           60,      60
+ |        12,           60,       0
+ |         0,            0,      60
+ |         0,           60,      16
+ |];
+transfer = array3d(1..4, UNSKILLED..SKILLED, UNSKILLED..SKILLED, [0, 20, 0, 50, 0, 0, 0, 15, 0, 0, 9, 0, 0, 0, 34, 291156, 10, 0, 0, 25, 0, 0, 0, 5, 16, 15, 0, 0, 30, 0, 2, 0, 44, 6, 4, 0]);
+w_redundancy = 
+[| UNSKILLED: SEMI_SKILLED: SKILLED: 
+ |        71,            6,       1
+ |         1,            0,       3
+ |         1,            0,       0
+ |        11,            0,       0
+ |];
+x_short = 
+[| UNSKILLED: SEMI_SKILLED: SKILLED: 
+ |         0,            0,      10
+ |         8,            0,      10
+ |         0,           10,       0
+ |        10,           10,       0
+ |];
+y_overmanning = 
+[| UNSKILLED: SEMI_SKILLED: SKILLED: 
+ |         0,            1,      11
+ |         0,            0,       0
+ |    327476,            0,       9
+ |         0,            0,       0
+ |];
+% _objective = 39316920.0;
