@@ -1,37 +1,37 @@
 t_strength = 
 [|    UNSKILLED: SEMI_SKILLED: SKILLED: 
  | 0:      1800,         1200,     800
- | 1:      1220,         1417,    1023
- | 2:       720,         1600,   29357
- | 3:       200,         1820,    1923
+ | 1:      1220,         1300,    1050
+ | 2:       700,         1686,    1474
+ | 3:       200,         1820,    1900
  |];
 u_recruit = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
- |       400,          164,     600
- |       400,          268,     600
- |         0,          600,     600
+ |       400,          600,       1
+ |       400,          600,     600
+ |       400,          584,     308
  |];
-v_US_SS = [1, 0, 250];
-v_SS_SK = [0, 2, 570];
-v_SK_SS = [296, 131, 335];
-v_SK_US = [0, 0, 190];
-v_SS_US = [0, 0, 5];
+v_US_SS = [0, 0, 0];
+v_SS_SK = [298, 0, 210];
+v_SK_SS = [5, 0, 0];
+v_SK_US = [0, 83, 0];
+v_SS_US = [0, 2, 0];
 w_redundancy = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
- |       589,            0,       1
- |       597,            0,       0
- |       279,            0,  101432
+ |       590,            1,       0
+ |       668,            0,       3
+ |       675,            0,       0
  |];
 x_short = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
- |        40,            0,      40
- |        40,            0,      10
+ |        40,            0,       0
  |         0,           40,      40
+ |         0,           40,       0
  |];
 y_overmanning = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
- |         0,          117,       3
+ |         0,            0,      50
+ |       799,           66,      54
  |         0,            0,       0
- |         0,            0,       3
  |];
-% _objective = 102898.0;
+% _objective = 1937.0;

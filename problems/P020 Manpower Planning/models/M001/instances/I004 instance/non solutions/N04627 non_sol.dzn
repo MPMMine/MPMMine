@@ -1,42 +1,42 @@
 t_strength = 
 [|    UNSKILLED: SEMI_SKILLED: SKILLED: 
  | 0:       180,          120,      80
- | 1:       120,          131,     114
- | 2:       100,          158,     127
- | 3:        80,          165,     145
- | 4:        25,          185,     195
+ | 1:       120,          135,     100
+ | 2:       106,          160,     121
+ | 3:        76,          160,     151
+ | 4:        20,          180,     190
  |];
 u_recruit = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
- |         4,           14,      60
- |        40,           60,      11
- |         0,            2,      60
- |         0,           60,      21
+ |         0,           60,       9
+ |        40,           60,      59
+ |        40,           60,       6
+ |         2,           40,      59
  |];
-v_US_SS = [1, 14, 0, 25];
-v_SS_SK = [0, 14, 3, 38];
-v_SK_SS = [17, 4, 35, 0];
-v_SK_US = [1, 0, 0, 0];
-v_SS_US = [1, 0, 0, 0];
+v_US_SS = [0, 25, 0, 0];
+v_SS_SK = [27, 32, 42, 6];
+v_SK_SS = [4, 1, 11, 10];
+v_SK_US = [5, 0, 0, 5];
+v_SS_US = [0, 5, 1, 0];
 w_redundancy = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
- |        36,            1,       0
- |        16,       168924,       2
- |    219999,            0,       0
- |        18,            1,       0
+ |        36,            0,       2
+ |         2,            0,      59
+ |        42,            0,       0
+ |        49,            0,       0
  |];
 x_short = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
- |         0,            0,      10
  |         0,           10,       0
- |         0,           10,      10
- |        10,           10,      10
- |];
-y_overmanning = 
-[| UNSKILLED: SEMI_SKILLED: SKILLED: 
- |         0,            1,       9
- |         0,            3,       7
+ |        10,            0,       0
  |        10,            0,       0
  |         0,            0,       0
  |];
-% _objective = 388997.0;
+y_overmanning = 
+[| UNSKILLED: SEMI_SKILLED: SKILLED: 
+ |         0,            0,       0
+ |         1,           10,       1
+ |         1,            0,      11
+ |         0,            0,       0
+ |];
+% _objective = 190.0;
