@@ -1,5 +1,4 @@
 enum Skill = { UNSKILLED, SEMI_SKILLED, SKILLED };
-int: M = 1*10^6;
 int: T;                                               % Planning horizon
 int: max_short_time;                                  % Max number of employees put on short-time working
 int: max_overmanning;                                 % Max number of people that can be employed over the whole company
@@ -23,6 +22,7 @@ array[Skill] of int: overmanning_cost;                % Cost of superfluous empl
 array[Skill] of int: short_time_cost;                 % Cost of employee on short-time based on skill
 
 % Decision Variables
+int: M = 2 * max(max(req), max(init_strength));
 array[0..T, Skill] of var 0..M: t_strength;           % Workforce strength at end of year i
 array[1..T, Skill] of var 0..M: u_recruit;            % Recruitment at start of year i
 array[1..T, Skill, Skill] of var 0..M: transfer;      % Personnel transfer from s1 to s2 in year i
