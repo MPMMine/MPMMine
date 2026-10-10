@@ -1,38 +1,38 @@
 t_strength = 
 [|    UNSKILLED: SEMI_SKILLED: SKILLED: 
  | 0:       180,          120,      80
- | 1:       120,          138,     104
- | 2:       100,          158,     131
- | 3:        70,          166,     155
- | 4:        25,          185,     190
+ | 1:       124,          130,     113
+ | 2:       106,          156,     130
+ | 3:        80,          160,     147
+ | 4:        32,          180,     190
  |];
 u_recruit = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
- |        40,           60,      11
- |         0,           52,      13
- |         0,           32,      12
- |         5,           58,       0
+ |         0,            0,      60
+ |         0,           60,      12
+ |        39,            0,      60
+ |        40,           58,      17
  |];
-transfer = array3d(1..4, UNSKILLED..SKILLED, UNSKILLED..SKILLED, [0, 10, 0, 5, 0, 23, 0, 2, 0, 0, 2, 0, 0, 0, 20, 0, 0, 0, 0, 15, 0, 0, 0, 20, 0, 1, 0, 0, 31, 0, 0, 0, 45, 0, 2, 0]);
+transfer = array3d(1..4, UNSKILLED..SKILLED, UNSKILLED..SKILLED, [0, 20, 0, 0, 0, 0, 15, 2, 0, 0, 0, 0, 1, 0, 13, 0, 2, 0, 0, 29, 0, 1, 0, 0, 0, 3, 0, 0, 27, 0, 0, 0, 44, 0, 9, 0]);
 w_redundancy = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
- |        54,            4,       3
- |         0,            0,  592467
+ |        18,            0,       2
  |         0,            0,       0
- |         7,            0,       0
+ |         9,           11,      30
+ |        37,            1,       0
  |];
 x_short = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
+ |         0,            1,      10
+ |        10,           10,      10
+ |        10,            0,       0
  |         0,            0,       0
- |         0,           10,      10
- |         0,           10,      10
- |        10,           10,       0
  |];
 y_overmanning = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
- |         0,            8,       4
- |         0,            3,       6
- |         0,            1,      10
- |         0,            0,       0
+ |         4,            0,       8
+ |         1,            1,       5
+ |         5,            0,       7
+ |        12,            0,       0
  |];
-% _objective = 41494115.0;
+% _objective = 22060.0;

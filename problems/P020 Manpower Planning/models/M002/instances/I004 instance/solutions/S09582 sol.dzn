@@ -1,38 +1,38 @@
 t_strength = 
 [|    UNSKILLED: SEMI_SKILLED: SKILLED: 
  | 0:       180,          120,      80
- | 1:       120,          145,     107
- | 2:       108,          151,     120
- | 3:        76,          175,     146
+ | 1:       132,          135,     105
+ | 2:       100,          165,     127
+ | 3:        76,          168,     148
  | 4:        20,          180,     190
  |];
 u_recruit = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
- |        40,           60,      11
- |        40,            2,      20
- |        40,           54,      45
- |         0,            0,      60
+ |         2,            2,      35
+ |         0,           60,      59
+ |         6,            0,      60
+ |        40,            0,      60
  |];
-transfer = array3d(1..4, UNSKILLED..SKILLED, UNSKILLED..SKILLED, [0, 20, 0, 3, 0, 23, 2, 0, 0, 0, 18, 0, 0, 0, 3, 0, 4, 0, 0, 10, 0, 0, 0, 15, 2, 1, 0, 0, 30, 0, 0, 0, 9, 9, 4, 0]);
+transfer = array3d(1..4, UNSKILLED..SKILLED, UNSKILLED..SKILLED, [0, 23, 0, 0, 0, 0, 1, 3, 0, 0, 25, 0, 29, 0, 2, 29, 1, 0, 0, 15, 0, 1, 0, 28, 2, 54, 0, 0, 32, 0, 0, 0, 7, 9, 5, 0]);
 w_redundancy = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
- |        44,            7,       0
- |         4,            0,       0
- |        35,            3,      22
- |        20,            2,       1
+ |         0,            0,       0
+ |        22,            1,       0
+ |         0,            1,       0
+ |        46,            0,       0
  |];
 x_short = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
  |         0,           10,      10
- |        10,            2,       0
- |        10,           10,      10
+ |         0,           10,      10
+ |        10,            0,      10
  |         0,            0,       0
  |];
 y_overmanning = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
+ |        12,            0,       0
  |         0,           10,       2
- |         3,            0,       0
- |         1,           10,       1
+ |         1,            8,       3
  |         0,            0,       0
  |];
-% _objective = 19015.0;
+% _objective = 17215.0;
