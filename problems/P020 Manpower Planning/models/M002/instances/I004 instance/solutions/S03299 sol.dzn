@@ -1,38 +1,38 @@
 t_strength = 
 [|    UNSKILLED: SEMI_SKILLED: SKILLED: 
  | 0:       180,          120,      80
- | 1:       128,          139,     105
- | 2:       100,          160,     132
- | 3:        70,          165,     149
- | 4:        20,          180,     190
+ | 1:       128,          144,     100
+ | 2:       108,          152,     128
+ | 3:        80,          165,     141
+ | 4:        20,          185,     195
  |];
 u_recruit = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
+ |         0,           60,      60
  |        40,            0,      60
  |        40,            0,      60
- |         0,            0,      33
- |         1,            0,      60
+ |        40,           60,      60
  |];
-transfer = array3d(1..4, UNSKILLED..SKILLED, UNSKILLED..SKILLED, [0, 20, 0, 0, 0, 0, 5, 22, 0, 0, 21, 0, 1, 0, 0, 1, 23, 0, 0, 15, 0, 0, 0, 2, 0, 10, 0, 0, 30, 0, 0, 0, 6, 3, 11, 0]);
+transfer = array3d(1..4, UNSKILLED..SKILLED, UNSKILLED..SKILLED, [0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 26, 0, 0, 0, 5, 22, 1, 0, 0, 28, 0, 1, 0, 2, 1, 4, 0, 0, 25, 0, 0, 0, 39, 30, 0, 0]);
 w_redundancy = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
- |        36,            3,       0
- |        17,            0,       0
- |         0,            0,       0
- |        12,            0,       0
+ |        25,           18,      28
+ |        16,            0,       5
+ |        13,            0,      34
+ |        69,            0,       3
  |];
 x_short = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
+ |        10,           10,       0
  |        10,            0,      10
- |         0,           10,      10
  |         0,           10,       0
- |         0,            0,       0
+ |         0,           10,      10
  |];
 y_overmanning = 
 [| UNSKILLED: SEMI_SKILLED: SKILLED: 
  |         3,            9,       0
- |         0,            5,       7
- |         0,            0,       9
+ |         3,            2,       3
+ |        10,            0,       1
  |         0,            0,       0
  |];
-% _objective = 15715.0;
+% _objective = 23390.0;
