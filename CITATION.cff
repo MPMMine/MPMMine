@@ -25,3 +25,18 @@ version: 0.1.0.20260722-beta
 identifiers:
   - type: doi
     value: 10.5281/zenodo.19650201
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Stachowiak"
+      given-names: "Rafał"
+      orcid: "https://orcid.org/0009-0002-7978-900X"
+    - family-names: "Pawlak"
+      given-names: "Tomasz P."
+      orcid: "https://orcid.org/0000-0002-8353-0562"
+  doi: "10.48550/arXiv.2605.26279"
+  title: "MPMMine: Better Benchmarks for Constraint Acquisition"
+  year: 2026
+  month: 10
+  start: 1
+  end: 19
